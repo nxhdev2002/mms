@@ -1,0 +1,156 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' LogW Case Data ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="caseNo"
+                                        name="caseNo"
+                                        class="form-control"
+                                        [placeholder]="l('Case No')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="renban"
+                                        name="renban"
+                                        class="form-control"
+                                        [placeholder]="l('Renban')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Devanning Date From"
+                                        [(ngModel)]="devanningDateFrom"
+                                        name="devanningDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #t="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="t.toggle()"></i>
+                                </div>
+
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Devanning Date To"
+                                        [(ngModel)]="devanningDateTo"
+                                        name="devanningDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #f="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="f.toggle()"></i>
+                                </div>
+
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="zoneCd"
+                                        name="zoneCd"
+                                        class="form-control"
+                                        [placeholder]="l('Zone Cd')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="areaCd"
+                                        name="areaCd"
+                                        class="form-control"
+                                        [placeholder]="l('Area Cd')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+                                <!-- <div class="input-search">
+                                    <select style="width: 100%; height: 100%" [(ngModel)]="zoneCd" name="zoneCd">
+                                        <option value=""></option>
+                                        <option value="RB">RB</option>
+                                        <option value="WH">WH</option>
+                                        <option value="UP">UP</option>
+                                    </select>
+                                </div> -->
+                                <!-- <div class="input-search">
+                                    <select style="width: 100%; height: 100%" [(ngModel)]="areaCd" name="areaCd">
+                                        <option value=""></option>
+                                        <option value="RB">RB</option>
+                                        <option value="RLL">RLL</option>
+                                        <option value="FRL">FRL</option>
+                                        <option value="OVF">OVF</option>
+                                    </select>
+                                </div> -->
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid
+                                    [columnDefs]="defaultColDefs"
+                                    [paginationParams]="paginationParams"
+                                    [rowData]="rowData"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+                                    (selectionChanged)="onSelectionMulti($event)"
+                                    [heightAuto]="false"
+                                    [height]="'75vh'"
+                                    [frameworkComponents]="frameworkComponents"
+                                >
+                                </simple-ag-grid>
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr />
+                        <div class="text-right">
+                            <button class="btn btn-success font-weight-bold" (click)="exportRobbingDataToExcel()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Download Robbing') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportWhBigCaseDataToExcel()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Download WH Data') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Download Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<casedata-history-modal #contactHisModal></casedata-history-modal>

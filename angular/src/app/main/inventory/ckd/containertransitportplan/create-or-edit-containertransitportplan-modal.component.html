@@ -1,0 +1,102 @@
+<div bsModal #createOrEditModalContainerTransitPortPlan="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit ContainerTransitPortPlan')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New ContainerTransitPortPlan')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Container No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ContainerNo' [(ngModel)]='rowdata.containerNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Renban</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Renban' [(ngModel)]='rowdata.renban'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Request Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepicker='bsDatepicker' [(ngModel)]='_requestDate'  bsDatepicker #d="bsDatepicker" >
+						<i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+
+
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Request Time</label>
+						<input
+                            type="time"
+                            class="col-md-10 form-control input-text"
+                            name="requestTime"
+                            [(ngModel)]="rowdata.requestTime"
+                        />
+
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Invoice No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InvoiceNo' [(ngModel)]='rowdata.invoiceNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Bill Of Lading No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='BillOfLadingNo' [(ngModel)]='rowdata.billOfLadingNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Seal No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SealNo' [(ngModel)]='rowdata.sealNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>List Case No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ListCaseNo' [(ngModel)]='rowdata.listCaseNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>List Lot No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ListLotNo' [(ngModel)]='rowdata.listLotNo'>
+					</div>
+
+
+
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Port Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PortCode' [(ngModel)]='rowdata.portCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Port Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PortName' [(ngModel)]='rowdata.portName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Remarks</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Remarks' [(ngModel)]='rowdata.remarks'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class=' col-md-2 form-control title'>Status</label>
+						<tmss-combobox [items]="RestrictList"  name="RestrictList" [(ngModel)]="rowdata.status"></tmss-combobox>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

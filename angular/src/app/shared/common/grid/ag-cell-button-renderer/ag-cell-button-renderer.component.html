@@ -1,0 +1,21 @@
+<div class="ui-g-12 ph-0" id="button-container">
+    <!-- <button
+        *ngIf="buttonDef"
+        type="button"
+        class="ag-in-cell-button"
+        (click)="customFunction()"
+        [disabled]="disableButton"
+        [ngClass]="'ui-g-6 ph-0 ui-md-6 {{ _ClassName }}'">
+        <i style="margin-right: 5px;" *ngIf="buttonDef.iconName" class="{{ buttonDef.iconName }} tmss-fa"></i>
+        <span style="position: relative; top: -3px; margin-top: 5px;">{{ Text }}</span>
+    </button> -->
+    <button
+        *ngIf="buttonDefTwo"
+        type="button"
+        class="ui-g-6 ph-0 ui-md-6 ag-in-cell-button {{ _ClassNameTwo }}"
+        (click)="customFunctionTwo()"
+    >
+        <i *ngIf="buttonDefTwo.iconName" style="margin-right: 5px;" class="{{ buttonDefTwo.iconName }} tmss-fa"></i>
+        <span style="position: relative; top: -3px; margin-top: 5px;">{{ TextTwo }}</span>
+    </button>
+</div>

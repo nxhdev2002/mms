@@ -1,0 +1,52 @@
+<div bsModal #createOrEditModalEngineMaster="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit EngineMaster')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Code</label>
+						<input type='text' class='col-md-10 form-control input-text'  name='MaterialCode' [(ngModel)]='rowdata.materialCode' readonly>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Class Type</label>
+						<input type='text' class='col-md-10 form-control input-text'  name='ClassType' [(ngModel)]='rowdata.classType' readonly>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Class Name</label>
+						<input type='text' class='col-md-10 form-control input-text'  name='ClassName' [(ngModel)]='rowdata.className' readonly>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Transmission Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='TransmissionType' [(ngModel)]='rowdata.transmissionType'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Engine Model</label>
+						<input type='text' class='col-md-10 form-control input-text'  name='EngineModel' [(ngModel)]='rowdata.engineModel' readonly>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Engine Type</label>
+						<input type='text' class='col-md-10 form-control input-text'  name='EngineType' [(ngModel)]='rowdata.engineType' readonly>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+ 
+ <div bsModal #dialogModel="bs-modal" class="modal fade col-12 dialog-confirm" role="dialog" aria-labelledby="dialogModel"
+    aria-hidden="true" [config]="{ backdrop: 'static' }" >
+  
+    <div class="modal-dialog modal-lg"  style=" display: flex; justify-content: center;" >
+        <div class="modal-content" style="width: 500px; margin-top: 30%;" >
+
+          <div class="pop-up DigitalSignature">
+            <div class="frame-45305">
+              <div class="frame-45310">
+                <div class="frame-1171275538">
+                  <div class="digital-signature">{{Title}}</div>
+                  <div class="frame-1171275827">
+                    <div class="component-3">
+                      <svg
+                        class="frame-1171275828"
+                        width="46"
+                        height="46"
+                        viewBox="0 0 46 46"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_6187_277446)">
+                          <path
+                            d="M45.7877 42.1158L24.4469 2.26626C24.3005 2.01196 24.0896 1.80074 23.8355 1.65388C23.5815 1.50701 23.2932 1.42969 22.9998 1.42969C22.7063 1.42969 22.418 1.50701 22.164 1.65388C21.9099 1.80074 21.6991 2.01196 21.5526 2.26626L0.214209 42.1158C0.0718435 42.3642 -0.00206098 42.6458 4.37298e-05 42.9321C0.00214844 43.2183 0.0801869 43.4989 0.226189 43.7451C0.525684 44.2506 1.06957 44.5597 1.65897 44.5597H44.3406C44.6296 44.5602 44.9137 44.4853 45.165 44.3424C45.4162 44.1996 45.6259 43.9937 45.7733 43.7451C45.9192 43.4989 45.9974 43.2185 45.9999 42.9324C46.0025 42.6462 45.9292 42.3645 45.7877 42.1158ZM25.3957 39.5678C25.3957 39.6782 25.3062 39.7678 25.1957 39.7678H20.8038C20.6934 39.7678 20.6038 39.6782 20.6038 39.5678V35.1759C20.6038 35.0654 20.6934 34.9759 20.8038 34.9759H25.1957C25.3062 34.9759 25.3957 35.0654 25.3957 35.1759V39.5678ZM25.3957 31.1819C25.3957 31.2924 25.3062 31.3819 25.1957 31.3819H20.8038C20.6934 31.3819 20.6038 31.2924 20.6038 31.1819V16.0082C20.6038 15.8978 20.6934 15.8082 20.8038 15.8082H25.1957C25.3062 15.8082 25.3957 15.8978 25.3957 16.0082V31.1819Z"
+                            fill="#E09E01"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_6187_277446">
+                            <rect width="46" height="46" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div class="frame-1171275923">
+                      <div class="frame-1171275673">
+                        <div
+                          class="the-following-signers-do-not-digitally-sign-or-their-digital-signatures-have-expired"
+                        >
+                          {{Content}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="frame-1171275927" style="display: none;">
+                    <div class="frame-1171275671">
+
+                      <div class="frame-1171275672" >
+                        <div class="ellipse-1"></div>
+                        <div class="b-o-ph-ng">_signer</div>
+                      </div>
+                    </div>
+                    <div class="frame-1171275925">
+                      <div class="frame-11712756722">
+                        <div class="frame-1171275673">
+                          <div class="frame-1171275924">
+                            <div class="div">-</div>
+                          </div>
+                          <div class="press-change-will-not-using-digital-signatures">
+                             <span class="press-change-will-not-using-digital-signatures-span">
+                                {{l('DigitalSignatureChange')}}
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="frame-1171275673">
+                        <div class="frame-1171275924">
+                          <div class="div">-</div>
+                        </div>
+                        <div
+                          class="press-submit-anyway-will-submit-with-digital-signature"
+                        >
+                            <span class="press-submit-anyway-will-submit-with-digital-signature-span"> 
+                              {{l('DigitalSignatureSubmitAnyway')}}
+                            </span>
+                           
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-1171275438">
+
+                  <button *ngIf="isConfirm" (click)="submit()" type="submit" class="btn btn-primary font-weight-bold">
+                      <i class="fa tmss-fa fa-save mr-1"></i>
+                      <span>{{ l('Yes') }}</span>
+                  </button>
+                  <button *ngIf="isConfirm" (click)="Cancel()" type="button" class="btn btn-light-primary font-weight-bold">
+                      <i class="fa tmss-fa fa-times mr-1"></i>
+                      {{ l('Cancel') }}
+                  </button>
+
+                  <button *ngIf="!isConfirm" (click)="Cancel()" type="button" class="btn btn-light-primary font-weight-bold"> 
+                    {{ l('Ok') }}
+                  </button>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+    </div>
+</div>
+ 

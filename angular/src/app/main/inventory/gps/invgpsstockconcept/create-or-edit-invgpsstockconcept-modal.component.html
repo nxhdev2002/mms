@@ -1,0 +1,158 @@
+<div bsModal #createOrEditModalInvGpsStockConcept="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit InvGpsStockConcept')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New InvGpsStockConcept')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-input">
+
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Supplier Code</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='SupplierCode' [(ngModel)]='rowdata.supplierCode'>
+                                </div>
+
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 1</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk1' [(ngModel)]='rowdata.minStk1'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 2</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk2' [(ngModel)]='rowdata.minStk2'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 3</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk3' [(ngModel)]='rowdata.minStk3'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 4</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk4' [(ngModel)]='rowdata.minStk4'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 5</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk5' [(ngModel)]='rowdata.minStk5'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 6</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk6' [(ngModel)]='rowdata.minStk6'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 7</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk7' [(ngModel)]='rowdata.minStk7'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 8</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk8' [(ngModel)]='rowdata.minStk8'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 9</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk9' [(ngModel)]='rowdata.minStk9'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 10</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk10' [(ngModel)]='rowdata.minStk10'>
+                                </div>
+
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk Concept</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStkConcept' [(ngModel)]='rowdata.minStkConcept'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk Concept</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStkConcept' [(ngModel)]='rowdata.maxStkConcept'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Is Active</label>
+                                    <new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+                                </div>
+                            </div>
+                         </div>
+
+                        <div class="col col-md-6">
+                            <div class="form-input">
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Month Stk</label>
+                                    <input style="min-width: 200px;" type='text' class='col-md-9 form-control input-text' name='monthStk'
+                                    #datepickerRequest="bsDatepicker" bsDatepicker [(ngModel)]='_monthStk'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }">
+
+                                    <i class="fa fa-calendar-alt col-md-1 form-control" (click)="datepickerRequest.toggle()"></i>
+
+
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 11</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk11' [(ngModel)]='rowdata.minStk11'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 12</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk12' [(ngModel)]='rowdata.minStk12'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 13</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk13' [(ngModel)]='rowdata.minStk13'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 14</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk14' [(ngModel)]='rowdata.minStk14'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Min Stk 15</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MinStk15' [(ngModel)]='rowdata.minStk15'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk 1</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStk1' [(ngModel)]='rowdata.maxStk1'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk 2</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStk2' [(ngModel)]='rowdata.maxStk2'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk 3</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStk3' [(ngModel)]='rowdata.maxStk3'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk 4</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStk4' [(ngModel)]='rowdata.maxStk4'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Max Stk 5</label>
+                                    <input type='text' class='col-md-10 form-control input-text' name='MaxStk5' [(ngModel)]='rowdata.maxStk5'>
+                                </div>
+
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Stk Concept </label>
+                                    <input type='number' class='col-md-10 form-control input-text' name='StkConcept' [(ngModel)]='rowdata.stkConcept'>
+                                </div>
+                                <div class='col-md-12 form-group row'>
+                                    <label class='col-md-2 form-control title'>Stk Concept Frq</label>
+                                    <input type='number' class='col-md-10 form-control input-text' name='StkConceptFrq' [(ngModel)]='rowdata.stkConceptFrq'>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

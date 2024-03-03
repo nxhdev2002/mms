@@ -1,0 +1,101 @@
+<div bsModal #createOrEditModalEkbPartListGrade="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit EkbPartListGrade')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New EkbPartListGrade')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNo' [(ngModel)]='rowdata.partNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part No Normanlized</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNoNormanlized' [(ngModel)]='rowdata.partNoNormanlized'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartName' [(ngModel)]='rowdata.partName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Back No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='BackNo' [(ngModel)]='rowdata.backNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Prod Line</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ProdLine' [(ngModel)]='rowdata.prodLine'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Model</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Model' [(ngModel)]='rowdata.model'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Process Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ProcessCode' [(ngModel)]='rowdata.processCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Grade</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Grade' [(ngModel)]='rowdata.grade'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Usage Qty</label>
+						<input type='number' class='col-md-10 form-control input-text' name='UsageQty' [(ngModel)]='rowdata.usageQty'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Box Qty</label>
+						<input type='number' class='col-md-10 form-control input-text' name='BoxQty' [(ngModel)]='rowdata.boxQty'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Module</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Module' [(ngModel)]='rowdata.module'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pc Address</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PcAddress' [(ngModel)]='rowdata.pcAddress'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pc Sorting</label>
+						<input type='number' class='col-md-10 form-control input-text' name='PcSorting' [(ngModel)]='rowdata.pcSorting'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Sps Address</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SpsAddress' [(ngModel)]='rowdata.spsAddress'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Sps Sorting</label>
+						<input type='number' class='col-md-10 form-control input-text' name='SpsSorting' [(ngModel)]='rowdata.spsSorting'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Remark</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Remark' [(ngModel)]='rowdata.remark'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

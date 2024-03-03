@@ -1,0 +1,67 @@
+<div bsModal #createOrEditModalDemDetDays="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit DEM/DET fees')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New DEM/DET Fees')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title ExpTitle'>Exp</label>
+                        <div class='input-search'style="
+                        width: calc(100% - 200px) !important;">
+                            <tmss-combobox [items]="expList" name="_exp" [id]="'exp'"
+                             [(ngModel)]="rowdata.exp"
+                          ></tmss-combobox>
+                        </div>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title CarrierTitle'>Carrier</label>
+                        <div class='input-search'style="
+                        width: calc(100% - 200px) !important;">
+                        <tmss-combobox [items]="carrierList" name="_carrieer" [id]="'carrier'"
+                        [(ngModel)]="rowdata.carrier"
+                 ></tmss-combobox>
+                </div>
+					</div>
+					<!-- <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Carrier</label>
+						<input type='text' class='col-md-9 form-control input-text' name='carrier' [(ngModel)]='rowdata.carrier'>
+					</div> -->
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Combine DEM DET</label>
+						<new-checkbox [(ngModel)]='combineDEMDET' name='combineDEMDET' className='col-md-9' > </new-checkbox>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Free DEM</label>
+						<input type='number' min="1" step="1" class='col-md-9 form-control input-text' name='freeDEM' [(ngModel)]='rowdata.freeDEM' [readonly]="isReadOnly">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Free DET</label>
+						<input type='number' min="1" step="1" class='col-md-9 form-control input-text' name='freeDET' [(ngModel)]='rowdata.freeDET' [readonly]="isReadOnly">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Combine DEM DET Free</label>
+						<input type='number' min="1" step="1" class='col-md-9 form-control input-text' name='DetFee' [(ngModel)]='rowdata.combineDEMDETFree'>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

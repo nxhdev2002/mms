@@ -1,0 +1,37 @@
+<div bsModal #createOrEditModalCustomsLeadtime="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit CustomsLeadtime')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New CustomsLeadtime')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Leadtime</label>
+						<input type='number' class='col-md-10 form-control input-text' name='Leadtime' [(ngModel)]='rowdata.leadtime'>
+					</div>              
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

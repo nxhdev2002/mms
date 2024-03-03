@@ -1,0 +1,92 @@
+<div bsModal #createOrEditModalGpsMtCategoryMapping="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Marerial Category')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create Marerial Category')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>YV Category</label>
+						<input type='text' class='col-md-10 form-control input-text' name='YVCategory' [(ngModel)]='rowdata.yvCategory'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>GL Expense Account </label>
+						<input type='text' class='col-md-10 form-control input-text' name='GLExpenseAccount' [(ngModel)]='rowdata.glExpenseAccount'
+                            maxlength="10">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>GL Level 5 In WBS</label>
+						<input type='text' class='col-md-10 form-control input-text' name='GLLevel5InWBS' [(ngModel)]='rowdata.glLevel5InWBS'
+                            maxlength="8">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>GL Account Description</label>
+						<input type='text' class='col-md-10 form-control input-text' name='GLAccountDescription' [(ngModel)]='rowdata.glAccountDescription'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Definition</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Definition' [(ngModel)]='rowdata.definition'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Fixed / Variable Cost</label>
+						<input type='text' class='col-md-10 form-control input-text' name='FixedVariableCost' [(ngModel)]='rowdata.fixedVariableCost'
+                            maxlength="1">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Example</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Example' [(ngModel)]='rowdata.example'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Account Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='AccountType' [(ngModel)]='rowdata.accountType'
+                            maxlength="2">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Posting Key</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PostingKey' [(ngModel)]='rowdata.postingKey'
+                            maxlength="2">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Part Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartType' [(ngModel)]='rowdata.partType'
+                            maxlength="3">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Document Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='DocumentType' [(ngModel)]='rowdata.documentType'
+                            maxlength="2">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Is Asset</label>
+						<input type='text' class='col-md-10 form-control input-text' name='IsAsset' [(ngModel)]='rowdata.isAsset' maxlength="1">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Revert Cancel</label>
+						<input type='text' class='col-md-10 form-control input-text' name='RevertCancel' [(ngModel)]='rowdata.revertCancel' maxlength="1">
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

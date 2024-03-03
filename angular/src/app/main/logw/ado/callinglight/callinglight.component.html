@@ -1,0 +1,11 @@
+<div class="calling_light">
+    <div class="title">MÀN HÌNH ANDON {{prodLine}}</div>
+    <div class="body">
+        <div class="col_body col_{{col}}" *ngFor="let col of  fornumbersRange(1,blockcol,1)">
+            <div class="row_body row_{{row}}" *ngFor="let row of  fornumbersRange(1,blockrow,1)"  (click)="onCallingLightClick(col,row)">
+                <div class="main_content"></div>
+                <div class="sub_content"></div>
+            </div>
+        </div>
+    </div>
+</div>

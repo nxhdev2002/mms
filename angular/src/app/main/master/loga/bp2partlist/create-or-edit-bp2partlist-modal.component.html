@@ -1,0 +1,61 @@
+<div bsModal #createOrEditModalBp2PartList="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Bp2PartList')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New Bp2PartList')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartName' [(ngModel)]='rowdata.partName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Short Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ShortName' [(ngModel)]='rowdata.shortName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Prod Line</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ProdLine' [(ngModel)]='rowdata.prodLine'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pik Process</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PikProcess' [(ngModel)]='rowdata.pikProcess'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pik Sorting</label>
+						<input type='number' class='col-md-10 form-control input-text' name='PikSorting' [(ngModel)]='rowdata.pikSorting'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Del Process</label>
+						<input type='text' class='col-md-10 form-control input-text' name='DelProcess' [(ngModel)]='rowdata.delProcess'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Del Sorting</label>
+						<input type='number' class='col-md-10 form-control input-text' name='DelSorting' [(ngModel)]='rowdata.delSorting'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

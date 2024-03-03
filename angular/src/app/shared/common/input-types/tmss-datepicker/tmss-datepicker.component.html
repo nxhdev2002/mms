@@ -1,0 +1,61 @@
+<!-- Tmss DatePicker -->
+<span *ngIf="DisabledTxt == 'true'" >{{ valueDate }}</span> 
+<div *ngIf="DisabledTxt == 'false'" class="input-group remove-border-right-radius" [ngClass]="className ? className : ''" style="position: relative;">
+    <span *ngIf="text" class="text-label-font">{{ text }} <p *ngIf="hasCheck && isRequired && !isDisabled && (value == null || value == undefined || inputValue == '')" class="err-message"  style="color: red; margin: 0.2rem 0 0.2rem 0.5rem;">*</p></span>
+    <input 
+    style="height: 25px !important;
+    margin-top: 0px;
+    border-radius: unset !important;
+    width: 90px !important;
+    border-color: rgb(206, 212, 218);
+    text-align: left;
+    color: #0f0f0f;
+    font-weight: 450;
+    border-color: #ced4da;
+    font-size: 0.9rem !important;
+    text-shadow: -1px 1px 1px hsla(0,0%,100%,.7);"
+      type="text"
+      #input
+      #datepicker="bsDatepicker" 
+      name="datePicker"
+      class="form-control tmss-form-control"
+      [class.required]="isRequired && !isDisabled"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [disabled]="isDisabled ? true : null"
+      bsDatepicker
+      datePickerMomentModifier
+      [bsConfig]="hasTimePicker ? { dateInputFormat: 'DD/MM/YYYY HH:mm' } : { dateInputFormat: dateInputFormat, isAnimated: true, selectFromOtherMonth: true, showClearButton: true, showTodayButton: true, todayPosition: 'right' }"
+      autocomplete="off"
+      [outsideClick]="!hasTimePicker"
+      [outsideEsc]="!hasTimePicker"
+      [placement]="placementDatePicker"
+      [minMode]="minMode"
+      [datesEnabled]="datesEnabled" 
+      (click)="openDatePicker()" 
+      [(ngModel)]="value"
+      (ngModelChange)="ngModelChange($event)"
+      (change)="valuechange($event)"
+    /> 
+    <span class="input-group-text right-text" style=" border-color: #ced4da;padding-left: 5px;padding-right: 5px; height: 25px !important;margin-top: 0px;border-radius: unset !important;"
+     (click)="!isDisabled ? openDatePicker() : undefined"
+      [attr.aria-expanded]="datepicker?.isOpen">
+      <i class="fa tmss-fa fa-calendar-alt"></i>
+    </span>
+  </div>
+ 
+  <!--
+    -> chon bang chuot
+    -> no tu go
+          [(date)]="value"
+             (focusout)="focusout($event)"
+      (focusout)="focusout()"
+      (keydown)="keydown($event)"
+      (input)="inputChange($event)"
+      (dateChange)="bsValueChange($event)"
+      (onShown)="!isDisabled ? hideDatePicker($event) : undefined"
+      (onHidden)="hidden()"
+  -->
+
+  <!-- <div *ngIf="hasCheck && isRequired && !isDisabled && (value == null || value == undefined || inputValue == '')" class="err-message" style="padding-left: 10px; font-size: 9px;color:red">This field is required</div> -->
+  <!-- End Tmss DatePicker -->

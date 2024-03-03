@@ -1,0 +1,198 @@
+<div bsModal #createOrEditModalBusinessParter="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View BusinessParter')}}</h3>
+                    <!-- <h3 *ngIf="!rowdata.id">{{('Create New BusinessParter')}}</h3> -->
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Nation</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='nation' [(ngModel)]='rowdata.nation'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Category</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerCategory' [(ngModel)]='rowdata.businessPartnerCategory'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Group</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerGroup' [(ngModel)]='rowdata.businessPartnerGroup'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Role</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerRole' [(ngModel)]='rowdata.businessPartnerRole'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Cd</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerCd' [(ngModel)]='rowdata.businessPartnerCd'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Email Address 1</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='EmailAddress1' [(ngModel)]='rowdata.emailAddress1'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Supp Searcg Term</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SuppSearcgTerm' [(ngModel)]='rowdata.suppSearcgTerm'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Name 1</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerName1' [(ngModel)]='rowdata.businessPartnerName1'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Name 2</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerName2' [(ngModel)]='rowdata.businessPartnerName2'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Name 3</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerName3' [(ngModel)]='rowdata.businessPartnerName3'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Business Partner Name 4</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='BusinessPartnerName4' [(ngModel)]='rowdata.businessPartnerName4'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Address 1</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Address1' [(ngModel)]='rowdata.address1'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Address 2</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Address2' [(ngModel)]='rowdata.address2'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Address 3</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Address3' [(ngModel)]='rowdata.address3'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>District</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='District' [(ngModel)]='rowdata.district'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>City</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='City' [(ngModel)]='rowdata.city'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Postal Cd</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PostalCd' [(ngModel)]='rowdata.postalCd'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Country</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Country' [(ngModel)]='rowdata.country'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Phone No</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PhoneNo' [(ngModel)]='rowdata.phoneNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Fax No</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='FaxNo' [(ngModel)]='rowdata.faxNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Tax No</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='TaxNo' [(ngModel)]='rowdata.taxNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Tax Cate</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='TaxCate' [(ngModel)]='rowdata.taxCate'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Company Code</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='CompanyCode' [(ngModel)]='rowdata.companyCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Payment Method Cd</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PaymentMethodCd' [(ngModel)]='rowdata.paymentMethodCd'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Payment Method Nm</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PaymentMethodNm' [(ngModel)]='rowdata.paymentMethodNm'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Payment Term Cd</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PaymentTermCd' [(ngModel)]='rowdata.paymentTermCd'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Payment Term Nm</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PaymentTermNm' [(ngModel)]='rowdata.paymentTermNm'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Order Currency</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='OrderCurrency' [(ngModel)]='rowdata.orderCurrency'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Type Of Industry</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='TypeOfIndustry' [(ngModel)]='rowdata.typeOfIndustry'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Previous Master Record Number</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PreviousMasterRecordNumber' [(ngModel)]='rowdata.previousMasterRecordNumber'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Text Id Title</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='TextIdTitle' [(ngModel)]='rowdata.textIdTitle'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Unique Bank Id</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='UniqueBankId' [(ngModel)]='rowdata.uniqueBankId'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Supp Bank Key</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SuppBankKey' [(ngModel)]='rowdata.suppBankKey'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Supp Bank Country</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SuppBankCountry' [(ngModel)]='rowdata.suppBankCountry'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Supp Account</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SuppAccount' [(ngModel)]='rowdata.suppAccount'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Account Holder</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='AccountHolder' [(ngModel)]='rowdata.accountHolder'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Accname</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Accname' [(ngModel)]='rowdata.accname'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Partner Bank Name</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='PartnerBankName' [(ngModel)]='rowdata.partnerBankName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>External Id</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='ExternalId' [(ngModel)]='rowdata.externalId'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Status Flag Ab</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='StatusFlagAb' [(ngModel)]='rowdata.statusFlagAb'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Status Flag Cb</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='StatusFlagCb' [(ngModel)]='rowdata.statusFlagCb'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Status Flag Ad</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='StatusFlagAd' [(ngModel)]='rowdata.statusFlagAd'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 220px;" class='col-md-2 form-control title'>Status Flag Cd</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='StatusFlagCd' [(ngModel)]='rowdata.statusFlagCd'>
+					</div>
+
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

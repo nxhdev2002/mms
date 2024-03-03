@@ -1,0 +1,112 @@
+<div
+    appBsModal
+    #modal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title" *ngIf="screen == 'PxP'">
+                    <span>List Error Import Part List PxP</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <h4 class="modal-title" *ngIf="screen == 'L'">
+                    <span>List Error Import Part List LOT</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()" >
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light" *ngIf="screen == 'PxP'">
+                        <tr>
+                            <th>No</th>
+                            <th>Order Pattern</th>
+                            <th>Common</th>
+                            <th>Type</th>
+                            <th>Cfc</th>
+                            <th>Shop</th>
+                            <th>IdLine</th>
+                            <th>PartNo</th>
+                            <th>PartName</th>
+                            <th>SupplierNo</th>
+                            <th>SupplierCd</th>
+                            <th>BodyColor</th>
+                            <th>BackNo</th>
+                            <th>ModuleNo</th>
+                            <th>Renban</th>
+                            <th>ReExportCd</th>
+                            <th>IcoFlag</th>
+                            <th>StartPackingMonth</th>
+                            <th>EndPackingMonth</th>
+                            <th>StartProductionMonth</th>
+                            <th>EndProductionMonth</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.roW_NO }}</td>
+                            <td>{{ _i.orderPattern }}</td>
+                            <td>{{ _i.common }}</td>
+                            <td>{{ _i.type }}</td>
+                            <td>{{ _i.cfc }}</td>
+                            <td>{{ _i.shop }}</td>
+                            <td>{{ _i.idLine }}</td>
+                            <td>{{ _i.partNo }}</td>
+                            <td>{{ _i.partName }}</td>
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.supplierCd }}</td>
+                            <td>{{ _i.bodyColor }}</td>
+                            <td>{{ _i.backNo }}</td>
+                            <td>{{ _i.moduleNo }}</td>
+                            <td>{{ _i.renban }}</td>
+                            <td>{{ _i.reExportCd }}</td>
+                            <td>{{ _i.icoFlag }}</td>
+                            <td>{{ _i.startPackingMonth | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ _i.endPackingMonth }}</td>
+                            <td>{{ _i.startProductionMonth | date:'yyyy-MM-dd'  }}</td>
+                            <td>{{ _i.endProductionMonth }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+
+                    <table class="table table-hover bg-light" *ngIf="screen == 'L'">
+                        <tr>
+                            <th>No</th>
+                            <th>Order Pattern</th>
+                            <th>Model</th>
+                            <th>Shop</th>
+                            <th>Part No</th>
+                            <th>Part Name</th>
+                            <th>SupplierNo</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.roW_NO }}</td>
+                            <td>{{ _i.orderPattern }}</td>
+                            <td>{{ _i.cfc }}</td>
+                            <td>{{ _i.shop }}</td>
+                            <td>{{ _i.partNo }}</td>
+                            <td>{{ _i.partName }}</td>
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" class="btn btn-danger mr-1 position-relative" (click)="exportToExcel()" [disabled]="disable">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                        <div class="loader" [ngClass]="pending"></div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

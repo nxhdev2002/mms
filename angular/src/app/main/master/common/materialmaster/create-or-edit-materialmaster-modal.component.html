@@ -1,0 +1,245 @@
+<div bsModal #createOrEditModalMaterialMaster="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit MaterialMaster')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New MaterialMaster')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MaterialType' [(ngModel)]='rowdata.materialType'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MaterialCode' [(ngModel)]='rowdata.materialCode'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Industry Sector</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='industrySector' [(ngModel)]='rowdata.industrySector'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Description</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Description' [(ngModel)]='rowdata.description'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MaterialGroup' [(ngModel)]='rowdata.materialGroup'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Base Unit Of Measure</label>
+						<input type='text' class='col-md-10 form-control input-text' name='BaseUnitOfMeasure' [(ngModel)]='rowdata.baseUnitOfMeasure'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Deletion Flag</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='deletionFlag' [(ngModel)]='rowdata.deletionFlag'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Plant</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.plant'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Storage Location</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.storageLocation'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Production Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.productionGroup'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Production Purpose</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.productionPurpose'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Production Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.productionType'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Profit Center</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.profitCenter'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Batch Management</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.batchManagement'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Reserved Stock</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Plant' [(ngModel)]='rowdata.reservedStock'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lot Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotCode' [(ngModel)]='rowdata.lotCode'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Mrp Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotCode' [(ngModel)]='rowdata.mrpGroup'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Mrp Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.mrpType'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Procurement Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='procurementType' [(ngModel)]='rowdata.procurementType'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Special Procurement</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.specialProcurement'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Production Storage Location</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.productionStorageLocation'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Repet Manufacturing</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='repetManufacturing' [(ngModel)]='rowdata.repetManufacturing'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Rem Profile</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.remProfile'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Do Not Cost</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='doNotCost' [(ngModel)]='rowdata.doNotCost'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Variance Key</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.varianceKey'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Costing Lot Size</label>
+						<input type='number' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.costingLotSize'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Production Version</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.productionVersion'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Special Procurement Ctg View</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.specialProcurementCtgView'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Valuation Category</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='valuationCategory' [(ngModel)]='rowdata.valuationCategory'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Valuation Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.valuationType'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Valuation Class</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.valuationClass'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Price Determination</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='priceDetermination' [(ngModel)]='rowdata.priceDetermination'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Price Control</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='priceControl' [(ngModel)]='rowdata.priceControl'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Standard Price</label>
+						<input type='number' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.standardPrice'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Moving Price</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.movingPrice'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>With Qty Structure</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='withQtyStructure' [(ngModel)]='rowdata.withQtyStructure'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Origin</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='materialOrigin' [(ngModel)]='rowdata.materialOrigin'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Origin Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.originGroup'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Authorization Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.authorizationGroup'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Mat Src</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MrpType' [(ngModel)]='rowdata.matSrc'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Effective Date From</label>
+                        <input type='text'
+						class='col-md-10 form-control input-text'
+						name='effectiveDateFrom'
+                        #datepickerTransactionDatetime='bsDatepicker'    [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						[(ngModel)]="_effectiveDateFrom"  bsDatepicker >
+                        </div>
+
+                        <div class='col-md-12 form-group row'>
+                            <label class='col-md-2 form-control title'>Effective Date To</label>
+                            <input type='text'
+                            class='col-md-10 form-control input-text'
+                            name='effectiveDateTo'
+                            #datepickerTransactionDatetime='bsDatepicker'   [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                            [(ngModel)]="_effectiveDateTo"  bsDatepicker >
+                            </div>
+
+
+<!--
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>IsActive</label>
+						<new-checkbox [(ngModel)]='isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div> -->
+
+                    <div class="modal-footer">
+                        <!-- <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button> -->
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

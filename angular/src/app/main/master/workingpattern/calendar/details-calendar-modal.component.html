@@ -1,0 +1,85 @@
+<div
+    bsModal
+    #viewDetailModalCalendar="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div  id="modal_detail" (keyup.ESC)="closeDetail()">
+        <div id="container" class="mt-2" [busyIf]="isLoading">
+            <div class="ui-g-12">
+                <fieldset class="fieldset-border grid-parent">
+                    <div class="ui-g-12">
+                        <div class="ui-g-12 row">
+                            <div class="col-md-11">
+                                <h6 class="card-header">
+                                {{ l('Details Calendar') }}
+                                </h6>
+                            </div>
+                            <div class="col-md-1">
+                                <a class="btn btn-secondary close-modal" (click)="closeDetail()"><i class="fas fa-times"></i></a>
+                            </div>
+                        </div>
+                        <div class="prod-cont">
+                            <div class="ui-g-12">
+                                <div class="form-group m-form__group align-items-center">
+                                    <div class="input-group">
+                                        <div class="input-search">
+                                            <input type="text"
+                                            [bsConfig]="{ dateInputFormat: 'YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                            [minMode] = "'year'"
+                                            bsDatepicker
+                                            #y="bsDatepicker"
+                                            placement="bottom left"
+                                            placeholder="Year" [(ngModel)]="yearSearch"  name="yearSearch" class="form-control" >
+                                             <i class="fa fa-calendar-alt" (click)="y.toggle()"></i>
+                                        </div>
+                                        <div class="input-search">
+                                            <input type="text"
+                                            [bsConfig]="{ dateInputFormat: 'MM' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                            [minMode] = "'month'"
+                                            bsDatepicker
+                                            #m="bsDatepicker"
+                                            placement="bottom left"
+                                            placeholder="month" [(ngModel)]="monthSearch"  name="monthSearch" class="form-control" >
+                                             <i class="fa fa-calendar-alt" (click)="m.toggle()"></i>
+                                        </div>
+                                        <div class="btn-search">
+                                            <button (click)="searchDataDetails()" class="btn btn-primary" type="submit">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                        <div class="btn-search">
+                                            <button (click)="clearTextSearchDetail()" class="btn btn-primary" type="submit">
+                                                <i class="fas fa-backspace"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 ui-md-12">
+                                <form autocomplete="on"  (keyup.ESC)="closeDetail()">
+                                    <div class="panel panel-default pt-1">
+                                        <simple-ag-grid
+                                            [columnDefs]="defaultColDefs"
+                                            [paginationParams]="paginationParams"
+                                            [rowData]="rowData"
+                                            [defaultColDef]="defaultColDef"
+                                            (callBackEvent)="callBackDataGrid($event)"
+                                            (changePaginationParams)="changePage($event)"
+                                            (onChangeSelection)="onChangeRowSelection($event)"
+                                            [rowSelection]="rowSelection"
+                                            (selectionChanged)="onSelectionMulti($event)"
+                                        >
+                                        </simple-ag-grid>
+                                    </div>
+                                </form>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="boxScreen">
+    <div class="boxScreen-header">
+      <div class="boxScreen-header_Conten1">
+        <div class="boxScreen-header_txt1">
+          <div class="content_1 _DELAY_TARGET" hour="1"  minute="10">{{delay_target2}}</div>
+          <div class="content_2"></div>
+        </div>
+        <div class="boxScreen-header__sign"><i class="fas fa-chevron-left"></i></div>
+            <div class="boxScreen-header__txt2">
+              <div class="content_1 _DELAY_TARGET2" hour="2"  minute="20">{{delay_target}}</div>
+              <div class="content_3"></div>
+            </div>
+      </div>
+      <div class="boxScreen-header_Conten2" id="_LOCATION">
+        <!-- {{Datedlc}} -->
+
+      </div>
+
+      <div class="boxScreen-header_Conten3">
+        <div class="Conten3-txt1 Conten3_box">
+            <div class="Conten3-txt1__box"></div>
+            <div class="Conten3-txt1__text"> Before repair</div>
+        </div>
+        <div class="Conten3-txt2 Conten3_box">
+            <div class="Conten3-txt1__box"></div>
+            <div class="Conten3-txt1__text"> Repair</div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="boxScreen-body">
+      <div class="col-body__6">
+        <div class="boxScreen--body__col">No.</div>
+        <div class="boxScreen--body__col1">Body</div>
+        <div class="boxScreen--body__col2">Color</div>
+        <div class="boxScreen--body__col3">Repalr In</div>
+        <div class="boxScreen--body__col4">L/T + 2h20m</div>
+        <div class="boxScreen--body__col5">Delay</div>
+        <div class="boxScreen--body__col6">ETD </div>
+        <div class="boxScreen--body__col7">A In time</div>
+        <div class="boxScreen--body__col8">Mode</div>
+        <div class="boxScreen--body__col9">Location</div>
+      </div>
+
+      <div class="col-body__4">
+          <div class="col4-1"><span >0<span>h</span></span></div>
+          <div class="col4-2"><span>1<span>h</span></span></div>
+          <div class="col4-3"><span>2<span>h</span></span></div>
+          <div class="col4-4"><span>2h20m</span></div>
+          <div class="col4-5"><span>3<span>h</span></span></div>
+          <div class="col4-6"><span>4<span>h</span></span></div>
+        </div>
+
+        <!-- <div class="col-body__4">
+                    <div class="col 1h"><span >0<span>h</span></span></div>
+                    <div class="col 2h20m"><span >2h20m</span></div>
+                    <div class="itemhour 0h"></div>
+                    <div class="itemhour 1h"><span>1<span>h</span></span></div>
+                    <div class="itemhour 2h"><span>2<span>h</span></span></div>
+                    <div class="itemhour 3h"><span>3<span>h</span></span></div>
+                    <div class="itemhour 4h"><span>4<span>h</span></span></div>
+                    <div class="itemhour 5h"></div>
+        </div> -->
+
+
+    </div>
+
+    <div class="boxScreen-footter"  *ngFor="let item of dataDelayScreen">
+      <div class="footter-col_6">
+          <div class="boxScreen--footter__col" >{{item.rowNumber}}</div>
+          <div class="boxScreen--footter__col1">{{item.bodyNo}}</div>
+          <div class="boxScreen--footter__col2">{{item.color}}</div>
+          <div class="boxScreen--footter__col3">
+            <div class="box--footter__center">
+              <span> {{item.repairIn}}</span>
+              <br />
+              <span>({{item.getDayRepairIn}})</span>
+            </div>
+
+          </div>
+          <div class="boxScreen--footter__col4">
+            <div class="box--footter__center">
+              <span>{{item.leadtimePlus}}</span>
+              <br />
+              <span>({{item.getDayLeaTimePlus}})</span>
+            </div>
+          </div>
+          <div class="boxScreen--footter__col5">{{item.delayValue}}</div>
+          <div class="boxScreen--footter__col6">
+            <div class="box--footter__center">
+              <span> {{item.getTimeETD}}</span>
+              <br />
+              <span>({{item.getTimetxt_ETD}})</span>
+            </div>
+
+          </div>
+          <div class="boxScreen--footter__col7">
+            <div class="box--footter__center">
+                <span> {{item.getTimeATD}}</span>
+                <br />
+                <span>({{item.getDateATD}})</span>
+              </div>
+        </div>
+          <div class="boxScreen--footter__col8">{{item.mode}}</div>
+          <div class="boxScreen--footter__col9">{{item.location}}</div>
+      </div>
+      <div class="footter-col_4">
+        <div class='col 1h'> </div>
+        <div class='col 2h20m'> </div>
+        <div class='horize'>
+            <div class='viewScreenwarp'>
+                <div class='Repair_in'></div>
+                <div class='Start_Repair'><img src='1.png' width="30" height="30" class='icon_flag'></div>
+                <div class='Recoat_in'></div>
+                <div class='Target_Repair'></div>
+                <div class='muiten'></div>
+                <div class='REMAINING_TIME'>{{ item.v_RemainTime}} "</div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

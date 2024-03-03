@@ -1,0 +1,95 @@
+<div class="PICKINGTABLET">
+    <div class="control">
+        <div class="headerf process">
+            <div class="tit">PROCESS</div>
+            <div class="val">{{GET_PICKING_POISITION()}}</div>
+        </div>
+        <div class="headerf countdown">
+            <div class="tit">
+                <div class="bg"></div>
+                <div>T/T COUNTDOWN</div>
+            </div>
+            <div class="val">
+                <span>{{TackTime}}</span>
+            </div>
+        </div>
+        <div class="headerf ctrlCall">
+            <span class="CAN_CALL_UNPACKING_{{CAN_CALL_UNPACKING}}"  (click)="UNPACK_LOT()">Báo dolly trống</span>
+        </div>
+        <div class="headerf ctrlCall">
+            <span class="CAN_CALL_UNPACKING_{{CAN_CALL_UNPACKING}}"  (click)="UNPACK_PXP()">Gọi dỡ hàng PxP</span>
+        </div>
+        <div class="headerf startfinish" (click)="START_FINISH()">
+            <span>START & FINISH</span>
+        </div>
+        <div class="headerf callleader IS_CALL_LEADER_{{GET_IS_CALL_LEADER()}}" (click)="CALL_LEADER()">
+            <span>CALL LEADER</span>
+        </div>
+    </div>
+    <div style="clear:both; "></div>
+    <div class="contentf">
+
+        <div class="cont contleft">
+            <img class="muitenlen CAN_CALL_UNPACKING_{{CAN_CALL_UNPACKING}}" src="/assets/common/images/foward.png" >
+            <div class="itemp index{{_row.logicSequenceNo}}" *ngFor="let _row of dataleft()" >
+                    <div class="icol box1" >
+                        <div class="line line1 IsPushed" (click)="PROCESSCALL(_row.logicSequenceNo, _row.seqNo)">
+                            <div class="WARP"  >
+                                <div class="subcol tit">{{_row.logicSequenceNo}} IsPushed={{_row.IsPushed}}</div>
+                                <div class="subcol val">{{_row.process}}</div>
+                            </div>
+                        </div>
+                        <div class="line line2 hasModel" >
+                            <div class="WARP"  >
+                                <div class="subline model">{{_row.model}} </div>
+                                <div class="subline lotcode bg_{{_row.lotCode}}">{{_row.lotCode}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icol box2"><img src="/assets/common/images/tamgiac.png"/><hr></div>
+                    <div class="icol box3 {{PickingPosition}}">
+                        <div class="val">{{_row.process}}</div>
+                        <div class="tit">{{_row.logicSequence}}</div>
+                    </div>
+                    <div style="clear:both; "></div>
+            </div>
+        </div>
+        <div class="cont contright">
+            <div class="itemp index{{_row.logicSequenceNo}}" *ngFor="let _row of dataright()" >
+                    <div class="icol box3 {{PickingPosition}}">
+                        <div class="val">{{_row.process}}</div>
+                        <div class="tit">{{_row.logicSequence}}</div>
+                    </div>
+                    <div class="icol box2"><img src="/assets/common/images/tamgiac.png"><hr></div>
+                    <div class="icol box1" >
+                        <div class="line line1 IsPushed" (click)="PROCESSCALL(_row.logicSequenceNo, _row.seqNo)">
+                            <div class="WARP"  >
+                                <div class="subcol tit">{{_row.logicSequenceNo}}</div>
+                                <div class="subcol val">{{_row.process}}</div>
+                            </div>
+                        </div>
+                        <div class="line line2 hasModel" >
+                            <div class="WARP"  >
+                                <div class="subline model">{{_row.model}} </div>
+                                <div class="subline lotcode bg_{{_row.lotCode}}">{{_row.lotCode}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both; "></div>
+            </div>
+        </div>
+
+        <div class="pop pop1">
+            <div class="olay olay1">
+                <div class="dohang LOT" (click)="UNPACK_LOT()">Gọi dỡ hàng LOT tiếp theo</div>
+                <div class="dohang PXP" (click)="UNPACK_PXP()">Gọi dỡ hàng PxP</div>
+                <div class="dohang close" (click)="CLOSE()">Close</div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<popup-unpack #popupUnpack  (modalSave)="SavePopupUnpack()" (modalClose)="ClosePopupUnpack()" >
+</popup-unpack>

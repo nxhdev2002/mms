@@ -1,0 +1,353 @@
+<div bsModal #viewModalModuleCase="bs-modal" class="modal fade col-md-12" role="dialog"
+	[config]="{ backdrop: 'static' }">
+	<div class="modal-dialog modal-lg" style=" min-width: 92%;margin-left: 4%;margin-right: 4%;">
+		<div class="modal-content col-md-12">
+			<div class="modal-header col-md-12">
+				<div class="title-form">
+					<h3 *ngIf="rowdata.id">{{('View Detail Module Case')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-md-12">
+			<form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+				<!-- Form Basic-->
+					<p-fieldset legend="General" [toggleable]="true" >
+						<div class="row">
+							<div class="col col-md-3" style="width: 32%">
+								<div class="form-input">
+									<div class='col-md-12 form-group d-md-flex'>
+										<label class='col-md-2 form-control title'>Module Case No</label>
+										<input style="min-width: 10px" readonly type='text' class='col-md-10 form-control input-text ' name='ModuleCaseNo'
+											[(ngModel)]='rowdata.moduleCaseNo'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Container No</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='ContainerNo'
+											[(ngModel)]='rowdata.containerNo'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Renban</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='Renban'
+											[(ngModel)]='rowdata.renban'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Supplier No</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='SupplierNo'
+											[(ngModel)]='rowdata.supplierNo'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Location By</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='LocationBy'
+											[(ngModel)]='rowdata.locationBy'>
+									</div>
+								</div>
+							</div>
+							<div class="col col-md-3" style="width: 32%;">
+								<div class="form-input">
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Lot No</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='LotNo'
+											[(ngModel)]='rowdata.lotNo'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Invoice No</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='InvoiceNo'
+											[(ngModel)]='rowdata.invoiceNo'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Devanning Date</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='devanningDate'
+											[(ngModel)]='v_devanningDate'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Devanning Time</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='devanningTime'
+											[(ngModel)]='rowdata.devanningTime'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>LocationDatetime</label>
+										<input  style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='locationDate'
+											[(ngModel)]='v_locationDate'>
+									</div>
+								</div>
+							</div>
+							<div class="col col-md-3" style="width: 32%;">
+								<div class="form-input">
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>UnpackingDate</label>
+										<input  readonly type='text' class='col-md-10 form-control input-text' name='unpackingDate'
+											[(ngModel)]='v_unpackingDate'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>UnpackingTime</label>
+										<input  readonly type='text' class='col-md-10 form-control input-text' name='unpackingTime'
+											[(ngModel)]='_unpackingTime'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>UnpackingDatetime</label>
+										<input  readonly type='text' class='col-md-10 form-control input-text'
+											name='unpackingDatetime' [(ngModel)]='_unpackingDatetime'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>CdDate</label>
+										<input  readonly type='text' class='col-md-10 form-control input-text' name='cdDate'
+											[(ngModel)]='v_cdDate'>
+									</div>
+									<div class='col-md-12 form-group'>
+										<label class='col-md-2 form-control title'>Storage Loc Code</label>
+										<input  readonly type='text' class='col-md-10 form-control input-text'
+											name='StorageLocationCode' [(ngModel)]='rowdata.storageLocationCode'>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</p-fieldset>
+
+					<!-- Packing Info -->
+					<p-fieldset legend="Packing Info" [toggleable]="true">
+					<div class="row">
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>NetWeight</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='NetWeight'
+										[(ngModel)]='rowdata.netWeight'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>GrossWeight</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='GrossWeight'
+										[(ngModel)]='rowdata.grossWeight'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>MeasuarementM3</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='MeasuarementM3'
+										[(ngModel)]='rowdata.measuarementM3'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Lengthofcasemodule</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='Lengthofcasemodule' [(ngModel)]='rowdata.lengthofcasemodule'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Widthofcasemodule</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='Widthofcasemodule' [(ngModel)]='rowdata.widthofcasemodule'>
+								</div>
+
+							</div>
+						</div>
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Heightofcasemodule</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='Heightofcasemodule' [(ngModel)]='rowdata.heightofcasemodule'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Dummy</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='Dummy'
+										[(ngModel)]='rowdata.dummy'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Planned Packingdate</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='Plannedpackingdate' [(ngModel)]='_plannedpackingdate'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Dgflag</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text' name='Dgflag'
+										[(ngModel)]='rowdata.dgflag'>
+								</div>
+
+							</div>
+						</div>
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Packing Type</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text' name='PackingType'
+										[(ngModel)]='rowdata.packingType'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Rr Type</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text' name='RrType'
+										[(ngModel)]='rowdata.rrType'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Freight Per Invoice</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='FreightPerInvoice' [(ngModel)]='rowdata.freightPerInvoice'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>InsurancePer Invoice</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InsurancePerInvoice' [(ngModel)]='rowdata.insurancePerInvoice'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					</p-fieldset>
+
+					<!-- Material-->
+					<p-fieldset legend="Material" [toggleable]="true">
+					<div class="row">
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type1</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType1' [(ngModel)]='rowdata.innerMaterialType1'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type2</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType2' [(ngModel)]='rowdata.innerMaterialType2'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type3</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType3' [(ngModel)]='rowdata.innerMaterialType3'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type4</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType4' [(ngModel)]='rowdata.innerMaterialType4'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty1</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity1' [(ngModel)]='rowdata.innerMaterialQuantity1'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty2</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity2' [(ngModel)]='rowdata.innerMaterialQuantity2'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty3</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity3' [(ngModel)]='rowdata.innerMaterialQuantity3'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty4</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity4' [(ngModel)]='rowdata.innerMaterialQuantity4'>
+								</div>
+
+							</div>
+						</div>
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type5</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType5' [(ngModel)]='rowdata.innerMaterialType5'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type6</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType6' [(ngModel)]='rowdata.innerMaterialType6'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type7</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType7' [(ngModel)]='rowdata.innerMaterialType7'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type8</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType8' [(ngModel)]='rowdata.innerMaterialType8'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty5</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity5' [(ngModel)]='rowdata.innerMaterialQuantity5'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty6</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity6' [(ngModel)]='rowdata.innerMaterialQuantity6'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty7</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity7' [(ngModel)]='rowdata.innerMaterialQuantity7'>
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty8</label>
+									<input style="min-width: max-content;" readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity8' [(ngModel)]='rowdata.innerMaterialQuantity8'>
+								</div>
+							</div>
+						</div>
+						<div class="col col-md-3" style="width: 32%;">
+							<div class="form-input">
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type9</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType9' [(ngModel)]='rowdata.innerMaterialType9'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type10</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType10' [(ngModel)]='rowdata.innerMaterialType10'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type11</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType11' [(ngModel)]='rowdata.innerMaterialType11'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Type12</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType12' [(ngModel)]='rowdata.innerMaterialType12'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty9</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity9' [(ngModel)]='rowdata.innerMaterialQuantity9'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty10</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity10' [(ngModel)]='rowdata.innerMaterialQuantity10'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty11</label>
+									<input  readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity11' [(ngModel)]='rowdata.innerMaterialQuantity11'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+								<div class='col-md-12 form-group'>
+									<label class='col-md-2 form-control title'>Inner Material Qty12</label>
+									<input   readonly type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity12' [(ngModel)]='rowdata.innerMaterialQuantity12'>
+									<!-- <div style="width: 10px;"></div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					</p-fieldset>
+
+					<div class="modal-footer">
+						<button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+							<i class="fa tmss-fa fa-times mr-1"></i>
+							{{ l('Cancel') }}
+						</button>
+					</div>
+			</form>
+		</div>
+	</div>
+</div>

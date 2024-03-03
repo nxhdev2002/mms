@@ -1,0 +1,59 @@
+<div
+    appBsModal
+    #modal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title">
+                    <span>List Error Import</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()" >
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light">
+                        <tr>
+
+                            <th>Part No</th>
+                            <th>Part No Normalized</th>
+                            <th>Part Name</th>
+                            <th>Cfc</th>
+                            <th>Shop</th>
+                            <th>Case</th>
+                            <th>Box</th>
+                            <th>SupplierNo</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.partNo }}</td>
+                            <td>{{ _i.partName }}</td>
+                            <td>{{ _i.orderPattern }}</td>
+                            <td>{{ _i.cfc }}</td>
+                            <td>{{ _i.shop }}</td>
+                            <td>{{ _i.case}}</td>
+                            <td>{{ _i.box }}</td>
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" style="margin-right: 10px" class="btn btn-danger" (click)="exportToExcel()">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

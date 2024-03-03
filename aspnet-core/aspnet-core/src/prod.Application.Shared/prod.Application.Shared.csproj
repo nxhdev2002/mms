@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props"></Import>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>prod</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Master\Inv\**" />
+    <Compile Remove="Master\Spp\Dto\**" />
+    <EmbeddedResource Remove="Master\Inv\**" />
+    <EmbeddedResource Remove="Master\Spp\Dto\**" />
+    <None Remove="Master\Inv\**" />
+    <None Remove="Master\Spp\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp.Web.Common" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\prod.Core.Shared\prod.Core.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Frame\" />
+    <Folder Include="LogW\" />
+    <Folder Include="Inv\" />
+    <Folder Include="SapIF\Dto\" />
+    <Folder Include="Welding\" />
+    <Folder Include="Painting\" />
+    <Folder Include="Plan\" />
+  </ItemGroup>
+
+</Project>

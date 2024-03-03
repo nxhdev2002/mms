@@ -1,0 +1,148 @@
+<div bsModal #createOrEditModalInvGpsMaterial="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit InvGpsMaterial')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New InvGpsMaterial')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNo' [(ngModel)]='_partNo' id="partNo">
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part No Normalized</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNoNormalized' [(ngModel)]='rowdata.partNoNormalized'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='partName' [(ngModel)]='rowdata.partName'
+                            style='text-transform:uppercase'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Name VN</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNameVn' [(ngModel)]='rowdata.partNameVn'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Color Sfx</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ColorSfx' [(ngModel)]='rowdata.colorSfx'>
+					</div>
+					<!-- <div  class='col-md-12 form-group row'>
+						<label  class='col-md-2 form-control title'>Part Type</label>
+						<tmss-combobox [items]="PartTypeList"  name="PartTypeList" [(ngModel)]="rowdata.partType"></tmss-combobox>
+					</div> -->
+					<div  class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Category</label>
+						<tmss-combobox [items]="CategoryList"  name="CategoryList" [(ngModel)]="rowdata.category"></tmss-combobox>
+					</div>
+					<!-- <div  class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Location</label>
+						<tmss-combobox [items]="LocationList"  name="LocationList" [(ngModel)]="rowdata.location"></tmss-combobox>
+					</div> -->
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Purpose Of Use</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PurposeOfUse' [(ngModel)]='rowdata.purposeOfUse'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Spec</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Spec' [(ngModel)]='rowdata.spec'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Has Expiry Date</label>
+						<new-checkbox [(ngModel)]='_hasExpiryDate' name='hasExpiryDate' className='col-md-10' > </new-checkbox>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='partGroup' [(ngModel)]='rowdata.partGroup'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Price</label>
+						<input type='number' class='col-md-10 form-control input-text' name='price' [(ngModel)]='rowdata.price'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Currency</label>
+						<input type='text' class='col-md-10 form-control input-text' name='currency' [(ngModel)]='rowdata.currency'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Price VND</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ConvertPrice' [(ngModel)]='rowdata.convertPrice'>
+					</div>
+                    <div  class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>UOM</label>
+						<tmss-combobox [items]="uomList" name="uom" [(ngModel)]="rowdata.uom"></tmss-combobox>
+					</div>
+					<!-- <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>UOM</label>
+						<input type='text' class='col-md-10 form-control input-text' name='UOM' [(ngModel)]='rowdata.uom'>
+					</div> -->
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierName' [(ngModel)]='rowdata.supplierName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Local Import</label>
+						<input type='text' class='col-md-10 form-control input-text' name='localImport' [(ngModel)]='rowdata.localImport'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lead Time</label>
+						<input type='text' class='col-md-10 form-control input-text' name='leadTime' [(ngModel)]='rowdata.leadTime'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lead Time Forecast</label>
+						<input type='text' class='col-md-10 form-control input-text' name='leadTimeForecast' [(ngModel)]='rowdata.leadTimeForecast'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Min Lot</label>
+						<input type='text' class='col-md-10 form-control input-text' name='minLot' [(ngModel)]='rowdata.minLot'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Box Qty</label>
+                        <input type='number' class='col-md-10 form-control input-text' name='BoxQty' [(ngModel)]='rowdata.boxQty'>
+                    </div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Remark</label>
+						<input type='text' class='col-md-10 form-control input-text' name='remark' [(ngModel)]='rowdata.remark'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pallet L</label>
+						<input type='text' class='col-md-10 form-control input-text' name='palletL' [(ngModel)]='rowdata.palletL'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pallet R</label>
+						<input type='text' class='col-md-10 form-control input-text' name='palletR' [(ngModel)]='rowdata.palletR'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pallet H</label>
+						<input type='text' class='col-md-10 form-control input-text' name='palletH' [(ngModel)]='rowdata.palletH'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

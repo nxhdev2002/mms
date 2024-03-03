@@ -1,0 +1,68 @@
+<div
+    appBsModal
+    #modal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title">
+                    <span>List Error Import</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()" >
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light">
+                        <tr>
+                            <th>No</th>
+                            <th>ContainerNo</th>
+                            <th>Renban</th>
+                            <th>Request Date</th>
+                            <th>Request Time</th>
+                            <th>Seal No</th>
+                            <th>SupplierNo</th>
+                            <th>BillOfLadingNo</th>
+                            <th>Custums VP</th>
+                            <th>Custums HP & Trucking</th>
+                            <th>InvoiceNo</th>
+                            <th>Transport</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.roW_NO }}</td>
+                            <td>{{ _i.containerNo }}</td>
+                            <td>{{ _i.renban }}</td>
+                            <td>{{ _i.requestDate }}</td>
+                            <td>{{ _i.requestTime }}</td>
+                            <td>{{ _i.sealNo }}</td>
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.billOfLadingNo }}</td>
+                            <td>{{ _i.custums1 }}</td>
+                            <td>{{ _i.custums2 }}</td>
+                            <td>{{ _i.invoiceNo }}</td>
+                            <td>{{ _i.transport }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" style="margin-right: 10px" class="btn btn-danger" (click)="exportToExcel()" [disabled]="disable">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                        <div class="loader" [ngClass]="pending"></div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

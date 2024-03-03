@@ -1,0 +1,38 @@
+<div bsModal #viewLoggingResponseBudgetCheck="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }" [busyIf]="isLoading">
+    <div class="modal-dialog modal-lg" style=" min-width: 92%; margin-left: 4%; margin-right: 4%;">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View History Online Budget Check')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <div class="form-input">
+                <grid-table
+                    [columnDefs]="viewColDefs"
+                    [paginationParams]="paginationParams"
+                    [showPagination]="true"
+                    [rowData]="rowData"
+                    [defaultColDef]="defaultColDef"
+                    (callBackEvent)="callBackDataGrid($event)"
+                    (changePaginationParams)="changePage($event)"
+                    (onChangeSelection)="onChangeRowSelection($event)"
+                    [height]="'40vh'"
+                    [heightAuto]="false"
+                    [frameworkComponents]="frameworkComponents">
+                </grid-table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary font-weight-bold"  (click)="showRequest()">
+                    <i class="fa-regular fa-eye"></i>{{ l('View Request ') }}
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-danger">
+                    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<view-request-budget-check-modal #viewRequestBudgetCheck></view-request-budget-check-modal>

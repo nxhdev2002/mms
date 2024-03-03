@@ -1,0 +1,210 @@
+<div
+    bsModal
+    #createOrEditModalScreenConfig="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit ScreenConfig' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New ScreenConfig' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Unpack Done Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="UnpackDoneColor"
+                            [(ngModel)]="rowdata.unpackDoneColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Need To Unpack Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="NeedToUnpackColor"
+                            [(ngModel)]="rowdata.needToUnpackColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Confirm Flag Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ConfirmFlagColor"
+                            [(ngModel)]="rowdata.confirmFlagColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Confirm Flag Sound</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ConfirmFlagSound"
+                            [(ngModel)]="rowdata.confirmFlagSound"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Confirm Flag Playtime</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ConfirmFlagPlaytime"
+                            [(ngModel)]="rowdata.confirmFlagPlaytime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Delay Unpack Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="DelayUnpackColor"
+                            [(ngModel)]="rowdata.delayUnpackColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Delay Unpack Sound</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="DelayUnpackSound"
+                            [(ngModel)]="rowdata.delayUnpackSound"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Delay Unpack Playtime</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="DelayUnpackPlaytime"
+                            [(ngModel)]="rowdata.delayUnpackPlaytime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Call Leader Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="CallLeaderColor"
+                            [(ngModel)]="rowdata.callLeaderColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Call Leader Sound</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="CallLeaderSound"
+                            [(ngModel)]="rowdata.callLeaderSound"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Call Leader Playtime</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="CallLeaderPlaytime"
+                            [(ngModel)]="rowdata.callLeaderPlaytime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Total Column Old Shift</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TotalColumnOldShift"
+                            [(ngModel)]="rowdata.totalColumnOldShift"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Total Column Seq A1</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TotalColumnSeqA1"
+                            [(ngModel)]="rowdata.totalColumnSeqA1"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Total Column Seq A2</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TotalColumnSeqA2"
+                            [(ngModel)]="rowdata.totalColumnSeqA2"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Before Tacktime Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="BeforeTacktimeColor"
+                            [(ngModel)]="rowdata.beforeTacktimeColor"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Before Tacktime Sound</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="BeforeTacktimeSound"
+                            [(ngModel)]="rowdata.beforeTacktimeSound"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Before Tacktime Playtime</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="BeforeTacktimePlaytime"
+                            [(ngModel)]="rowdata.beforeTacktimePlaytime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Tack Case A1</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TackCaseA1"
+                            [(ngModel)]="rowdata.tackCaseA1"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Tack Case A2</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TackCaseA2"
+                            [(ngModel)]="rowdata.tackCaseA2"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive" className="col-md-10"> </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

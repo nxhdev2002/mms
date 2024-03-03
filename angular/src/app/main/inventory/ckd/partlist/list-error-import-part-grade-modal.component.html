@@ -1,0 +1,81 @@
+<div appBsModal #errorImportPartGrade="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal"
+    aria-hidden="true" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title">
+                    <span>List Error Import Part Grade</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()">
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light">
+                        <tr>
+                            <th>No</th>
+                            <th>Maintenance Code</th>
+                            <th>Part Status</th>
+                            <th>Model</th>
+                            <th>Shop</th>
+                            <th>IdLine</th>
+                            <th>PartNo</th>
+                            <th>PartName</th>
+                            <th>Exporter</th>
+                            <th>Exporter Code</th>
+                            <th>Body Color</th>
+                            <th>Grade</th>
+                            <th>Usage Qty</th>
+                            <th>Start Lot</th>
+                            <th>Start No In Lot</th>
+                            <th>End Lot</th>
+                            <th>End No In Lot</th>
+                            <th>ECI From Part</th>
+                            <th>ECI To Part</th>
+                            <th>Order Pattern</th>
+                            <th>Remark</th>
+                            <th>Update Date</th>
+                            <th>Update User</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.roW_NO }}</td>
+                            <td>{{ _i.maintenanceCode }}</td>
+                            <td>{{ _i.partStatus }}</td>
+                            <td>{{ _i.cfc }}</td>
+                            <td>{{ _i.shop }}</td>
+                            <td>{{ _i.idLine }}</td>
+                            <td>{{ _i.partNo }}</td>
+                            <td>{{ _i.partName }}</td>
+                            <td>{{ _i.exporter }}</td>
+                            <td>{{ _i.exporterCode }}</td>
+                            <td>{{ _i.bodyColor }}</td>
+                            <td>{{ _i.grade }}</td>
+                            <td>{{ _i.usageQty }}</td>
+                            <td>{{ _i.startLot }}</td>
+                            <td>{{ _i.startNoInLot }}</td>
+                            <td>{{ _i.endLot }}</td>
+                            <td>{{ _i.endNoInLot }}</td>
+                            <td>{{ _i.eCIFromPart }}</td>
+                            <td>{{ _i.eCIToPart }}</td>
+                            <td>{{ _i.orderPattern }}</td>
+                            <td>{{ _i.remark }}</td>
+                            <td>{{ _i.updateDate | date:'yyyy/MM/dd HH:mm' }}</td>
+                            <td>{{ _i.updateUser }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" class="btn btn-danger mr-1 position-relative" (click)="exportToExcel()"
+                        [disabled]="disable">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                        <div class="loader" [ngClass]="pending"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

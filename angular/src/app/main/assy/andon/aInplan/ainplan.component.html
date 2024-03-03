@@ -1,0 +1,126 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         {{ l(' A In') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='model'
+                                    name='model'
+									class='form-control'
+                                     [placeholder]="l('Model')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='lotNo'
+                                    name='lotNo'
+									class='form-control'
+                                    [placeholder]="l('Lot No')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='grade'
+                                    name='grade'
+									class='form-control'
+                                    [placeholder]="l('Grade')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='bodyNo'
+                                    name='bodyNo'
+									class='form-control'
+                                    [placeholder]="l('Body No')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='sequenceNo'
+                                    name='sequenceNo'
+									class='form-control'
+                                    [placeholder]="l('Sequence No')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input
+                                    [(ngModel)]='vinNo'
+                                    name='vinNo'
+									class='form-control'
+                                    [placeholder]="l('Vin No')"
+									type='text'
+                                    (keyup.enter)='searchDatas()'>
+								</div>
+                                 <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection"
+								[frameworkComponents]="frameworkComponents"
+                            >
+                            </simple-ag-grid>
+                        </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr>
+                        <div class="text-right">
+                            <div>
+                                <button
+                                *ngIf= "isGranted('Pages.ProdPlan.AInPlan.History')"
+                                class="btn btn-warning font-weight-bold"
+                                (click)="viewHistoryAInPlan.show(selectId)"  [disabled]="!changedRecordsAInPlan.includes(selectedRow.id)">
+                                <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                                </button>
+                                <button class="btn btn-success font-weight-bold position-relative" (click)="exportToExcel($event)">
+                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                                </button>
+                                <button class="btn btn-primary font-weight-bold" [disabled]="!selectedRow.id" (click)="viewAInPlanDetails.show(selectedRow)">
+                                    <i class="fa-regular fa-eye"></i>{{'View'}}
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<view-ainplan-detail-modal #viewAInPlanDetails (modalClose)="onChangeRowSelection(dataParams)">
+</view-ainplan-detail-modal>
+<history-ainplan-modal #viewHistoryAInPlan></history-ainplan-modal>

@@ -1,0 +1,81 @@
+<div bsModal #editStockPart="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('Edit Inventory CKD Stock Part')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-input">
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Part No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='PartNo'
+                                    [(ngModel)]='rowdata.partNo'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Cfc</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='cfc'
+                                    [(ngModel)]='rowdata.cfc'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Part Name</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='PartName'
+                                    [(ngModel)]='rowdata.partName'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Qty</label>
+                                <input type='text' class='col-md-2 form-control input-text' name='Qty'
+                                    [(ngModel)]='_qty' style="background-color: white;" id="qty" (ngModelChange)="checkVal($event)"
+                                    oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Is Active</label>
+                                <new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' (ngModelChange)="checkActive($event)">
+                                </new-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="form-input">
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Color Sfx</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='ColorSfx'
+                                    [(ngModel)]='rowdata.colorSfx'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>SupplierNo</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='supplierNo'
+                                    [(ngModel)]='rowdata.supplierNo'>
+                            </div>
+                            <div class='col-md-4 form-group'>
+                                <label class='col-md-2 form-control title'>Working Date</label>
+                                <input type='text' class='col-md-10 form-control input-text' name='workingDate' readonly
+                                    [(ngModel)]='_workingDate'>
+                            </div>
+                            <div class='col-md-4 form-group'>
+                                <label class='col-md-2 form-control title'>Last Cal DateTime</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='lastcalDateTime' [(ngModel)]='rowdata.lastCalDatetime_DDMMYYYY'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-primary font-weight-bold" (click)="save()">
+                        <i class="fa tmss-fa fa-save mr-1"></i><span> {{ "Save" }} </span>
+                    </button>
+                    <button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

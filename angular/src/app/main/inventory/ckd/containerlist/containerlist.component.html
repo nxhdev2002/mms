@@ -1,0 +1,222 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CKD Warehouse Container List ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="ui-g-12 form-group m-form__group align-items-center">
+                            <div class="ui-g-12 input-group">
+                                <div class="input-search">
+                                    <input type="text" placeholder="Port Date From" [(ngModel)]="portDateFrom" name="portDateFrom" (keydown)="searchDatas()" class="form-control" bsDatepicker #pf="bsDatepicker" placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="pf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" placeholder="Port Date To" [(ngModel)]="portDateTo" name="portDateTo" (keydown)="searchDatas()" class="form-control" bsDatepicker #pt="bsDatepicker" placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="pt.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='containerNo' name='containerNo' class='form-control' [placeholder]="l('Container No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='renban' name='renban' class='form-control' [placeholder]="l('Renban')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+									<input [(ngModel)]='lotNo' name='lotNo'
+									class='form-control' [placeholder]="l('Lot No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="input-search">
+                                    <input type="text" placeholder="Receive Date From" [(ngModel)]="receiveDateFrom" name="receiveDateFrom" (keydown)="searchDatas()" class="form-control" bsDatepicker #rf="bsDatepicker" placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="rf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" placeholder="Receive Date To" [(ngModel)]="receiveDateTo" name="receiveDateTo" (keydown)="searchDatas()" class="form-control" bsDatepicker #rt="bsDatepicker" placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="rt.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='supplierNo' name='supplierNo' class='form-control' [placeholder]="l('Supplier No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='haisenNo' name='haisenNo' class='form-control' [placeholder]="l('Haisen No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='billOfLadingNo' name='billOfLadingNo' class='form-control' [placeholder]="l('Bill Of Lading No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="billDateFrom" name="billDateFrom" class="form-control" [placeholder]="l('Bill Date From')" type="text" (keyup.enter)="searchDatas()" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                        #d_start="bsDatepicker" placement="bottom left" />
+                                    <i class="fa fa-calendar-alt" (click)="d_start.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" [(ngModel)]="billDateTo" name="billDateTo" class="form-control" [placeholder]="l('Bill Date To')" type="text" (keyup.enter)="searchDatas()" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                        #d_end="bsDatepicker" placement="bottom left" />
+                                    <i class="fa fa-calendar-alt" (click)="d_end.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='invoiceNo' name='invoiceNo' class='form-control' [placeholder]="l('Invoice No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+
+                                <div class='input-search'>
+                                    <tmss-combobox [items]="ordertypeCodeList" name="OrdertypeCodeList" [(ngModel)]="ordertypeCode" [text]="l('Ordertype Code')"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox [items]="goodstypeCodeList" name="goodstypeCodeList" [(ngModel)]="goodstypeCode" [text]="l('Goodstype Code')"></tmss-combobox>
+                                </div>
+
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ckdPioList"
+                                    name="ckdPio"
+                                    [(ngModel)]="ckdPio"
+                                    [text]="l('Ckd Pio')"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                                <!-- <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('1')" class="btn btn-success groupBtn actionButton_w1">
+                                        Intransit
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('2')" class=" btn btn-success groupBtn actionButton_w2">
+                                        In Transit Port
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('3')" class="btn btn-success groupBtn actionButton_w3">
+                                        In TMV
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('4')" class="btn btn-success groupBtn actionButton_w4">
+                                        In Rental WH
+                                    </button>
+                                </div> -->
+                            </div>
+                            <div class="ui-g-12 input-group">
+                                <div class="ui-g-12 ui-md-12 frame-1000006298">
+                                    <div class="segmented-picker-option groupBtn actionButton_w1" (click)="setvalradio('1')">
+                                        <div class="separator"></div>
+                                        <div class="label" >Intransit</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w2" (click)="setvalradio('2')">
+                                        <div class="separator"></div>
+                                        <div class="label" > In Transit Port</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w3" (click)="setvalradio('3')">
+                                        <div class="separator"></div>
+                                        <div class="label">In TMV</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w4" (click)="setvalradio('4')">
+                                        <div class="separator"></div>
+                                        <div class="label">In Rental WH</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w5" (click)="setvalradio('5')">
+                                        <div class="separator"></div>
+                                        <div class="label">Port Arrival</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <grid-table [columnDefs]="defaultColDefs" [paginationParams]="paginationParams" [rowData]="rowDataContainerList" [defaultColDef]="defaultColDef" (callBackEvent)="callBackDataGrid($event)" (changePaginationParams)="changePage($event)" (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection" (selectionChanged)="onSelectionMulti($event)" [frameworkComponents]="frameworkComponents" [groupIncludeFooter]="true" [groupIncludeTotalFooter]="false" [sideBar]="sideBar" [pivotMode]="false">
+                            </grid-table>
+                        </div>
+                        <hr>
+                        <div class="panelBtn text-right">
+                            <button *ngIf="isGranted('Pages.Ckd.Warehouse.ContainerList.History')"
+                            class="btn btn-warning font-weight-bold"
+                            (click)="viewHistoryContainerListModal.show(selectGradeId)"  [disabled]="!changedRecordsContainerList.includes(selectedRow.id)">
+                            <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                            </button>
+                            <button class="btn btn-primary font-weight-bold" [disabled]="!selectedRow.id" (click)="viewModalContainerList.show(selectedRow)">
+                                <i class="fa-regular fa-eye"></i>{{ l('View') }}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold" [disabled]="!selectedRow.id" (click)="viewContainerTransit()">
+                                <i class="fa-regular fa-eye"></i>{{ l('View Cont. Invoice') }}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold" [disabled]="!selectedRow.id" (click)="viewModalDevan()">
+                                <i class="fa-regular fa-eye"></i>{{ l('View Import Devan') }}
+                            </button>
+
+                            <button class="btn btn-success font-weight-bold" (click)="exportContInvoiceToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Cont. Invoice Excel') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportExcelModal.show()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Period')}}
+                            </button>
+                            <button class="btn font-weight-bold out-part-wip" (focus)="outPartByWIP()" id="exportExcelWIP"
+                            style="width: 205px;" (blur)="lostForcusWIP()">
+                            <!-- <i class="fas fa-file-excel mr-1"></i> -->
+                            <img src="/assets/common/images/Icon/vscode-icons_file-type-excel2.png" alt="">
+                            {{ l('Shipment Info Detail')}}
+                            <div class="exel-dropdown">
+                                <ul>
+                                    <li (click)="exportToExcelVehicleOutDetailsWIP($event, 'M')"><a class><i
+                                                class="fa fa-cloud-download"></i>Shipment Info Detail Mix </a></li>
+                                    <li (click)="exportToExcelVehicleOutDetailsWIP($event, 'L')"><a class><i
+                                                    class="fa fa-cloud-download"></i>Shipment Info Detail Lot </a></li>
+                                    <li (click)="exportToExcelVehicleOutDetailsWIP($event, 'P')"><a class><i
+                                                class="fa fa-cloud-download"></i>Shipment Info Detail PxP </a></li>
+                                </ul>
+                            </div>
+                            <i class="fa fa-caret-up" aria-hidden="true"></i>
+                            </button>
+
+
+                            <!-- <button class="btn btn-success font-weight-bold" (click)="exportShipmentInfoDetailExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Shipment Info Detail Export') }}
+                            </button> -->
+
+                            <button class="btn btn-success font-weight-bold" (click)="exportInvoiceDetailsExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Invoice Details Export') }}
+                            </button>
+
+                            <button class="btn btn-success font-weight-bold" (click)="exportNoCustomsDeclareExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('No Customs Declare Export') }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<view-detail-containerlist-modal #viewModalContainerList (modalClose)="onChangeRowSelection(dataParams)"></view-detail-containerlist-modal>
+
+<view-containerintransit #viewContainerIntransit (modalClose)="onChangeRowSelection(dataParams)"></view-containerintransit>
+
+
+
+<view-importdevan #viewImportDevanComponent [rowDataImport]="rowData"></view-importdevan>
+<history-containerlist-modal #viewHistoryContainerListModal></history-containerlist-modal>
+<exportExcelModal #exportExcelModal></exportExcelModal>

@@ -1,0 +1,87 @@
+<div
+    appBsModal
+    #createOrEditModal="bs-modal"
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="createOrEditModal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+    [busyIf]="loading"
+>
+    <div style="width: 100%; height: 100%; justify-content: center; align-items: center; display: flex">
+        <div style="width: 535px; height: 210px; background-color: #fff; margin-left: 3px">
+            <div>
+                <label style="padding-left: 182px; font-size: 18px">Case Data HisTory</label>
+                <button (click)="closeModal()" style="float: right"><i class="fas fa-window-close"></i></button>
+            </div>
+            <div class="ui-g-12" style="margin-left: 10px">
+                <div class="form-group m-form__group align-items-center">
+                    <div class="input-group" style="display: flex">
+                        <div class="input-search" style="display: flex; width: 200px">
+                            <input
+                                type="text"
+                                [placeholder]="l('Start Devanning Date')"
+                                name="startDevanningDate"
+                                [(ngModel)]="startDevanningDate"
+                                class="form-control"
+                                bsDatepicker
+                                #s="bsDatepicker"  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                placement="bottom left"
+                            />
+                            <i
+                                class="fa fa-calendar-alt"
+                                (click)="s.toggle()"
+                                style="font-size: 2rem; margin-top: 20px; margin-left: 5px"
+                            >
+                            </i>
+                        </div>
+
+                        <div class="input-search" style="display: flex; width: 200px; margin-left: 15px">
+                            <input
+                                type="text"
+                                [placeholder]="l('Finnish Devanning Date')"
+                                name="finishDevanningDate"
+                                [(ngModel)]="finishDevanningDate"
+                                class="form-control"
+                                bsDatepicker
+                                #f="bsDatepicker"  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                placement="bottom left"
+                            />
+                            <i
+                                class="fa fa-calendar-alt"
+                                (click)="f.toggle()"
+                                style="font-size: 2rem; margin-top: 20px; margin-left: 5px"
+                            >
+                            </i>
+                        </div>
+                        <div class="btn-search" style="margin-left: 15px">
+                            <button (click)="searchDatas()" class="btn btn-primary" >
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-12" style="width: 96%; margin-left: 10px">
+                <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                    <div class="panel panel-default pt-1">
+                        <simple-ag-grid
+                            [columnDefs]="defaultColDefs"
+                            [paginationParams]="paginationParams"
+                            [rowData]="rowData"
+                            [defaultColDef]="defaultColDef"
+                            (callBackEvent)="callBackDataGrid($event)"
+                            (changePaginationParams)="changePage($event)"
+                            (onChangeSelection)="onChangeRowSelection($event)"
+                            [rowSelection]="rowSelection"
+
+                        >
+                        </simple-ag-grid>
+                    </div>
+                <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                <hr />
+            </div>
+        </div>
+    </div>
+</div>

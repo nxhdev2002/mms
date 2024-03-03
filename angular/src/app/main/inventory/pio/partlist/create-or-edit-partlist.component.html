@@ -1,0 +1,109 @@
+<div bsModal #createOrEditModalInvPioPartList="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit PIO Part List')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New PIO Part List')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Part No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='partNo' [(ngModel)]='rowdata.partNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='partName' [(ngModel)]='rowdata.partName'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Full Model</label>
+						<input type='text' class='col-md-10 form-control input-text' name='fullModel' [(ngModel)]='rowdata.fullModel'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Part Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='partType' [(ngModel)]='rowdata.partType'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Pio Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='pioType' [(ngModel)]='rowdata.pioType'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Box Size</label>
+						<input type='number' class='col-md-10 form-control input-text' name='boxSize' [(ngModel)]='rowdata.boxSize'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Marketing Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='mktCode' [(ngModel)]='rowdata.mktCode'>
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Start Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='startDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerStartDate='bsDatepicker' [(ngModel)]='_startDate'  bsDatepicker #r="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="r.toggle()"></i>
+
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">End Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='endDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerEndDate='bsDatepicker' [(ngModel)]='_endDate'  bsDatepicker #t="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="t.toggle()"></i>
+
+					</div>
+
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Remark</label>
+						<textarea class='col-md-10 form-control input-text' name='ListcaseNo' [(ngModel)]='rowdata.remark' style="width: calc(100% - 160px)"></textarea>
+					</div>
+                    <!-- <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Model</label>
+						<input type='text' class='col-md-10 form-control input-text' name='model' [(ngModel)]='rowdata.model'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Cfc</label>
+						<input type='text' class='col-md-10 form-control input-text' name='cfc' [(ngModel)]='rowdata.cfc'>
+						
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Grade</label>
+						<input type='text' class='col-md-10 form-control input-text' name='grade' [(ngModel)]='rowdata.grade'>
+						
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">MaterialId</label>
+						<input type='text' class='col-md-10 form-control input-text' name='materialId' [(ngModel)]='rowdata.materialId'>
+						
+					</div> -->
+
+                    <div class="col-md-12 form-group row" *ngIf="rowdata.id">
+                        <label class='col-md-2 form-control title'style="min-width: 157px;">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

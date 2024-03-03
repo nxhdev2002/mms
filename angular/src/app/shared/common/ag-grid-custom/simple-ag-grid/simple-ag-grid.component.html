@@ -1,0 +1,63 @@
+<ag-grid-angular
+    #agGrid
+    style="width: 100%; height: 100%;"
+    [ngStyle]="style"
+    class="ag-theme-alpine heightAuto{{ heightAuto }}"
+    [ngClass]="className ? className : wrapText ? 'grid-wrap-text' : ''"
+    [modules]="modules"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [pagination]="pagination"
+    [rowData]="rowData"
+    (gridReady)="onGridReady($event)"
+    (selectionChanged)="onSelectionChanged($event)"
+    (rowClicked)="onRowClicked($event)"
+    (cellValueChanged)="onCellValueChanged($event)"
+    (cellEditingStopped)="onCellEditingStopped($event)"
+    (cellEditingStarted)="onCellEditingStarted($event)"
+    (cellKeyPress)="onCellKeyPress($event)"
+    (cellDoubleClicked)="cellDoubleClickedEvent($event)"
+    (keydown)="onKeyDown($event)"
+
+    [tabToNextCell]="tabToNextCell"
+    [processCellForClipboard]="processCellForClipboard"
+    [suppressCopyRowsToClipboard]="true"
+    [getRowStyle]="getRowStyle"
+    [rowHeight]="rowHeight"
+
+    [singleClickEdit]="singleClickEdit"
+    [gridOptions]="gridOptions"
+
+    [enableRangeSelection]="true"
+    [suppressPropertyNamesCheck]="true"
+    [rowSelection]="rowSelection"
+    [animateRows]="animateRows"
+    [ensureDomOrder]="true"
+    [floatingFilter]="enableFilter"
+    [debounceVerticalScrollbar]="true"
+    [navigateToNextCell]="navigateToNextCell"
+    [frameworkComponents]="frameworkComponents"
+    [suppressRowClickSelection]="isSuppressRowClickSelection"
+    [stopEditingWhenGridLosesFocus]="true"
+    [detailRowHeight]="detailRowHeight"
+    [masterDetail]="masterDetail"
+    [detailCellRendererParams]="detailCellRendererParams"
+    [sideBar]="sideBar"
+    [pivotMode]="pivotMode"
+    [getContextMenuItems]="getContextMenuItems"
+
+    [groupMultiAutoColumn]="groupMultiAutoColumn"
+    [autoGroupColumnDef]="autoGroupColumnDef"
+    [groupDefaultExpanded]="groupDefaultExpanded"
+    [groupIncludeFooter]="groupIncludeFooter"
+    [groupIncludeTotalFooter]="groupIncludeTotalFooter"
+    >
+</ag-grid-angular>
+<grid-pagination
+    *ngIf="showPagination"
+    [pageSize]="paginationParams?.pageSize"
+    [paginationParams]="paginationParams"
+    (pageChangedEvent)="changePage($event)"
+    [textPagination]="textPagination"
+    [allowToGetMultiRecords]="allowToGetMultiRecords">
+</grid-pagination>

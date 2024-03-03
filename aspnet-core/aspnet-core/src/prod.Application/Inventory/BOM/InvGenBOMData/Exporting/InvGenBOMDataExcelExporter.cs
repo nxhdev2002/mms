@@ -1,0 +1,160 @@
+﻿using prod.DataExporting.Excel.NPOI;
+using prod.Dto;
+using prod.Inventory.BOM.Dto;
+using prod.Storage;
+using System.Collections.Generic;
+
+namespace prod.Inventory.BOM.Exporting
+{
+    internal class InvGenBOMDataExcelExporter : NpoiExcelExporterBase, IInvGenBOMDataExcelExporter
+    {
+        public InvGenBOMDataExcelExporter(ITempFileCacheManager tempFileCacheManager) : base(tempFileCacheManager)
+        {
+        }
+
+        public FileDto ExportToFile(List<InvGenBOMDataDto> invgenbomdatat)
+        {
+            return CreateExcelPackage(
+                "InventoryGenBOMData.xlsx",
+                excelPackage =>
+                {
+                    var sheet = excelPackage.CreateSheet("InventoryGenBOMData");
+                    AddHeader(
+                                sheet,
+                                ("STT"),
+                                ("Discrimination Sign"),
+                                ("Order Cycle"),
+                                ("PSC"),
+                                ("EDNO"),
+                                ("URN"),
+                                ("Production SFX"),
+                                ("Export Type"),
+                                ("ID Line Code"),
+                                ("Production Year"),
+                                ("Production Month"),
+                                ("Production Week"),
+                                ("Production Day"),
+                                ("Frame Type Code"),
+                                ("VIN"),
+                                ("WMI"),
+                                ("VDS"),
+                                ("Model Year Code"),
+                                ("VINType"),
+                                ("Stamp Model Code"),
+                                ("Frame Sequence Number Digits"),
+                                ("SpecSheet Number"),
+                                ("KATASHIKI Code"),
+                                ("DisplayKATASHIKI"),
+                                ("CTLKATASHIKI"),
+                                ("Line Off KATASHIKIC ode"),
+                                ("Line Off KATASHIKI"),
+                                ("Exterior Code"),
+                                ("Interior Code"),
+                                ("Production Spec"),
+                                ("Car Family Code"),
+                                ("Destination Country Code"),
+                                ("Destination Country Name"),
+                                ("KD Lot Code"),
+                                ("KD Lot No"),
+                                ("KD Sub Type"),
+                                ("PAMS Lot SFX"),
+                                ("Engine Basic KATASHIKI"),
+                                ("Motor Basic KATASHIKI"),
+                                ("ProductionLotSize"),
+                                ("Maker Code"),
+                                ("Packing Year Month"),
+                                ("Vehicle Name Code"),
+                                ("Packing Style"),
+                                ("Destination Destinction"),
+                                ("Destination Details"),
+                                ("Government pproval"),
+                                ("VAR1"),
+                                ("Spec Type"),
+                                ("Plant Code"),
+                                ("Special Sign"),
+                                ("Unit Type"),
+                                ("Second Assembly Line"),
+                                ("Second Assembly Vehicle Type"),
+                                ("Off Option Type"),
+                                ("Production Request Year Month"),
+                                ("Distributer Code"),
+                                ("Sales SFX"),
+                                ("Import Duty Exemption"),
+                                ("Order No"),
+                                ("Type Approval Number"),
+                                ("Dummy"),
+                                ("Type MPP"),
+                                ("Period Mpp ")
+                               );
+                    AddObjects(
+                         sheet, invgenbomdatat,
+                                _ => _.Id,
+                                _ => _.DiscriminationSign,
+                                _ => _.OrderCycle,
+                                _ => _.PSC,
+                                _ => _.EDNO,
+                                _ => _.URN,
+                                _ => _.ProductionSFX,
+                                _ => _.ExportType,
+                                _ => _.IDLineCode,
+                                _ => _.ProductionYear,
+                                _ => _.ProductionMonth,
+                                _ => _.ProductionWeek,
+                                _ => _.ProductionDay,
+                                _ => _.FrameTypeCode,
+                                _ => _.VIN,
+                                _ => _.WMI,
+                                _ => _.VDS,
+                                _ => _.ModelYearCode,
+                                _ => _.VINType,
+                                _ => _.StampModelCode,
+                                _ => _.FrameSequenceNumberDigits,
+                                _ => _.SpecSheetNumber,
+                                _ => _.KATASHIKICode,
+                                _ => _.DisplayKATASHIKI,
+                                _ => _.CTLKATASHIKI,
+                                _ => _.LineOffKATASHIKICode,
+                                _ => _.LineOffKATASHIKI,
+                                _ => _.ExteriorCode,
+                                _ => _.InteriorCode,
+                                _ => _.ProductionSpec,
+                                _ => _.CarFamilyCode,
+                                _ => _.DestinationCountryCode,
+                                _ => _.DestinationCountryName,
+                                _ => _.KDLotCode,
+                                _ => _.KDLotNo,
+                                _ => _.KDSubType,
+                                _ => _.PAMSLotSFX,
+                                _ => _.EngineBasicKATASHIKI,
+                                _ => _.MotorBasicKATASHIKI,
+                                _ => _.ProductionLotSize,
+                                _ => _.MakerCode,
+                                _ => _.PackingYearMonth,
+                                _ => _.VehicleNameCode,
+                                _ => _.PackingStyle,
+                                _ => _.DestinationDestinction,
+                                _ => _.DestinationDetails,
+                                _ => _.GovernmentApproval,
+                                _ => _.VAR1,
+                                _ => _.SpecType,
+                                _ => _.PlantCode,
+                                _ => _.SpecialSign,
+                                _ => _.UnitType,
+                                _ => _.SecondAssemblyLine,
+                                _ => _.SecondAssemblyVehicleType,
+                                _ => _.OffOptionType,
+                                _ => _.ProductionRequestYearMonth,
+                                _ => _.DistributerCode,
+                                _ => _.SalesSFX,
+                                _ => _.ImportDutyExemption,
+                                _ => _.OrderNo,
+                                _ => _.TypeApprovalNumber,
+                                _ => _.Dummy,
+                                _ => _.TypeMPP,
+                                _ => _.PeriodMpp
+                                );
+                });
+
+        }
+    }
+}

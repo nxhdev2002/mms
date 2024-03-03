@@ -1,0 +1,98 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l('Report Request Deatils') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="reportList"
+                                        name="reportList"
+                                        class="form-control"
+                                        [placeholder]="l('Report Name')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="reqStatus"
+                                        name="reqStatus"
+                                        class="form-control"
+                                        [placeholder]="l('Request Status')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                    />
+                                </div>
+
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        [placeholder]="l('Req Time')"
+                                        [(ngModel)]="reqTime"
+                                        name="reqTime"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #d="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',      }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+                                </div>
+
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid
+                                    [columnDefs]="defaultColDefs"
+                                    [paginationParams]="paginationParams"
+                                    [rowData]="rowData"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+                                    (selectionChanged)="onSelectionMulti($event)"
+
+                                    [frameworkComponents]="frameworkComponents"
+
+                                >
+                                </simple-ag-grid>
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+
+                        <hr />
+                        <div class="text-right">
+                            <button class="btn btn-primary font-weight-bold" (click)="reportRequest5Modal.show()">
+                                <i class="fas fa-paper-plane mr-1"></i>{{ l('Request Report') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<app-request-modal #reportRequest5Modal></app-request-modal>

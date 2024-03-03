@@ -1,0 +1,118 @@
+﻿using Abp.Application.Services.Dto;
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace prod.Master.Pio.DTO
+{
+	public class MstLspSupplierInforDto : EntityDto<long?>
+	{
+		public virtual string SupplierCode { get; set; }
+		public virtual string SupplierPlantCode { get; set; }
+		public virtual string SupplierName { get; set; }
+		public virtual string Address { get; set; }
+		public virtual string DockX { get; set; }
+		public virtual string DockXAddress { get; set; }
+		public virtual string DeliveryMethod { get; set; }
+		public virtual string DeliveryFrequency { get; set; }
+		public virtual string Cd { get; set; }
+		public virtual string OrderDateType { get; set; }
+		public virtual string KeihenType { get; set; }
+		public virtual Decimal? StkConceptTmvMin { get; set; }
+		public virtual Decimal? StkConceptTmvMax { get; set; }
+		public virtual Decimal? StkConceptSupMMin { get; set; }
+		public virtual Decimal? StkConceptSupMMax { get; set; }
+		public virtual Decimal? StkConceptSupPMin { get; set; }
+		public virtual Decimal? StkConceptSupPMax { get; set; }
+		public virtual int TmvProductPercentage { get; set; }
+		public virtual int PicMainId { get; set; }
+		public virtual Decimal? DeliveryLt { get; set; }
+		public virtual string ProductionShift { get; set; }
+
+		public virtual DateTime? TcFrom { get; set; }
+		public virtual DateTime? TcTo { get; set; }
+		public virtual int? OrderTrip { get; set; }
+		public virtual string SupplierNameEn { get; set; }
+		public virtual string IsActive { get; set; }
+		public virtual string CreatedBy { get; set; }
+		public virtual DateTime? UpdatedDate { get; set; }
+		public virtual string UpdatedBy { get; set; }
+
+	}
+
+	public class CreateOrEditMstLspSupplierInforDto : EntityDto<long?>
+	{
+
+		public const int MaxSupplierCodeLength = 10;
+		public const int MaxSupplierPlantCodeLength = 1;
+		public const int MaxSupplierNameLength = 100;
+		public const int MaxAddressLength = 100;
+		public const int MaxDockXLenght = 20;
+		public const int MaxDockXAddressLength = 100;
+		public const int MaxDeliveryMethodLength = 20;
+		public const int MaxDeliveryFrequencyLength = 3;
+		public const int MaxCdLength = 40;
+		public const int MaxOrderDateTypeLength = 5;
+		public const int MaxKeihenTypeLength = 5;
+		public const int MaxProductionShiftLength = 10;
+		public const int MaxSupplierNameEnLength = 100;
+		public const int MaxIsActiveLength = 1;
+		public const int MaxCreatedByLength = 100;
+		public const int MaxUpdatedByLength = 100;
+
+		[StringLength(MaxSupplierCodeLength)]
+		public virtual string SupplierCode { get; set; }
+		[StringLength(MaxSupplierPlantCodeLength)]
+		public virtual string SupplierPlantCode { get; set; }
+		[StringLength(MaxSupplierNameLength)]
+		public virtual string SupplierName { get; set; }
+		[StringLength(MaxAddressLength)]
+		public virtual string Address { get; set; }
+		[StringLength(MaxDockXLenght)]
+		public virtual string DockX { get; set; }
+		[StringLength(MaxDockXAddressLength)]
+		public virtual string DockXAddress { get; set; }
+		[StringLength(MaxDeliveryMethodLength)]
+		public virtual string DeliveryMethod { get; set; }
+		[StringLength(MaxDeliveryFrequencyLength)]
+		public virtual string DeliveryFrequency { get; set; }
+		[StringLength(MaxCdLength)]
+		public virtual string Cd { get; set; }
+		[StringLength(MaxOrderDateTypeLength)]
+		public virtual string OrderDateType { get; set; }
+		[StringLength(MaxKeihenTypeLength)]
+		public virtual string KeihenType { get; set; }
+
+		public virtual decimal? StkConceptTmvMin { get; set; }
+		public virtual decimal? StkConceptTmvMax { get; set; }
+		public virtual decimal? StkConceptSupMMin { get; set; }
+		public virtual decimal? StkConceptSupMMax { get; set; }
+		public virtual decimal? StkConceptSupPMin { get; set; }
+		public virtual decimal? StkConceptSupPMax { get; set; }
+		public virtual int TmvProductPercentage { get; set; }
+		public virtual int PicMainId { get; set; }
+		public virtual decimal? DeliveryLt { get; set; }
+		[StringLength(MaxProductionShiftLength)]
+		public virtual string ProductionShift { get; set; }
+		public virtual DateTime? TcFrom { get; set; }
+		public virtual DateTime? TcTo { get; set; }
+		public virtual int? OrderTrip { get; set; }
+		[StringLength(MaxSupplierNameEnLength)]
+		public virtual string SupplierNameEn { get; set; }
+		[StringLength(MaxIsActiveLength)]
+		public virtual string IsActive { get; set; }
+		[StringLength(MaxCreatedByLength)]
+		public virtual string CreatedBy { get; set; }
+		public virtual DateTime? UpdatedDate { get; set; }
+		[StringLength(MaxUpdatedByLength)]
+		public virtual string UpdatedBy { get; set; }
+	}
+
+	public class GetMstLspSupplierInforInput : PagedAndSortedResultRequestDto
+	{
+		public virtual string SupplierCode { get; set; }
+		public virtual string DeliveryMethod { get; set; }
+		public virtual string DeliveryFrequency { get; set; }
+		public virtual string OrderDateType { get; set; }
+		public virtual string KeihenType { get; set; }
+	}
+}

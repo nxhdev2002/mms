@@ -1,0 +1,93 @@
+<div bsModal #viewPhysicalStockReceivingDetailModal="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View Inventory Ckd Physical Stock Receiving Detail')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="form-input">
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Part No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='PartNo' [(ngModel)]='rowdata.partNo'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Color Sfx</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='ColorSfx' [(ngModel)]='rowdata.colorSfx'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Cfc</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name="Cfc"
+                                    [(ngModel)]='rowdata.cfc'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Supplier No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Container No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name="ContainerNo" [(ngModel)]='rowdata.containerNo'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Invoice No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name="InvoiceNo" [(ngModel)]='rowdata.invoiceNo'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="form-input">
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Part Name</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='PartName' [(ngModel)]='rowdata.partName'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Qty</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text' name='Qty'
+                                    [(ngModel)]='rowdata.qty'>
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Transaction Datetime</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text' name='transactionDatetime_DDMMYYYY' [(ngModel)]='rowdata.transactionDatetime_DDMMYYYY'>
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Working Date</label>
+                                <input type='text' class='col-md-10 form-control
+                                    input-text'  name='workingDate' readonly #datepickerWorkingDate='bsDatepicker'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    [(ngModel)]='_workingDate' bsDatepicker>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Material Id</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='MaterialId' [(ngModel)]='rowdata.materialId'>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label class='col-md-2 form-control title'>Lot No</label>
+                                <input type='text' readonly class='col-md-2 form-control input-text'
+                                    name='LotNo' [(ngModel)]='rowdata.lotNo'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i>
+                        {{ l('Cancel') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

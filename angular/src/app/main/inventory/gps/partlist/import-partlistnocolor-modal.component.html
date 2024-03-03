@@ -1,0 +1,57 @@
+<!-- <div appBsModal #importModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="importModal"
+    aria-hidden="true" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content">
+            <div
+                class="modal-header content-modal import-title  ui-md-12 d-flex justify-content-start align-items-center">
+                <h2>{{ l('Import Data Part List No Color ') }}</h2>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+                <div class="input-upload-file col-9 d-flex justify-content-center align-items-center flex-column">
+                    <i class="fa fa-cloud-upload"></i>
+                    <p>Drag & drop file here <br>or <b>Browse</b></p>
+                    <span>Support format: Xlsx</span>
+                    <input #imgInput type="file" (change)="onUpload($event)"
+                        accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                        class="input-file">
+                </div>
+                <div class="input-file-name col-9 d-flex justify-content-center align-items-center" [ngClass]="vissbleInputName">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                            d="M19.4883 11.7497H15.9895V10.0003H19.4883V11.7497ZM19.4883 12.7494H15.9895V14.4988H19.4883V12.7494ZM19.4883 4.5022H15.9895V6.25158H19.4883V4.5022ZM19.4883 7.25125H15.9895V9.00064H19.4883V7.25125ZM19.4883 15.4984H15.9895V17.2478H19.4883V15.4984V15.4984ZM21.905 18.9473C21.805 19.4671 21.1802 19.4796 20.7629 19.4971H12.9906V21.7463H11.4386L0 19.747V2.25549L11.5061 0.253662H12.9906V2.24548H20.4955C20.9179 2.26297 21.3827 2.23297 21.7501 2.48537C22.0075 2.85525 21.9825 3.32511 22 3.74994L21.99 16.7605C21.9775 17.4877 22.0574 18.23 21.905 18.9473ZM9.16433 15.0261C8.4746 13.6266 7.77236 12.237 7.08507 10.8375C7.76484 9.47549 8.43464 8.10848 9.1019 6.74143C8.53458 6.76893 7.96727 6.8039 7.40248 6.84391C6.9801 7.87103 6.48777 8.8707 6.15789 9.93285C5.8505 8.93069 5.44315 7.96599 5.07079 6.98884C4.52096 7.01883 3.97113 7.05132 3.42134 7.0838C4.00112 8.36341 4.61845 9.6254 5.18074 10.9125C4.51847 12.1621 3.89868 13.4292 3.25639 14.6862C3.80368 14.7087 4.35102 14.7312 4.89831 14.7387C5.28821 13.744 5.77302 12.7869 6.11291 11.7722C6.41781 12.8619 6.93511 13.869 7.35999 14.9111C7.96228 14.9537 8.56204 14.9911 9.16433 15.0261ZM20.808 3.4324H12.9906V4.5022H14.9899V6.25158H12.9906V7.25125H14.9899V9.00064H12.9906V10.0003H14.9899V11.7497H12.9906V12.7494H14.9899V14.4988H12.9906V15.4984H14.9899V17.2478H12.9906V18.4036H20.808V3.4324Z"
+                            fill="#00B473" />
+                    </svg>
+                    <div class="file-name-progress col-10 d-flex justify-content-center align-items-center flex-column">
+                        <div class="change-file-name col-12"  >
+                            <span id="viewNamePartNoColorFileImport"></span>
+                        </div>
+                        <div class="progress progress-bar" [ngClass]="vissibleProgess">
+                            <div class="bar-progress"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn-upload-file col-9"  (click)="upload()" [disabled]="disabled">
+                    <i class="fa fa-upload mr-1"></i>
+                    <span>{{ l('Upload') }}</span>
+                </button>
+            </div>
+            
+            <div class="modal-footer d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-success d-flex justify-content-end align-items-center"
+                    onclick="document.getElementById('linkPartListNoColorExample').click()">
+                    <i class="fas fa-file-excel mr-1"></i>
+                    <span>{{ l('Download Template') }}</span>
+                    <a id="linkPartListNoColorExample" hidden
+                    href="/assets/sampleFiles/InvGpsPartListNoColor_Template.xlsx"></a>
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>
+                    <span>{{ l('Cancel') }}</span>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<list-error-import-part-list-modal #errorListModal></list-error-import-part-list-modal> -->

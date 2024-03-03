@@ -1,0 +1,143 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         <span>{{ l(' CKD Intransit Frame Engine ') }}</span>
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="ui-g-12 form-group m-form__group align-items-center">
+                            <div class="input-group">
+								<div class='input-search'>
+									<input [(ngModel)]='frameEngineNo' name='frameNo'
+									class='form-control' [placeholder]="l('Frame/Engine')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='supplierNo' name='supplierNo'
+									class='form-control' [placeholder]="l('Supplier No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='billofladingNo' name='billofladingNo'
+									class='form-control' [placeholder]="l('Bill Of Lading')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='invoiceNo' name='invoiceNo'
+									class='form-control' [placeholder]="l('Invoice No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+                                    <input
+                                        type="text"
+                                        placeholder='Invoice Date From'
+                                        [(ngModel)]="invoiceDateFrom"
+                                        name="invoiceDateFrom"
+                                        (key.enter)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #d="bsDatepicker"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+								</div>
+								<div class='input-search'>
+                                    <input
+                                        type="text"
+                                        placeholder='Invoice Date To'
+                                        [(ngModel)]="invoiceDateTo"
+                                        name="invoiceDateTo"
+                                        (key.enter)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #a="bsDatepicker"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="a.toggle()"></i>
+								</div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ordertypeCodeList"
+                                    name="OrdertypeCodeList"
+                                    [(ngModel)]="ordertypeCode"
+                                    [text]="l('Ordertype Code')"
+                                    (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+
+
+                                <!-- <div class="btn-search minwidth">
+                                    <button (click)="buttonAction('1',1)" class="btn btn-success groupBtn actionButton_w1"  >
+                                        by Frame
+                                    </button>
+                                </div>
+
+                                <div class="btn-search minwidth">
+                                    <button (click)="buttonAction('3',0)"  class=" btn btn-success groupBtn actionButton_w3" >
+                                        by Engine
+                                    </button>
+                                </div> -->
+                            </div>
+                            <div class="ui-g-12 input-group">
+                                <div class="ui-g-12 ui-md-12 frame-1000006298">
+                                    <div class="segmented-picker-option groupBtn actionButton_w1" (click)="buttonAction('1',1)">
+                                        <div class="separator"></div>
+                                        <div class="label" >by Frame</div>
+                                      </div>
+                                      <div class="segmented-picker-option  groupBtn actionButton_w3" (click)="buttonAction('3',0)">
+                                        <div class="separator"></div>
+                                        <div class="label" >by Engine</div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection"
+                                (selectionChanged)="onSelectionMulti($event)"
+
+								[frameworkComponents]="frameworkComponents"
+                            >
+                            </simple-ag-grid>
+                        </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btn-success font-weight-bold position-relative" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

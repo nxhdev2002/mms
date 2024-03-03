@@ -1,0 +1,163 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CKD Intransit Pre Customs ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='preCustomsIds'
+                                        name='preCustomsIds'
+                                        class='form-control'
+                                        [placeholder]="l('Pre Customs No')"
+                                        type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='billNo'
+                                        name='billNo'
+                                        class='form-control'
+                                        [placeholder]="l('Bill No')"
+                                        type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='invoiceNo'
+                                        name='invoiceNo'
+                                        class='form-control'
+                                        [placeholder]="l('Invoice No')"
+                                        type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Bill Date"
+                                        [(ngModel)]="billDate"
+                                        name="billDate"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #wf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }" />
+                                    <i class="fa fa-calendar-alt"
+                                        (click)="wf.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ordertypeCodeList"
+                                    name="OrdertypeCodeList"
+                                    [(ngModel)]="ordertypeCode"
+                                    [text]="l('Ordertype Code')"
+                                    (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ckdPioList"
+                                    name="ckdPio"
+                                    [(ngModel)]="ckdPio"
+                                    [text]="l('Ckd Pio')"
+                                    (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                            <div class="panel panel-default pt-1">
+                                <div class="ui-g-12">
+                                    <h6 class="card-header card-grid-table">
+                                        {{ l(' Pre Customs ') }}
+                                    </h6>
+                                </div>
+                                <grid-table [columnDefs]="defaultColDefs"
+                                    [paginationParams]="paginationParams"
+                                    [rowData]="rowData"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents">
+                                </grid-table>
+
+                            </div>
+
+                            <div class="ui-g-12 ph-0" style="margin-top: 15px;">
+                                <div class="ui-g-12">
+                                    <h6 class="card-header card-grid-table">
+                                        {{ l(' Invoice ') }}
+                                    </h6>
+                                </div>
+                                <grid-table [columnDefs]="invoiceColDefs"
+                                    [paginationParams]="paginationParamsInvoice"
+                                    [showPagination]="false"
+                                    [rowData]="rowDataInvoice"
+                                    [defaultColDef]="defaultColDef"
+                                    [frameworkComponents]="frameworkComponents"
+                                    (changePaginationParams)="changePageInvoice($event)"
+                                    (onChangeSelection)="onChangeRowSelectionInvoice($event)" >
+                                </grid-table>
+                                <div class="panelBtn  text-right"></div>
+                            </div>
+                            <div class="ui-g-12 ph-0" style="margin-top: 15px;" [busyIf]="isLoadingInvoiceDetail">
+                                <div class="ui-g-12">
+                                    <h6 class="card-header card-grid-table">
+                                        {{ l(' Invoice Detail ') }}
+                                    </h6>
+                                </div>
+                                <grid-table [columnDefs]="invoiceDetailColDefs"
+                                    [paginationParams]="paginationParamsInvoiceDetail"
+                                    [showPagination]="true"
+                                    [rowData]="rowDataInvoiceDetail"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackInvoiceDetailGrid($event)"
+                                    [frameworkComponents]="frameworkComponents"
+                                    (changePaginationParams)="changePageInvoiceDetail($event)" >
+                                </grid-table>
+                                <hr>
+                                <div class="panelBtn  text-right">
+                                    <button
+                                        class="btn btn-success font-weight-bold"
+                                        (click)="exportToExcel($event)">
+                                        <i class="fas fa-file-excel mr-1"></i>{{
+                                        l('Export PreCustoms')}}
+                                    </button>
+                                    <button
+                                        class="btn btn-success font-weight-bold"
+                                        (click)="exportInvoiceToExcel($event)">
+                                        <i class="fas fa-file-excel mr-1"></i>{{
+                                        l('Export Invoice')}}
+                                    </button>
+                                    <button
+                                        class="btn btn-success font-weight-bold"
+                                        (click)="exportInvoiceDetailToExcel($event)">
+                                        <i class="fas fa-file-excel mr-1"></i>{{
+                                        l('Export Invoice Detail')}}
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

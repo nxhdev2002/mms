@@ -1,0 +1,137 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' Vehicle CBU Master ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input [(ngModel)]="vehicleType" name="vehicleType" class="form-control"
+                                        [placeholder]="l('Vehicle Type')" type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="model" name="model" class="form-control"
+                                        [placeholder]="l('Model')" type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="marketingCode" name="marketingCode" class="form-control"
+                                        [placeholder]="l('Marketing Code')" type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="katashiki" name="katashiki" class="form-control"
+                                        [placeholder]="l('Katashiki')" type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <div class="ui-g-12">
+                                <h4 class="card-header card-grid-table">
+                                    {{ l ( ' Vehicle CBU ' )}}
+                                </h4>
+                            </div>
+                            <grid-table
+                                [columnDefs]="vehicleCBUColDefs"
+                                [paginationParams]="paginationParams"
+                                [showPagination]="true"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [frameworkComponents]="frameworkComponents">
+                            </grid-table>
+
+                        </div>
+                        <hr>
+                        <div class="panelBtn text-right">
+    
+                            <button
+                            *ngIf="isGranted('Pages.Master.Cmm.VehicleCBU.CreateMat')" class="btn btn-primary font-weight-bold"
+                             (click)="CreateMat()" [disabled]="selectedRow.createMaterial == 'Y'">
+                                <i class="far fa-edit mr-1"></i>{{'Create Mat.'}} 
+                            </button>
+
+                            <button
+                            *ngIf="isGranted('Pages.Master.Cmm.VehicleCBU.History')"
+                            class="btn btn-warning font-weight-bold"
+                            (click)="viewHistoryVehicleCBUModal.show(selectId)"  [disabled]="!changedRecordsVehicleCBU.includes(selectedRow.id)">
+                            <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                            </button>
+  
+
+ 
+                            <button class="btn btn-primary font-weight-bold" (click)="validateVehicleCBU.show()">
+                                <i class="fa-regular fa-eye"></i>{{'View Checking Results'}}
+                            </button>
+                            <button
+                                class="btn btn-primary font-weight-bold"
+                                *ngIf="isGranted('Pages.Master.Cmm.VehicleCBU.Validate')"
+                                (click)="validate($event)">
+                                <i class="fa fa-check-circle"></i>{{'Validate Checking Rule'}}
+                            </button>
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{
+                                l('Export Excel') }}
+                            </button>
+                            <button class="btn btn-primary font-weight-bold"  (click)="getViewDataMaterial()">
+                                <i class="fa-regular fa-eye"></i>{{'View Material'}}
+                            </button>
+
+                        </div>
+                        <div class="ui-g-12 ph-0">
+                            <div class="ui-g-12">
+                                <h4 class="card-header card-grid-table">
+                                    {{ l ( ' Vehicle CBU Color ' )}}
+                                </h4>
+                            </div>
+                            <grid-table
+                                [columnDefs]="vehicleCBUColorColDefs"
+                                [paginationParams]="paginationParamsColor"
+                                [showPagination]="true"
+                                [rowData]="rowDataColor"
+                                [defaultColDef]="defaultColDef"
+                                (changePaginationParams)="changePageColor($event)"
+                                [frameworkComponents]="frameworkComponents"
+                                >
+                            </grid-table>
+                        </div>
+                        <hr>
+                        <div class="panelBtn text-right">
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcelColor($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{
+                                l('Export Excel') }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<view-material-modal #viewMaterialModal>
+    (modalClose)="onChangeRowSelection(dataParams)"
+</view-material-modal>
+<validate-vehicleCBU-modal #validateVehicleCBU></validate-vehicleCBU-modal> 
+<history-vehiclecbu-modal #viewHistoryVehicleCBUModal> </history-vehiclecbu-modal> 
+<confirm-dialog #confirmDialog (confirmYes)="confirmYes()" (confirmNo)="confirmNo()"></confirm-dialog>
+ 

@@ -1,0 +1,83 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l('Inventory Gps Mapping') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='partNo' name='partNo' class='form-control'
+                                        [placeholder]="l('Part No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='partCatetory' name='partCatetory' class='form-control'
+                                        [placeholder]="l('Part Catetory')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='shopRegister' name='shopRegister' class='form-control'
+                                        [placeholder]="l('Shop Register')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='costCenter' name='costCenter' class='form-control'
+                                        [placeholder]="l('Cost Center')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='wbs' name='wbs' class='form-control'
+                                        [placeholder]="l('Wbs')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='glAccount' name='glAccount' class='form-control'
+                                        [placeholder]="l('Gl Account')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <grid-table
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection"
+                                [frameworkComponents]="frameworkComponents">
+                            </grid-table>
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btn-warning font-weight-bold" (click)="validateData($event)">
+                                <i class="fas fa-check-circle mr-1"></i>{{ l('Validate') }}
+                            </button>
+                            <button *ngIf="isGranted('Pages.GPS.Issuing.Mapping.ReMap')" class="btn btn-primary font-weight-bold" (click)="reMapData($event)">
+                                <i class="fas fa-calculator mr-1"></i>{{ l('Re-map') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

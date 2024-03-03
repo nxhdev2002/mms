@@ -1,0 +1,134 @@
+<div bsModal #createOrEditModalLotCodeGrade="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit LotCodeGrade')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New LotCodeGrade')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Model Id</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ModelId' [(ngModel)]='rowdata.modelId'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lot Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotCode' [(ngModel)]='rowdata.lotCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Cfc</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Cfc' [(ngModel)]='rowdata.cfc'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Grade</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Grade' [(ngModel)]='rowdata.grade'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Odering</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Odering' [(ngModel)]='rowdata.odering'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Grade Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='GradeName' [(ngModel)]='rowdata.gradeName'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Mode Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ModelCode' [(ngModel)]='rowdata.modeCode'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Model Vin</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ModelVin' [(ngModel)]='rowdata.modelVin'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Vis Start</label>
+						<input type='text' class='col-md-10 form-control input-text' name='VisStart' [(ngModel)]='rowdata.visStart'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Vis End</label>
+						<input type='text' class='col-md-10 form-control input-text' name='VisEnd' [(ngModel)]='rowdata.visEnd'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Ma Lot Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='MaLotCode' [(ngModel)]='rowdata.maLotCode'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Vehicle Id</label>
+						<input type='text' class='col-md-10 form-control input-text' name='VehicleId' [(ngModel)]='rowdata.vehicleId'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Test No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='TestNo' [(ngModel)]='rowdata.testNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Dab</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Dab' [(ngModel)]='rowdata.dab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Pab</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Pab' [(ngModel)]='rowdata.pab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Eng Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='EngCode' [(ngModel)]='rowdata.engCode'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lab </label>
+						<input type='text' class='col-md-10 form-control input-text' name='Lab' [(ngModel)]='rowdata.lab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Rab</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Rab' [(ngModel)]='rowdata.rab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Kab</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Kab' [(ngModel)]='rowdata.kab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is FcLabel</label>
+						<input type='text' class='col-md-10 form-control input-text' name='IsFcLabel' [(ngModel)]='rowdata.isFcLabel'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<input type='text' class='col-md-10 form-control input-text' name='IsActive' [(ngModel)]='rowdata.isActive'>
+					</div> 
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>R</label>
+						<input type='text' class='col-md-10 form-control input-text' name='R' [(ngModel)]='rowdata.r'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>G</label>
+						<input type='text' class='col-md-10 form-control input-text' name='G' [(ngModel)]='rowdata.g'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>B</label>
+						<input type='text' class='col-md-10 form-control input-text' name='B' [(ngModel)]='rowdata.b'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Clab</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Clab' [(ngModel)]='rowdata.clab'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Char Str</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CharStr' [(ngModel)]='rowdata.charStr'>
+					</div>
+              
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

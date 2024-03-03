@@ -1,0 +1,35 @@
+<div appBsModal #exportExcelModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="exportExcelModal" aria-hidden="true" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg" style=" min-width: 50%; margin-left: 25%; margin-right: 25%;">
+        <div class="modal-content">
+            <div class="modal-header content-modal import-title ui-md-12 d-flex justify-content-start align-items-center">
+                <h2>{{ l('Export To Excel CKD Vehicle By Period') }}</h2>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center flex-column"
+                style="margin-top: -2%;">
+                <div class="form-input" style="background-color: transparent;width: 100%;">
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Choose Period</label>
+                        <div class="input-search" style="min-width: 360px;">
+                            <tmss-multi-column-dropdown [list]="periodIdList" name="id"
+                                [columnDefs]="loadColumdef" dataField="id" [(ngModel)]="id"
+                                displayField="infoPeriod"></tmss-multi-column-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-success d-flex justify-content-end align-items-center position-relative"
+                    (click)="exportToExcel()" [disabled]="disable">
+                    <img src="/assets/common/images/Icon/file-icons_microsoft-excel2.png" alt="">
+                    <span>{{ l('Export To Excel') }}</span>
+                    <div class="loader" [ngClass]="pending"></div>
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>
+                    <span>{{ l('Cancel') }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+::ng-deep{
+    // fix theme
+        body { overflow: hidden; text-shadow: -1px 1px 1px #ffffff8c; color: #262830; font-family: Arial;  }
+        input, button, select, optgroup, textarea {outline: none !important;}
+        #content .wrapper{ padding:0px  !important;  float: none; }
+        .kt-wrapper { padding: 0px !important; }
+        .kt-header { top: 40px !important; display: none !important; }
+        .kt-aside { left: 260px !important; display: none !important; }
+    // end fix theme
+
+    .PTA { background: linear-gradient(300deg, #2fffd933 0%, #98fbff38, #78e3de4d 100%) fixed, url(/assets/common/images/sand.png);
+        overflow: hidden; position: relative;height: 100%; }
+    .PTA_bg { background-image: url(/assets/common/images/bg6.png); display: none;
+            background-size: cover; height: 100%; width: 100%;
+            transform: skew(0.91turn, 1deg); position: absolute;
+            filter: blur(30px); opacity: 0.4; left: -80px; z-index: 0; }
+    .PTA_Content { width:100%; margin:auto;  font-size: 12px; overflow:hidden; margin:0px; }/*overflow:hidden;*/
+    .WARP {   width: 115%; overflow: hidden; }
+    .clear { clear: both; }
+
+
+
+    .time_now_log {  position: absolute;  z-index: 10;  font-weight: normal;  left: 5px; }
+
+
+    .PTA .prosses_item { position: relative; z-index: 1; float: left;  border-top: 1px solid #3c3c3c; border-left: 1px solid #3c3c3c; border-bottom: 1px solid #3c3c3c; text-align: center;}
+    .PTA .prosses_item ._item{ position: relative; z-index: 1; border-bottom: 1px solid #3c3c3c; overflow: hidden; font-weight: 900;}
+    .PTA .prosses_item ._itemFor:last-child ._item { border-bottom: none; }
+
+    .PTA .prosses_item:last-child {  border-right: 1px solid #3c3c3c; }
+
+    .PTA .prosses_item.HEADER_LEFT { font-size: 60px; font-weight:normal !important; letter-spacing:-2px; }
+
+    .PTA .prosses_item ._item .img_line { position: absolute; z-index: 0; left: 0px; top: 0px;  }
+    .PTA .prosses_item ._item .header_title_1 .header_sub_text { font-size: 8vw; letter-spacing: -4px; font-weight: bold; position: relative; z-index: 2;}
+    .PTA .prosses_item ._item .header_title_2 .header_sub_text { font-size: 4.6vw; letter-spacing: -4px; font-weight: bold; position: absolute; z-index: 2; line-height: normal; }
+    .PTA .prosses_item ._item .header_sub_text.sub_text1 { top: -5px; left: 4px; }
+    .PTA .prosses_item ._item .header_sub_text.sub_text2 { bottom: -7px; right: 5px;  }
+    .PTA .prosses_item ._item .header_title.YELLOW  {  background-color: #ffff3e; }
+    .PTA .prosses_item ._item .header_title.GREEN  {  background-color: #00ff72; }
+
+    .PTA .prosses_item ._item._GRADE .val,
+    .PTA .prosses_item ._item._BODY .val {  font-size: 9vw; }
+    .PTA .prosses_item ._item._MODEL .val { font-size: 5.5vw;   }
+    .PTA .prosses_item ._item._LOTNO .val { font-size: 4vw;   }
+    .PTA .prosses_item ._item._SEQUENCE .val,
+    .PTA .prosses_item ._item._COLOR .val  { font-size: 5.2vw; letter-spacing: -4px;  }
+
+
+
+
+
+    /********************************STOP***********************************/
+    .myoverlay { background-color: #00000033; bottom: 0; left: 0; overflow: auto; position: fixed; right: 0; top: 0; z-index: 10; display:none; }
+    .mypopup { margin: 50px auto; position: relative; z-index: 11; height: auto; margin-top: 100px; width: 65%; text-align:center; box-shadow:5px 2px 18px #000000; overflow: hidden;}
+    .myoverlay .mypopup .content {  font-size:140px; font-weight:bold; }
+    /********************************ICON***********************************/
+
+
+
+
+}
+

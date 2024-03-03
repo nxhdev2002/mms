@@ -1,0 +1,56 @@
+<div bsModal #createOrEditMstPioImpSupplier="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Pio Imp Supplier')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New Pio Imp Supplier')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='supplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>Supplier Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='supplierName' [(ngModel)]='rowdata.supplierName'>
+					</div>              
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>Remarks</label>
+						<input type='text' class='col-md-10 form-control input-text' name='remarks' [(ngModel)]='rowdata.remarks'>
+					</div>              
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>SupplierType</label>
+						<input type='text' class='col-md-10 form-control input-text' name='supplierType' [(ngModel)]='rowdata.supplierType'>
+					</div>              
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>SupplierNameVn</label>
+						<input type='text' class='col-md-10 form-control input-text' name='supplierNameVn' [(ngModel)]='rowdata.supplierNameVn'>
+					</div>              
+					<div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>Exporter</label>
+						<input type='text' class='col-md-10 form-control input-text' name='exporter' [(ngModel)]='rowdata.exporter'>
+					</div> 
+                    <div class='col-md-12 form-group row'>
+						<label style="min-width: 180px;" class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>             
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

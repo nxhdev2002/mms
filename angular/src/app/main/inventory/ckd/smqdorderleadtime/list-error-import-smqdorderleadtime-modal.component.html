@@ -1,0 +1,53 @@
+<div
+    appBsModal
+    #modal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title">
+                    <span>List Error Import</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()" >
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light">
+                        <tr>
+
+                            <th>Supplier No</th>
+                            <th>Cfc</th>
+                            <th>Exp Code</th>
+                            <th>Sea</th>
+                            <th>Air</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.cfc }}</td>
+                            <td>{{ _i.expCode }}</td>
+                            <td>{{ _i.sea }}</td>
+                            <td>{{ _i.air }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" style="margin-right: 10px" class="btn btn-danger" (click)="exportToExcel()">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

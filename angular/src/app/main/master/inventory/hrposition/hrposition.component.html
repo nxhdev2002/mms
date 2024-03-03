@@ -1,0 +1,46 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' Master HR Position ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                    [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)" [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents">
+                                </simple-ag-grid>
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr>
+                        <div class="text-right">
+
+                            <button class="btn btn-primary font-weight-bold" (click)="viewHrPosition()">
+                                <i class="fa-regular fa-eye"></i>{{'View'}}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+
+<view-hrposition-modal #viewModalHrPosition>
+
+</view-hrposition-modal>

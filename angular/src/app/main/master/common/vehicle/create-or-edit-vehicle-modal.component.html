@@ -1,0 +1,49 @@
+<div bsModal #createOrEditModalModel="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Vehicle Colors')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create Vehicle Colors')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.ESC)="close()">
+                <div class="form-input">
+                    <div class='col-md-12 form-group row'>
+                        <div class="col-md-6 form-group row" style="margin-top: -0.8%; margin-right: 1%;">
+                            <label class="col-md-2 form-control title">Lot code</label>
+                            <input
+                                type="text"
+                                class="col-md-10 form-control input-text"
+                                name="GroupName"
+                                [(ngModel)]="grade"
+                            />
+                        </div>
+                      <label style="padding-bottom: 0px;">{{gradeName}}</label>
+                        <div class="panel_listcolor">
+                            <div *ngFor="let item of listColors; let indexOfelement=index" class="listcolors" >
+                                    <tmss-checkbox 
+                                         [rightCheckbox]="false"  id="_listColors_{{listColors[indexOfelement].id}}" title=""
+                                        [(ngModel)]="item.checks" [ngModelOptions]="{standalone: true}"
+                                        [text]="item.color" >
+                                    </tmss-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="save()" type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

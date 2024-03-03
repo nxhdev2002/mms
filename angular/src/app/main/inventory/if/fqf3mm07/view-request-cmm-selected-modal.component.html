@@ -1,0 +1,42 @@
+<div bsModal #viewFundCommitmentItem="bs-modal"     aria-hidden="true"class="  modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }" [busyIf]="isLoading">
+    <div class="modal-lg modal-border"  style=" min-width: 90%; min-height: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+    position: fixed;
+    ">
+        <div class="modal-content col-md-12"  style="background-color: #a6e966;  border: 1px solid #000000; ">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 style="color: #000000;">{{('View Request')}}  {{creationTime}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12" style="background-color: antiquewhite; ">
+           
+            <div class='col-md-12 form-group row' >
+                <div class="col-md-6" >
+                    <div style="font-size: 20px; font-weight: 400; color:#000000; border-left:1px solid black;padding-left: 15px">Request</div>
+                    <div style="font-size: 1.3em; padding: 10px 20px; border: 1px solid #000000;" >
+                        <pre class='section' style=" overflow: auto;   height: 550px; padding-right: 20px;   scrollbar-color: #3498db #f1f1f1; scrollbar-width: thin;">{{transform(request)}}</pre>
+                    </div>
+                </div>
+                <!-- <div class="col-md-1" style=" margin-bottom: 30px; height: auto; width: 1px; background-color:  rgb(31, 30, 29);" 
+                  ></div> -->
+                <div class="col-md-6" style="overflow-y: auto;">
+                    <div style="font-size: 20px; font-weight: 400; color:#000000; border-right:1px solid black;padding-left: 15px;">Response</div>
+                    <div style="font-size: 1.3em; padding: 10px; overflow-y: auto; border: 1px solid #000000; ">
+                        <pre  class='section' style=" overflow: auto;  height: 550px; padding-right: 1px; scrollbar-color: #3498db #f1f1f1; scrollbar-width: 10px;">{{transform(response)}}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+					    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+				    </button>
+            </div>
+      
+        </div>
+    </div>
+</div>

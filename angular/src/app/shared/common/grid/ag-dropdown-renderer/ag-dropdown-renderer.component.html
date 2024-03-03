@@ -1,0 +1,10 @@
+<form #form="ngForm">
+    <select #selectTag class="form-control p-0" name="select"
+            [disabled]="disableSelect"
+            [(ngModel)]="select"
+            (ngModelChange)="onValueChange($event)">
+    <option *ngFor="let select of selectList" [ngValue]="select[value]">
+      {{select[label]}}
+    </option>
+  </select>
+</form>

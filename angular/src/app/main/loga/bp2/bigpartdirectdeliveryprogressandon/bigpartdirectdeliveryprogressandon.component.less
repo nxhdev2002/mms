@@ -1,0 +1,367 @@
+.BIGPART {
+    border: 3px solid black;
+    background-color: white;
+    color: black;
+    font-size: 36px;
+    font-weight: 700;
+    overflow: hidden;
+    
+}
+
+
+.BIGPART .TITLE {
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid black;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.BIGPART .CONTENT_TOP {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 2px solid black;
+}
+
+
+.BIGPART .CONTENT_TOP .PLINE {
+    font-size: 86px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.BIGPART .CONTENT_TOP .NUMCAR {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    height: 100%;
+    width: 6%;
+}
+
+.BIGPART .CONTENT_TOP .NUMCAR .ACT {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.BIGPART .CONTENT_TOP .NUMCAR .PLAN {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.BIGPART .CONTENT_TOP .PROGRESS {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 79%;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    visibility: hidden;
+    margin-left: -1px;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E .ECAR {
+    font-size: 39px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E .FINISHED {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    height: 100%;
+    width: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.PROCESS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 79%;
+    height: 100%;
+}
+
+.PROGRESS {
+    font-size: 80px;
+    font-weight: 900;
+    display: flex;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E .PK {
+    font-size: 62px;
+    font-weight: bold;
+    text-align: center;
+    border-right: 2px solid black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.BIGPART .CONTENT_BOTTOM_1E .DEL,
+.BIGPART .CONTENT_BOTTOM_1E .PK .PK_CT {
+    font-size: 62px;
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.PROGRESS,
+.CONTENT_BOTTOM_2E .CONTENT .PK_2E{
+    border-bottom: 2px solid #000;
+}
+#PLAN {
+    position: absolute;
+}
+
+#trianglePK_1E {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    margin-left: -50px;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    //animation: flash linear 1s infinite;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+
+    display: none;
+}
+
+.PK {
+    position: relative;
+}
+
+#triangleDEL_1E {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+   // animation: flash linear 1s infinite;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    display: none;
+}
+
+@keyframes flash {
+    0% {
+        border-top: 100px solid #d7d724;
+    }
+
+    100% {
+        border-top: 100px solid #d7d724;
+    }
+}
+
+@keyframes flashs {
+    0% {
+        visibility: hidden;
+        border-top: 100px solid #ffffff;
+    }
+
+    45% {
+        visibility: hidden;
+        border-top: 100px solid #ffffff;
+    }
+
+    50% {
+        visibility:visible;
+        border-top: 100px solid #ff0000;
+    }
+
+    100% {
+        visibility:visible;
+        border-top: 100px solid #ff0000;
+    }
+}@keyframes flashsback {
+    0% {
+       background-color: #ffffff;
+    }
+
+    45% {
+        background-color: #ffffff;
+    }
+
+    50% {
+        background-color: #ff0000;
+    }
+
+    100% {
+        background-color: #ff0000;
+    }
+}
+
+#screen-status {
+    width: 52%;
+    height: 26%;
+    background-color: red;
+    border: 3px solid #000;
+    position: absolute;
+    margin-left: 27%;
+    margin-top: -5%;
+    display: none;
+    font-size: 435%;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.CONTENT_BOTTOM_2E{
+    align-content: center;
+    visibility: hidden;
+    margin-left: -1px;
+}
+
+.CONTENT_BOTTOM_2E .CONTENT {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid ;
+}
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME1,
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME2{
+    width: 15%;
+}
+
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDPK,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDDEL{
+    width: 6%;
+}
+
+.CONTENT_BOTTOM_2E .CONTENT .PK_2E,
+.CONTENT_BOTTOM_2E .CONTENT .DEL_2E{
+    width: 79%;
+}
+
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME1,
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME2,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDPK,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDDEL{
+    border-right: 2px solid ;
+}
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME1,
+.CONTENT_BOTTOM_2E .CONTENT .E-NAME2,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDPK,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDDEL,
+.CONTENT_BOTTOM_2E .CONTENT .PK_2E,
+.CONTENT_BOTTOM_2E .CONTENT .PK_2E .PK_CT_2E,
+.CONTENT_BOTTOM_2E .CONTENT .DEL_2E,
+.CONTENT_BOTTOM_2E .CONTENT .DEL_2E .DEL_CT_2E
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDPK .PK_2E .PK_CT_2E,
+.CONTENT_BOTTOM_2E .CONTENT .FINISHEDDEL .DEL_2E .DEL_CT_2E{
+    font-size: 85px;
+    font-weight: 600;
+}
+
+.PK_CT_2E,
+.DEL_CT_2E{
+    font-size: 85px;
+    font-weight: 600;
+}
+
+
+#trianglePK_2E {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    left: 0;
+    margin-left: -50px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    animation: flash linear 1s infinite;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    display: none;
+}
+#triangleDEL_2E {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    left: 0;
+    margin-left: -50px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    animation: flashs linear 1s infinite;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    display: none;
+}
+
+

@@ -1,0 +1,365 @@
+<div bsModal #createOrEditModalVehicleDetails="bs-modal"
+        class="modal fade col-md-12"
+        role="dialog"
+        [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog tmss-modal-lg" style=" min-width: 92%;
+        margin-left: 4%;
+        margin-right: 4%;">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View Gen BOM Data Detail')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Discrimination Sign</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='discriminationSign' [(ngModel)]='rowdata.discriminationSign'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Order Cycle</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='orderCycle' [(ngModel)]='rowdata.orderCycle'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>PSC</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='psc' [(ngModel)]='rowdata.psc'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>EDNO</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='edno' [(ngModel)]='rowdata.edno'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>URN</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='URN' [(ngModel)]='rowdata.urn'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production SFX</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='Model' [(ngModel)]='rowdata.productionSFX'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Export Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='exportType' [(ngModel)]='rowdata.exportType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>ID Line Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='iDLineCode' [(ngModel)]='rowdata.idLineCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production Year</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionYear' [(ngModel)]='rowdata.productionYear'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production Month</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionMonth' [(ngModel)]='rowdata.productionMonth'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production Week</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionWeek' [(ngModel)]='rowdata.productionWeek'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production Day</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionDay' [(ngModel)]='rowdata.productionDay'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>FrameTypeCode</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='frameTypeCode' [(ngModel)]='rowdata.frameTypeCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>VIN</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='wmi' [(ngModel)]='rowdata.vin'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>WMI</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='vds' [(ngModel)]='rowdata.wmi'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>VDS</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='vds' [(ngModel)]='rowdata.vds'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>ModelYearCode</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='modelYearCode' [(ngModel)]='rowdata.modelYearCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>VIN Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='vINType' [(ngModel)]='rowdata.vinType'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Stamp Model Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='stampModelCode' [(ngModel)]='rowdata.stampModelCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>F/S Number Digits</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='frameSequenceNumberDigits' [(ngModel)]='rowdata.frameSequenceNumberDigits'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Spec Sheet Number</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='specSheetNumber' [(ngModel)]='rowdata.specSheetNumber'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>KATASHIKI Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='kATASHIKICode' [(ngModel)]='rowdata.katashikiCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Display KATASHIKI</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='displayKATASHIKI' [(ngModel)]='rowdata.displayKATASHIKI'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>CTLKATASHIKI</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='ctlkatashiki' [(ngModel)]='rowdata.ctlkatashiki'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>L/O KATASHIKI Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='lineOffKATASHIKICode' [(ngModel)]='rowdata.lineOffKATASHIKICode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Line Off KATASHIKI</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='lineOffKATASHIKI' [(ngModel)]='rowdata.lineOffKATASHIKI'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Exterior Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='exteriorCode' [(ngModel)]='rowdata.exteriorCode'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Interior Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='interiorCode' [(ngModel)]='rowdata.interiorCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Car Family Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='carFamilyCode' [(ngModel)]='rowdata.carFamilyCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Des Country Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='destinationCountryCode' [(ngModel)]='rowdata.destinationCountryCode'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Des Country Name</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='destinationCountryName' [(ngModel)]='rowdata.destinationCountryName'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>KD Lot Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='kdLotCode' [(ngModel)]='rowdata.kdLotCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>KD Lot No</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='kdLotNo' [(ngModel)]='rowdata.kdLotNo'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>KD Sub Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='kdSubType' [(ngModel)]='rowdata.kdSubType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>PAMS Lot SFX</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='pamsLotSFX' [(ngModel)]='rowdata.pamsLotSFX'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>EngineBasic Katashiki</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='engineBasicKATASHIKI' [(ngModel)]='rowdata.engineBasicKATASHIKI'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label  class='col-md-2 form-control viewGenBomDataTitle'>MotorBasic Katashiki</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='motorBasicKATASHIKI' [(ngModel)]='rowdata.motorBasicKATASHIKI'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Production Lot Size</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionLotSize' [(ngModel)]='rowdata.productionLotSize'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Maker Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='makerCode' [(ngModel)]='rowdata.makerCode'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Packing Year MonthI</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='packingYearMonth' [(ngModel)]='rowdata.packingYearMonth'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Vehicle Name Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='vehicleNameCode' [(ngModel)]='rowdata.vehicleNameCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Packing Style</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='packingStyle' [(ngModel)]='rowdata.packingStyle'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Des Destinction</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='destinationDestinction' [(ngModel)]='rowdata.destinationDestinction'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Destination Detail</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='destinationDetails' [(ngModel)]='rowdata.destinationDetails'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Government Approval</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='governmentApproval' [(ngModel)]='rowdata.governmentApproval'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>VAR1</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='var1' [(ngModel)]='rowdata.vaR1'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>SpecType</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='specType' [(ngModel)]='rowdata.specType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Plant Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='plantCode' [(ngModel)]='rowdata.plantCode'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Special Sign</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='specialSign' [(ngModel)]='rowdata.specialSign'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Unit Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='unitType' [(ngModel)]='rowdata.unitType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Second Assembly Line</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='secondAssemblyLine' [(ngModel)]='rowdata.secondAssemblyLine'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>S/A Vehicle Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='secondAssemblyVehicleType' [(ngModel)]='rowdata.secondAssemblyVehicleType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Off Option Type</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='offOptionType' [(ngModel)]='rowdata.offOptionType'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Prod Req Year Month</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='productionRequestYearMonth' [(ngModel)]='rowdata.productionRequestYearMonth'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Distributer Code</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='distributerCode' [(ngModel)]='rowdata.distributerCode'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Sales SFX</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='salesSFX' [(ngModel)]='rowdata.salesSFX'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Import Duty Exemption</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='importDutyExemption' [(ngModel)]='rowdata.importDutyExemption'>
+                        </div>
+					</div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Order No</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='orderNo' [(ngModel)]='rowdata.orderNo'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Type Approval Number</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='typeApprovalNumber' [(ngModel)]='rowdata.typeApprovalNumber'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Dummy</label>
+                            <input type='text'  readonly  class='col-md-2 form-control input-text' name='dummy' [(ngModel)]='rowdata.dummy'>
+                        </div>
+                    </div>
+                    <div class='row col-md-12'>
+                        <div class="col-md-6 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Type MPP</label>
+                            <input type='text'  readonly  class='col-md-4 form-control input-text' name='typeMPP' [(ngModel)]='rowdata.typeMPP'>
+                            <div style="width: 10px;"></div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class='col-md-2 form-control viewGenBomDataTitle'>Period Mpp</label>
+                            <input type='text'  readonly  class='col-md-4 form-control input-text' name='periodMpp' [(ngModel)]='_periodMpp'>
+                        </div>
+                        <div class='col-md-12 form-group'>
+                            <label class='col-md-2 form-control title'>Production Spec</label>
+                            <input type='text'  readonly  class='col-md-10 form-control input-text' name='productionSpec' [(ngModel)]='rowdata.productionSpec'>
+                        </div>
+					</div>
+
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

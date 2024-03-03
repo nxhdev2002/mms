@@ -1,0 +1,96 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' FQF3MM04 - Import Part Devan ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input [(ngModel)]="devaningDateFrom" name="devaningDateFrom" class="form-control"
+                                        [placeholder]="l('Devaning Date From')" type="text" (keyup.enter)="searchDatas()"
+                                        bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                        #f_start="bsDatepicker" placement="bottom left" />
+                                    <i class="fa fa-calendar-alt" (click)="f_start.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="devaningDateTo" name="devaningDateTo" class="form-control"
+                                        [placeholder]="l('Devaning Date To')" type="text" (keyup.enter)="searchDatas()"
+                                        bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                        #t_start="bsDatepicker" placement="bottom left" />
+                                    <i class="fa fa-calendar-alt" (click)="t_start.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='invoiceNo' name='invoiceNo' class='form-control'
+                                        [placeholder]="l('Invoice No')" type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='renban' name='renban' class='form-control'
+                                        [placeholder]="l('Renban')" type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='containerNo' name='containerNo' class='form-control'
+                                        [placeholder]="l('Container No')" type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='moduleNo' name='ModuleNo' class='form-control'
+                                        [placeholder]="l('Module No')" type='text'
+                                        (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary" type="submit">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  KHONG CHO FORM VAO DAY, co tac dung gi -->
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                    [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)" [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents">
+                                </simple-ag-grid>
+                            </div>
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btn-primary font-weight-bold"  (click)="viewValidateData()">
+                                <i class="fa-regular fa-eye"></i>{{ l('View Invalid Data') }}
+                            </button>
+                            <button class="btn btn-warning font-weight-bold"  (click)="viewValidate()">
+                                <i class="fas fa-check-circle mr-1"></i>{{ l('Validate') }}
+                            </button>
+                            <button *ngIf="isGranted('Pages.Interface.IF.FQF3MM04.ReCreate')"
+                             class="btn btn-primary font-weight-bold" (click)="reCreateData($event)">
+                                <i class="fas fa-calculator mr-1"></i>{{ l('Re-create') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<view-fqf3mm04-validate-modal #ViewFqf3mm04Validate></view-fqf3mm04-validate-modal>
+<view-fqf3mm04-validate-result-modal #ViewFqf3mm04ValidateResult></view-fqf3mm04-validate-result-modal>

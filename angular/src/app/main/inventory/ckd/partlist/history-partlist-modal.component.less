@@ -1,0 +1,23 @@
+.form-group {
+    .input-group {
+        .input-search {
+            input {
+                min-width: 120px;
+                background: #fff;
+            }
+
+            .fa-calendar-alt:before {
+                top: 0%;
+                left: 0%;
+            }
+        }
+    }
+}
+
+
+:host ::ng-deep{
+    .modal-dialog .modal-content .form-input .form-group .form-control:not(.fa-calendar-alt) {
+        min-width: 150px;
+    }
+}
+

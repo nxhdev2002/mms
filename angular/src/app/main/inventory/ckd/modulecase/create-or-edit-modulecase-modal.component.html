@@ -1,0 +1,426 @@
+<div bsModal #createOrEditModalModuleCase="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit ModuleCase')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New ModuleCase')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+          
+                    
+				<div class='col-md-12 form-group row'>
+					<label style="font-size: 20px;font-weight: bold;">General</label>
+				</div>
+				<div class="row">
+					<div class="col col-md-6">
+						<div class="form-input">
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Module No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='ModuleNo'
+									[(ngModel)]='rowdata.moduleNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Case No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='CaseNo'
+									[(ngModel)]='rowdata.caseNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Container No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='ContainerNo'
+									[(ngModel)]='rowdata.containerNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Renban</label>
+								<input type='text' class='col-md-10 form-control input-text' name='Renban'
+									[(ngModel)]='rowdata.renban'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Lot No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='LotNo'
+									[(ngModel)]='rowdata.lotNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Supplier No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='SupplierNo'
+									[(ngModel)]='rowdata.supplierNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Module Case No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='ModuleCaseNo'
+									[(ngModel)]='rowdata.moduleCaseNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Invoice No</label>
+								<input type='text' class='col-md-10 form-control input-text' name='InvoiceNo'
+									[(ngModel)]='rowdata.invoiceNo'>
+							</div>
+						</div>
+					</div>
+
+					<div class="col col-md-6">
+						<div class="form-input">
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>CdDate</label>
+								<input type='text' class='col-md-10 form-control input-text' name='cdDate'
+									[(ngModel)]='rowdata.cdDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Storage Location Code</label>
+								<input type='text' class='col-md-10 form-control input-text' name='StorageLocationCode'
+									[(ngModel)]='rowdata.storageLocationCode'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>LocationDate</label>
+								<input type='text' class='col-md-10 form-control input-text' name='locationDate'
+									[(ngModel)]='rowdata.locationDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Location By</label>
+								<input type='text' class='col-md-10 form-control input-text' name='LocationBy'
+									[(ngModel)]='rowdata.locationBy'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>UnpackingDate</label>
+								<input type='text' class='col-md-10 form-control input-text' name='unpackingDate'
+									[(ngModel)]='rowdata.unpackingDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>UnpackingTime</label>
+								<input type='text' class='col-md-10 form-control input-text' name='unpackingTime'
+									[(ngModel)]='rowdata.unpackingTime'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>UnpackingDatetime</label>
+								<input type='text' class='col-md-10 form-control input-text' name='unpackingDatetime'
+									[(ngModel)]='rowdata.unpackingDatetime'>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class='col-md-12 form-group row'>
+					<label style="font-size: 20px;font-weight: bold;">Packing Info</label>
+				</div>
+				<div class="row">
+					<div class="col col-md-6">
+						<div class="form-input">
+
+
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Dummy</label>
+								<input type='text' class='col-md-10 form-control input-text' name='Dummy'
+									[(ngModel)]='rowdata.dummy'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Dgflag</label>
+								<input type='text' class='col-md-10 form-control input-text' name='Dgflag'
+									[(ngModel)]='rowdata.dgflag'>
+							</div>
+						</div>
+					</div>
+
+					<div class="col col-md-6">
+						<div class="form-input">
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Packing Type</label>
+								<input type='text' class='col-md-10 form-control input-text' name='PackingType'
+									[(ngModel)]='rowdata.packingType'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Rr Type</label>
+								<input type='text' class='col-md-10 form-control input-text' name='RrType'
+									[(ngModel)]='rowdata.rrType'>
+							</div>
+						</div>
+					</div>
+
+					<div class='col-md-12 form-group row'>
+						<label style="font-size: 20px;font-weight: bold;"> Material </label>
+					</div>
+
+					<div class="row">
+						<div class="col col-md-6">
+							<div class="form-input">
+
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type1</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType1' [(ngModel)]='rowdata.innerMaterialType1'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type2</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType2' [(ngModel)]='rowdata.innerMaterialType2'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type3</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType3' [(ngModel)]='rowdata.innerMaterialType3'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type4</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType4' [(ngModel)]='rowdata.innerMaterialType4'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type5</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType5' [(ngModel)]='rowdata.innerMaterialType5'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type6</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType6' [(ngModel)]='rowdata.innerMaterialType6'>
+								</div>
+							</div>
+						</div>
+
+						<div class="col col-md-6">
+							<div class="form-input">
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type7</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType7' [(ngModel)]='rowdata.innerMaterialType7'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type8</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType8' [(ngModel)]='rowdata.innerMaterialType8'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type9</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType9' [(ngModel)]='rowdata.innerMaterialType9'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type10</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType10' [(ngModel)]='rowdata.innerMaterialType10'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type11</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType11' [(ngModel)]='rowdata.innerMaterialType11'>
+								</div>
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Type12</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialType12' [(ngModel)]='rowdata.innerMaterialType12'>
+								</div>
+								
+							</div>
+
+						</div>
+
+                        <div class="col col-md-6">
+							<div class="form-input">
+
+								<div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty1</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity1' [(ngModel)]='rowdata.innerMaterialQuantity1'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty2</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity2' [(ngModel)]='rowdata.innerMaterialQuantity2'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty3</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity3' [(ngModel)]='rowdata.innerMaterialQuantity3'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty4</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity4' [(ngModel)]='rowdata.innerMaterialQuantity4'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty5</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity5' [(ngModel)]='rowdata.innerMaterialQuantity5'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty6</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity6' [(ngModel)]='rowdata.innerMaterialQuantity6'>
+								</div>
+							</div>
+						</div>
+                        <div class="col col-md-6">
+							<div class="form-input">
+
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty7</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity7' [(ngModel)]='rowdata.innerMaterialQuantity7'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty8</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity8' [(ngModel)]='rowdata.innerMaterialQuantity8'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty9</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity9' [(ngModel)]='rowdata.innerMaterialQuantity9'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty10</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity10' [(ngModel)]='rowdata.innerMaterialQuantity10'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty11</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity11' [(ngModel)]='rowdata.innerMaterialQuantity11'>
+								</div>
+                                <div class='col-md-12 form-group row'>
+									<label class='col-md-2 form-control title'>Inner Material Qty12</label>
+									<input type='text' class='col-md-10 form-control input-text'
+										name='InnerMaterialQuantity12' [(ngModel)]='rowdata.innerMaterialQuantity12'>
+								</div>
+                               
+
+							</div>
+						</div>
+					
+					</div>
+                    </div>                   
+					<!-- <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Module No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ModuleNo' [(ngModel)]='rowdata.moduleNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Case No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CaseNo' [(ngModel)]='rowdata.caseNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Container No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ContainerNo' [(ngModel)]='rowdata.containerNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Renban</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Renban' [(ngModel)]='rowdata.renban'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lot No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotNo' [(ngModel)]='rowdata.lotNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Module Case No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ModuleCaseNo' [(ngModel)]='rowdata.moduleCaseNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Invoice No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InvoiceNo' [(ngModel)]='rowdata.invoiceNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Storage Location Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='StorageLocationCode' [(ngModel)]='rowdata.storageLocationCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Location By</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LocationBy' [(ngModel)]='rowdata.locationBy'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Dummy</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Dummy' [(ngModel)]='rowdata.dummy'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Dgflag</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Dgflag' [(ngModel)]='rowdata.dgflag'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Packing Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PackingType' [(ngModel)]='rowdata.packingType'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Rr Type</label>
+						<input type='text' class='col-md-10 form-control input-text' name='RrType' [(ngModel)]='rowdata.rrType'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type1</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType1' [(ngModel)]='rowdata.innerMaterialType1'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type2</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType2' [(ngModel)]='rowdata.innerMaterialType2'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type3</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType3' [(ngModel)]='rowdata.innerMaterialType3'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type4</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType4' [(ngModel)]='rowdata.innerMaterialType4'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type5</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType5' [(ngModel)]='rowdata.innerMaterialType5'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type6</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType6' [(ngModel)]='rowdata.innerMaterialType6'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type7</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType7' [(ngModel)]='rowdata.innerMaterialType7'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type8</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType8' [(ngModel)]='rowdata.innerMaterialType8'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type9</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType9' [(ngModel)]='rowdata.innerMaterialType9'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type10</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType10' [(ngModel)]='rowdata.innerMaterialType10'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type11</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType11' [(ngModel)]='rowdata.innerMaterialType11'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Inner Material Type12</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InnerMaterialType12' [(ngModel)]='rowdata.innerMaterialType12'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                     -->
+                    
+
+
+
+                    
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                 
+            </form>
+        </div>
+    </div>
+</div>

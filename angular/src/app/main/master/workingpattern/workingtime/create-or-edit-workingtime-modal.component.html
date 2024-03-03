@@ -1,0 +1,137 @@
+<div
+    bsModal
+    #createOrEditModalWorkingTime="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit WorkingTime' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New WorkingTime' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shift No</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ShiftNo"
+                            [(ngModel)]="rowdata.shiftNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shop Id</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ShopId"
+                            [(ngModel)]="rowdata.shopId"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Type</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="WorkingTime"
+                            [(ngModel)]="rowdata.workingType"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Start Time</label>
+                        <input
+                            class="col-md-10 form-control"
+                            type="time"
+                            [(ngModel)]="rowdata.startTime"
+                            name="startTime"
+                        />
+                    </div>
+ 
+                    
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">End Time</label>
+                        <input
+                            class="col-md-10 form-control"
+                            type="time"
+                            [(ngModel)]="rowdata.endTime"
+                            name="endTime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Description</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Description"
+                            [(ngModel)]="rowdata.description"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Patterm H Id</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="PattermHId"
+                            [(ngModel)]="rowdata.patternHId"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Season Type</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="SeasonType"
+                            [(ngModel)]="rowdata.seasonType"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Day Of Week</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="DayOfWeek"
+                            [(ngModel)]="rowdata.dayOfWeek"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Week Working Days</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="WeekWorkingDays"
+                            [(ngModel)]="rowdata.weekWorkingDays"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

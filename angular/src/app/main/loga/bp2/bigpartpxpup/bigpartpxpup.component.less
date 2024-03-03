@@ -1,0 +1,83 @@
+ /* for commit*/
+ body {margin: 0;padding: 0;font-family: Arial;font-weight: 900;background-color: #E2E2E2;}
+.controlMessage { display: none; }
+
+.contentScreen { width:100%; margin:auto; overflow-x:hidden; font-size: 16px; background-color: #E2E2E2;overflow: hidden;height: 100%;}
+.contentScreen .WARP { width:200%; clear:both ;}
+.contentScreen .WARP_SCROLL{ overflow:hidden; }
+
+.details {position: fixed;z-index: 100;padding-top: 20px;border: 1px solid #b3c9ce;margin-left: -20px;text-align: center;color: #333;background: #fff;box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);}
+
+.contentScreen .screenHead  { float:left;overflow:hidden; }
+.contentScreen .screenContent { float:left;overflow:hidden; }
+.contentScreen .iitemA1, .contentScreen .iitemA1UP,
+.contentScreen .HeadA1, .contentScreen .HeadA1UP,
+.contentScreen .iitemA1 { float:left; text-align:center; }
+.contentScreen .HeadA1UP.DELAY .HeadA1Text{ font-size: 25px; display: flex; justify-content: space-evenly; align-items: center;     height: 100%;}
+.contentScreen .iitemA1UP { float:left;text-align:center; position: relative; border-right:1px solid transparent; }
+.contentScreen .iitemA1,
+.contentScreen .HeadA1, .contentScreen .HeadA1UP{ text-align:center; width: 100%; }
+.contentScreen .HeadA1Text { display: inline-block; font-size:40px; }
+.contentScreen .HeadA1 .HeadA1Text, .contentScreen .HeadA1Max{ display: block; font-size:30px; }
+.contentScreen .HeadA1 .HeadA1Max{ border-top:1px solid black; }
+.contentScreen .lineW {height:2px; }
+
+.contentScreen .screenContent.delay .iitemA1UP{  border-right: 1px solid black; position:relative; z-index:1; }
+.contentScreen .screenContent.delay .iitemA1UP .bg_CaseDelay { position:absolute; z-index:1; background-color: transparent; display:none; }
+.contentScreen .screenContent.delay .iitemA1UP.exists_data .bg_CaseDelay  { background-color: red; display:block;border-right: 1px solid black; }
+.contentScreen .screenContent.delay .iitemA1UP .LineUPA1Text_DELAY { position:relative; z-index:2; }
+
+.contentScreen .sttInLineA1,
+.contentScreen .OldShiftA1{font-size: 25px; line-height: 25px; }
+.contentScreen .sttInLineA1 .itemtext,
+.contentScreen .OldShiftA1 .itemtext{ display:inline-block; }
+
+.contentScreen .sttInLineA1:not(.notline){ background-color:#D1DB1C;}
+
+// .contentScreen .sttInLineA1.sttScanInLineA1{ background-color:#32FF81; height: 150px;}
+.contentScreen .iitemA1UP .LineUPA1Text {text-align: left;position: relative;z-index: 1;font-size: 2.5rem;white-space: nowrap;word-spacing: -4px ;border-bottom: 1px solid #000;background-color: transparent;border-right: 1px solid #000;height: 99.8% !important;padding-left: 5px;}
+
+.contentScreen .sttInLineUPA1.finish{ background-color:#32ff81; }
+
+.contentScreen .iitemA1UP .A1TimeLine { background-color:#32ff81;height:100%; width:0; position:absolute; z-index:0; }
+.contentScreen .iitemA1UP .LineUPA1Text_DELAY.line2{text-align: left;position: relative;z-index: 1;font-size: 2rem;white-space: nowrap;word-spacing: -4px ;}
+
+.contentScreen .iitemA1UP .LineUPA1Text span{position: absolute;top: 50%;left: 26%;transform: translateX(-45%) translateY(-50%) rotate(270deg);font-weight: bold;}
+
+.contentScreen .iitemA1UP .LineUPA1Text_DELAY {text-align: left;position: relative;font-size: 3rem;white-space: pre;color: white;font-weight: bold;margin-top: 20px;}
+br:not(.HeadA1Text) {margin: -12px 0;}
+
+.contentScreen .iitemA1UP .LineUPA1Text_DELAY:not(.line2) span {display: flex;/*transform: rotate(270deg);*/justify-content: center;align-items: center;}
+.screenContent.delay .iitemA1UP .LineUPA1Text_DELAY.line2 { font-size: 40px; line-height: normal; text-align: center; letter-spacing: -2px;font-weight: bold; }
+
+.contentScreen .sttInLineUPA1 {height: 100%;background-color: #f2f2f2;position: absolute;z-index: 0;text-align: center;} /*background:rgba(0,0,0,0.5);*/
+.contentScreen .IS_NEW_PART { position:absolute; z-index:2; background-color:red; color: white; height:65px; line-height:65px; font-size: 20px; letter-spacing: -2px; }
+.contentScreen .IS_NEW_PART_N { display:none; }
+.contentScreen .IS_NEW_PART_Y { display:block; }
+
+.contentScreen .iitemA1UP .A1WaitConfirmUnPacking { background-color:red; }
+
+.b-right{ border-right:1px solid black; }
+
+/********************************FORM***********************************/
+.message1,.message2,.message3, .dateWorking, .controlpanel{ font-size:14px;}
+.message3{ color:#0043FF; }
+.dateWorking {  color:#1C95FF; }
+.controlpanel{ float:right; text-decoration: none; margin-right: 4px;}
+
+/*******************************FIX - sửa thì sửa cả file JQuery************************************/
+.contentScreen .screenHead { width:79px;  border-right: 1px solid black; border-top: 1px solid black; font-weight: bold;}
+.contentScreen .HeadA1{ border-bottom:1px solid black; border-left: 1px solid black; }
+.contentScreen .ContentA1{border-bottom: 1px solid black; border-right: 1px solid black; }
+.contentScreen .ContentA1:first-child { border-top: 1px solid black; }
+
+.contentScreen .ContentA1 .iitemA1{border-right: 1px solid black; }
+.contentScreen .ContentA1 .iitemA1:last-child {border-right: none; }
+
+.contentScreen .sttInLineUPA1 {border-left: 1px solid black;border-right: 1px solid black;margin-left: -1px;margin-right: 0px;}
+.contentScreen .iitemA1UP .A1TimeLine { margin-left:0px; }
+
+.popupDetail{margin-top: -50px;position:absolute;z-index:100;background: white;color: #333;transform: rotate(0deg);text-align: center;}
+#screen-status {width: 52%;height: 36%;background-color: red;border: 3px solid #000;margin-left: 25%;margin-top: 20%;font-size: 1000%;padding-top: 5%;color: white;text-align: center;justify-content: center;align-content: center;align-items: center;position: absolute ;z-index:101;display: none;}
+
+

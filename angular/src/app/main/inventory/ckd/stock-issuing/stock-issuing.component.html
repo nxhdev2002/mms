@@ -1,0 +1,179 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CKD Warehouse Stock Issuing Transaction Details ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+									<input [(ngModel)]='partNo' name='partNo'
+									class='form-control' [placeholder]="l('Part No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='colorSfx' name='colorSfx'
+									class='form-control' [placeholder]="l('Color Sfx')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Working Date From"
+                                        [(ngModel)]="workingDateFrom"
+                                        name="workingDateFrom"
+
+                                        class="form-control"
+                                        bsDatepicker
+                                        #wf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }" />
+                                    <i class="fa fa-calendar-alt"
+                                        (click)="wf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Working Date To"
+                                        [(ngModel)]="workingDateTo"
+                                        name="workingDateTo"
+
+                                        class="form-control"
+                                        bsDatepicker
+                                        #wt="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }" />
+                                    <i class="fa fa-calendar-alt"
+                                        (click)="wt.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input name='supplierNo' [(ngModel)]="supplierNo"
+                                    class='form-control' [placeholder]="l('Supplier No')"
+                                    type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input name='vinNo' [(ngModel)]="vinNo"
+                                    class='form-control' [placeholder]="l('Vin No')"
+                                    type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+									<input name='cfc' [(ngModel)]="cfc"
+									class='form-control' [placeholder]="l('Cfc')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input name='lotNo' [(ngModel)]="lotNo"
+									class='form-control' [placeholder]="l('Lot No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input name='noInLot' [(ngModel)]="noInLot"
+									class='form-control' [placeholder]="l('No In Lot')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+                                    <tmss-combobox [items]="listPartType" name="partType"
+                                        [(ngModel)]="partType" [text]="l('Part Type')"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <grid-table
+                                    [columnDefs]="defaultColDefs"
+                                    [paginationParams]="paginationParams"
+                                    [rowData]="rowData"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+
+                                    [frameworkComponents]="frameworkComponents">
+                                </grid-table>
+                                <!-- [heightAuto]="false"
+                                    [height]="'75vh'" -->
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr>
+                        <div class="panelBtn text-right">
+                            <button
+                            *ngIf="isGranted('Pages.Ckd.Warehouse.StockIssuing.History')"
+                                class="btn btn-warning font-weight-bold"
+                                (click)="viewHistoryStockIssuingModal.show(StockIssuingId)"
+                                [disabled]="!changedRecords.includes(selectedRow.id)"
+                                >
+                                <i class="fa-regular fa-eye"></i>{{ l('History') }}
+                                </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                            <button class="btn btn-success font-weight-bold" (click)="exportbyMaterialToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Material') }}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold"
+                                [disabled]="!selectedRow.id"
+                                (click)="getViewDataDetail()">
+                                <i class="fa-regular fa-eye"></i>{{'View'}}
+                            </button>
+                            <button class="btn btn-primary font-weight-bold"
+                                [disabled]="!selectedRow.id"
+                                (click)="getViewDataTranFerLoc()">
+                                <i class="fa-regular fa-eye"></i>{{'View Trans Loc'}}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold"
+                                [disabled]="!selectedRow.id"
+                                (click)="getViewMaterial()">
+                                <i class="fa-regular fa-eye"></i>{{'View Material'}}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold"
+                                (click)="validateIssuing.show(workingDateFrom,workingDateTo)">
+                                <i class="fa-regular fa-eye"></i>{{'View Validate'}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<view-stockissuing-detail-modal #viewStockIssuingDetailModal
+    (modalSave)="callBackDataGrid(dataParams)"
+    (modalClose)="onChangeRowSelection(dataParams)">
+</view-stockissuing-detail-modal>
+
+<view-material-modal #viewMaterialModal
+    (modalSave)="callBackDataGrid(dataParams)"
+    (modalClose)="onChangeRowSelection(dataParams)">
+</view-material-modal>
+<validate-issuing-modal #validateIssuing></validate-issuing-modal>
+<view-transfer-sloc
+    #viewTransferLoc
+    (modalClose)="onChangeRowSelection(dataParams)"
+></view-transfer-sloc >
+<history-stock-issuing-modal #viewHistoryStockIssuingModal></history-stock-issuing-modal>

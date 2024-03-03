@@ -1,0 +1,309 @@
+
+<div class="PTA">
+    <div class="time_now_log" ></div>
+    <div class="Header">
+        <div class="LOCATION_BTN">
+            <span class="loc_input">
+                <span class="loc txt locaion_txt">Location</span>
+                <span class="loc val locaion_value"></span>
+            </span>
+            <span class="loc_input">
+                <span class="loc txt module_txt">Module no</span>
+                <span class="loc val module_value" (click)="ShowChooseCase()"></span>
+            </span>
+            <span class="loc_input">
+                <span class="loc txt up_table_txt">UP table</span>
+                <span class="loc val up_table_value"></span>
+            </span>
+            <span class="btnLoc bg" (click)="MOVE_UP();">Move UP</span>
+            <span class="btnLoc bg" (click)="MOVE_UOT_DELETE()">Delete</span>
+            <span class="btnLoc nolocation" (click)="NO_LOCATION()">
+                <div class="flag "></div>
+                <div class="val">No Location</div>
+            </span>
+
+            <div style="clear:both;"></div>
+
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="NO_LOCATION">
+
+        <div class="LOCHeader" style="display:none;">
+            <div class="box firstRow show">
+                <div class="flag "></div>
+                <div class="val">No Location</div>
+            </div>
+        </div>
+        <div class="LOCContent">
+            <div class="LOCLane"
+                *ngFor="let _row of  NoLocation">
+                <div class="Lane">
+                    <div class="flag "></div>
+                    <div class="devanning">{{ _row.caseNo }}</div>
+                    <div class="val">{{ _row.caseNo }}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="Layout">
+
+        <ul class="pxp_big_tab">
+            <li class="disabled">Small part control:</li>
+            <li class="title_tab SCR_NO1 tab1 "  (click)="changetab('1')"><div class="tabFlag"></div><span>D & E</span></li>
+            <li class="title_tab SCR_NO2 tab2" (click)="changetab('2')"><div class="tabFlag"></div><span>F & G</span></li>
+            <li class="title_tab SCR_NO3 tab3 active" (click)="changetab('3')"><div class="tabFlag"></div><span>Robbing</span></li>
+
+
+            <li class="disabled _remark">
+                <div class="REMARK">
+                    <div class="rmk st1 box"></div>
+                    <div class="rmk st1 text">1st</div>
+                    <div class="rmk st2 box"></div>
+                    <div class="rmk st2 text">2nd, 3rd...</div>
+                </div>
+            </li>
+        </ul>
+        <div style="clear:both;"></div>
+
+
+        <div class="pxp_big_content ">
+            <div class="content_tab _tab1 ">
+                <div class="SCREEN_AREA SCR_NO11 ON_GRD">
+                    <!-- --------------------Title--------------------------- -->
+                    <div class="tab tab_title">
+                        <div class="box firstRow txt">OnGr</div>
+                        <div class="box firstRow Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                *ngFor="let _row of  fn.getRow(TabLayout11, 0)"  >
+                                <div class="subtitle flag "></div>
+                                <div class="subtitle tit">{{_row.cellName}}</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <!-- --------------------Data--------------------------- -->
+                    <div class="tab tab_data">
+                        <div class="rowitem row{{i}}" *ngFor="let i of fn.fornumbersRangeDesc(fn.getRowCount(TabLayout11), 1, -1)"  >
+                            <div class="box firstColumn {{i}}" >{{i}}</div>
+                            <div class="box cellData Column{{_row.columnId}} {{_row.cellName}} "
+                                    *ngFor="let _row of  fn.getRow(TabLayout11, i-1)"
+                                    id="SCR_NO11_Column{{_row.columnId}}_Row{{i}}" >
+                                    <div class="box_sub box_top">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('1', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                                    <div class="box_sub box_bot">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('1', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="clear:both;"></div>
+                <div class="SCREEN_AREA SCR_NO12 ON_GRD">
+                    <!-- --------------------Title--------------------------- -->
+                    <div class="tab tab_title">
+                        <div class="box firstRow txt">OnGr</div>
+                        <div class="box firstRow Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                *ngFor="let _row of  fn.getRow(TabLayout12, 0)"  >
+                                <div class="subtitle flag "></div>
+                                <div class="subtitle tit">{{_row.cellName}}</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <!-- --------------------Data--------------------------- -->
+                    <div class="tab tab_data">
+                        <div class="rowitem row{{i}}" *ngFor="let i of fn.fornumbersRangeDesc(fn.getRowCount(TabLayout12), 1, -1)"  >
+                            <div class="box firstColumn {{i}}" >{{i}}</div>
+                            <div class="box cellData Column{{_row.columnId}} {{_row.cellName}} "
+                                    *ngFor="let _row of  fn.getRow(TabLayout12, i-1)"
+                                    id="SCR_NO12_Column{{_row.columnId}}_Row{{i}}" >
+                                    <div class="box_sub box_top">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('1', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                                    <div class="box_sub box_bot">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('1', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content_tab _tab2">
+                <div class="SCREEN_AREA SCR_NO21 ON_GRD">
+                    <!-- --------------------Title--------------------------- -->
+                    <div class="tab tab_title">
+                        <div class="box firstRow txt">OnGr</div>
+                        <div class="box firstRow Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                *ngFor="let _row of  fn.getRow(TabLayout21, 0)"  >
+                                <div class="subtitle flag "></div>
+                                <div class="subtitle tit">{{_row.cellName}}</div>
+                        </div>
+                    </div>
+
+                    <!-- --------------------Data--------------------------- -->
+                    <div class="tab tab_data">
+                        <div class="rowitem row{{i}}" *ngFor="let i of fn.fornumbersRangeDesc(fn.getRowCount(TabLayout21), 1, -1)"  >
+                            <div class="box firstColumn {{i}}" >{{i}}</div>
+                            <div class="box cellData Column{{_row.columnId}} {{_row.cellName}} "
+                                    *ngFor="let _row of  fn.getRow(TabLayout21, i-1)"
+                                    id="SCR_NO21_Column{{_row.columnId}}_Row{{i}}" >
+                                    <div class="box_sub box_top">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('2', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                                    <div class="box_sub box_bot">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('2', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="SCREEN_AREA SCR_NO22 ON_GRD">
+                    <!-- --------------------Title--------------------------- -->
+                    <div class="tab tab_title">
+                        <div class="box firstRow txt">OnGr</div>
+                        <div class="box firstRow Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                *ngFor="let _row of  fn.getRow(TabLayout22, 0)"  >
+                                <div class="subtitle flag "></div>
+                                <div class="subtitle tit">{{_row.cellName}}</div>
+                        </div>
+                    </div>
+
+                    <!-- --------------------Data--------------------------- -->
+                    <div class="tab tab_data">
+                        <div class="rowitem row{{i}}" *ngFor="let i of fn.fornumbersRangeDesc(fn.getRowCount(TabLayout22), 1, -1)"  >
+                            <div class="box firstColumn {{i}}" >{{i}}</div>
+                            <div class="box cellData Column{{_row.columnId}} {{_row.cellName}} "
+                                    *ngFor="let _row of  fn.getRow(TabLayout22, i-1)"
+                                    id="SCR_NO21_Column{{_row.columnId}}_Row{{i}}" >
+                                    <div class="box_sub box_top">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('2', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                                    <div class="box_sub box_bot">
+                                        <div class="flag "></div>
+                                        <div class="flag_min "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                        (click)="CASE_SELECTED('2', _row.locationId, _row.cellName, i, _row.columnId, _row.screenArea)" >
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content_tab _tab3 active">
+                <div class="SCREEN_AREA SCR_NO31 ROBBING">
+
+                    <!-- --------------------Title--------------------------- -->
+                    <div class="tab tab_title">
+                        <div class="box firstRow txt">FRL</div>
+                        <div class="box firstRow Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                *ngFor="let _row of  fn.getRow(TabLayout3, 0)"  >
+                                <div class="subtitle flag "></div>
+                                <div class="subtitle tit">{{_row.cellName}}</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <!-- --------------------Data Renban--------------------------- -->
+                    <div class="tab tab_data">
+                            <div class="box firstColumn ">Renban</div>
+                            <div class="box cellData renban_cont NO_SORT Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                    *ngFor="let _row of  fn.getRow(TabLayout3, 0)"
+                                    id="SCR_NO31_RENBAN{{_row.columnId}}" >
+                                    <div class="flag "></div>
+                                    <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}" (click)="ROBBING_RENBAN_SELECTED('ROB', _row.columnId, _row.cellName)"  >
+                                    </div>
+                            </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <!-- --------------------Data Renban Date--------------------------- -->
+                    <div class="tab tab_data">
+                        <div class="box firstColumn ">Dev Date</div>
+                        <div class="box cellData NO_SORT DEV_DATE Column{{_row.columnId}} {{_row.cellName}} IS_DISABLED_{{_row.isColDisabled}}"
+                                    *ngFor="let _row of  fn.getRow(TabLayout3, 0)"
+                                    id="SCR_NO31_DEV_DATE{{_row.columnId}}" >
+                                    <div class="flag "></div>
+                                    <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}" >
+                                    </div>
+                            </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <!-- --------------------Data--------------------------- -->
+                    <div class="tab tab_data ">
+                        <div class="rowitem row{{i}}" *ngFor="let i of fn.fornumbersRangeDesc(fn.getRowCount(TabLayout3), 1, -1)"  >
+                                <div class="box firstColumn {{i}}" >{{i}}</div>
+                                <div class="box cellData robbing Column{{_row.columnId}} {{_row.cellName}} "
+                                        *ngFor="let _row of  fn.getRow(TabLayout3, i-1)"
+                                        id="SCR_NO31_Column{{_row.columnId}}_Row{{i}}" >
+                                        <div class="flag "></div>
+                                        <div class="boxCellText IS_DELETE_0 IS_DISABLED_{{_row.isDisabled}}"
+                                                (click)="ROBBING_CASENO_SELECTED('ROB', _row.columnId, _row.cellName, i)" ></div>
+                                </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="block" (click)="ShowChooseCase()"></div>
+        <div style="clear:both;"></div>
+
+        <div class="FRL_CASE">
+            <div class="select">
+                <!-- <div class="option">A</div>
+                <div class="option">B</div>
+                <div class="option">C</div> -->
+            </div>
+        </div>
+        <div class="RLL_CASE">
+            <div class="select">
+                <!-- <div class="option">A</div>
+                <div class="option">B</div>
+                <div class="option">C</div> -->
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<popuprobbingModal #popuprobbingModal  (modalSave)="SavePopupRobbing()" (modalClose)="ClosePopupRobbing()" >
+</popuprobbingModal>
+<popupSmall #popupSmall  (modalSave)="SavePopupSmall()" (modalClose)="ClosePopupSmall()" >
+</popupSmall>

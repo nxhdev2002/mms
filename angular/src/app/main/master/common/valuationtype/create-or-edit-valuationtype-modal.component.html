@@ -1,0 +1,36 @@
+<div bsModal #createOrEditModalValuationType="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View ValuationType')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Code</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Code' [(ngModel)]='rowdata.code'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Name</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Name' [(ngModel)]='rowdata.name'>
+					</div>
+					<!-- <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Material Type</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='MaterialType' [(ngModel)]='rowdata.materialType'>
+					</div> -->
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

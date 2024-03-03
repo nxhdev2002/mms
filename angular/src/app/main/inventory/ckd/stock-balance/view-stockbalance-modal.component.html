@@ -1,0 +1,70 @@
+<div bsModal #viewModalStockBalance="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View Inventory Ckd Stock Balance')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Part No</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='PartNo'
+                            [(ngModel)]='rowdata.partNoNormalizedS4'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Cfc</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Cfc'
+                            [(ngModel)]='rowdata.cfc'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Source</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Source'
+                            [(ngModel)]='rowdata.source'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Begining</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Begining'
+                            [(ngModel)]='rowdata.begining'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Receiving</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Receiving'
+                            [(ngModel)]='rowdata.receiving'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Issuing</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Issuing'
+                            [(ngModel)]='rowdata.issuing'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Closing</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Closing'
+                            [(ngModel)]='rowdata.closing'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Concept</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Concept'
+                            [(ngModel)]='rowdata.concept'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Diff</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Diff'
+                            [(ngModel)]='rowdata.diff'>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i>
+                        {{ l('Quay Lại') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

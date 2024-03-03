@@ -1,0 +1,107 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         {{ l(' CKD Intransit Shipment ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+								<div class='input-search'>
+									<input [(ngModel)]='shipmentNo' name='shipmentNo'
+									class='form-control' [placeholder]="l('Shipment No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='shippingcompanyCode' name='shippingcompanyCode'
+									class='form-control' [placeholder]="l('Shippingcompany Code')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='supplierNo' name='supplierNo'
+									class='form-control' [placeholder]="l('Supplier No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+
+								<div class='input-search'>
+									<input [(ngModel)]='fromPort' name='fromPort'
+									class='form-control' [placeholder]="l('From Port')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='toPort' name='toPort'
+									class='form-control' [placeholder]="l('To Port')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='shipmentDate' name='shipmentDate'
+									class='form-control' [placeholder]="l('Shipment Date')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ordertypeCodeList"
+                                    name="OrdertypeCodeList"
+                                    [(ngModel)]="ordertypeCode"
+                                    [text]="l('Ordertype Code')"
+                                    (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ckdPioList"
+                                    name="ckdPio"
+                                    [(ngModel)]="ckdPio"
+                                    [text]="l('Ckd Pio')"
+                                    (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <div class="panel panel-default pt-1">
+                            <grid-table
+                                    [columnDefs]="defaultColDefs"
+                                    [paginationParams]="paginationParams"
+                                    [rowData]="rowData"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents"
+                                    cellEditStopParams="{'stopEditingWhenGridLosesFocus': false}">
+
+                                </grid-table>
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btn-success font-weight-bold position-relative"(click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+

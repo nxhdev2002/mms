@@ -1,0 +1,109 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' Spp Invoice Details ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="partNo" name="partNo"
+                                        class="form-control" [placeholder]="l('PartNo')"
+                                        type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="invoiceNo" name="invoiceNo"
+                                        class="form-control" [placeholder]="l('Invoice No')"
+                                        type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="stock" name="stock"
+                                        class="form-control" [placeholder]="l('Stock')"
+                                        type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="supplier" name="supplier"
+                                        class="form-control" [placeholder]="l('Supplier')"
+                                        type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        [(ngModel)]="fromMonthYear"
+                                        name="fromMonthYear"
+                                        class="form-control"
+                                        [placeholder]="l('From')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right', minMode: 'month'}"
+                                        #a_end="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="a_end.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        [(ngModel)]="toMonthYear"
+                                        name="toMonthYear"
+                                        class="form-control"
+                                        [placeholder]="l('To')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right', minMode: 'month'}"
+                                        #b_end="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="b_end.toggle()"></i>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                            <div class="panel panel-default pt-1">
+                                <grid-table [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                    [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents"
+                                    [sideBar]="sideBar"
+                                    [pivotMode]="false">
+                                </grid-table>
+                            </div>
+                        <hr>
+                        <div class="text-right">
+
+
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

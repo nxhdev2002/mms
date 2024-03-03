@@ -1,0 +1,77 @@
+<div bsModal #receiveTopsseInvoice="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }" [busyIf]="isLoading">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{(' Receive Topsse Invoice')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12" style="background-color: white;">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+                <div class="row">
+                    <div class="col col-md-7">
+                        <div class="form-input">
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Invoice No</label>
+                                <input readonly type='text' class='col-md-10 form-control input-text'
+                                    name='invoiceNo'
+                                    [(ngModel)]='_invoiceNo'>
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">Receive Date</label>
+                                <input
+                                    type="text"
+                                    class="col-md-9 form-control input-text"
+                                    name="receiveDate"
+                                    style="background-color: white; border-color: aquamarine;"
+                                    #datepicker="bsDatepicker"
+                                    [(ngModel)]="_receiveDate"
+                                    bsDatepicker
+                                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }" />
+                                <i
+                                    class="fa fa-calendar-alt col-md-1 form-control"
+                                    id="cssCalender"
+                                    (click)="datepicker.toggle()"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ui-g-12 ph-0 form-input">
+                <div class="ui-g-12">
+                    <h4 class="card-header card-grid-table">
+                        {{ l ( ' Topsse Invoice Details ' )}}
+                    </h4>
+                </div>
+                <grid-table
+                    [columnDefs]="viewColDefs"
+                    [paginationParams]="paginationParams"
+                    [showPagination]="false"
+                    [rowData]="rowData"
+                    [defaultColDef]="defaultColDef"
+                    [height]="'40vh'"
+                    [heightAuto]="false"
+                    [frameworkComponents]="frameworkComponents"
+
+                    [cellEditStopParams]="{'stopEditingWhenGridLosesFocus': false}"
+           
+
+                    (callBackEvent)="callBackDataGrid($event)"
+                    (cellValueChanged)="onCellValueChanged($event)"
+                    [gridOptions]="gridOptions"
+                    >
+                </grid-table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success font-weight-bold" (click)="confirm()">
+                    <i class="fa-solid fa-check"></i>{{ l('Confirm') }}
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

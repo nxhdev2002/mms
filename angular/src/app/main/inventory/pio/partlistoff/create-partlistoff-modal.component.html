@@ -1,0 +1,89 @@
+<div bsModal #addPartListOffModal="bs-modal" class="modal fade col-12" role="dialog" [config]="{ backdrop: 'static' }">
+	<div class="modal-dialog tmss-modal-lg" style=" min-width: 92%;
+	margin-left: 4%;
+	margin-right: 4%;">
+		<div class="modal-content col-12">
+			<div class="modal-header col-12">
+				<div class="title-form">
+					<h3 *ngIf="!rowdata.partNo">{{(' New Part List Offline')}}</h3>
+					<h3 *ngIf="rowdata.partNo">{{('Clone Part List Offline')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-12">
+
+			<!-- Form Basic-->
+			<div class="form-input">
+				<div class='col-12 row'>
+					<div class='col-4 form-group'>
+						<label class=' form-control title PartListTitle'>Part No</label>
+                        <production-combobox [list]="partNoList" name="_partNo"
+                        [(ngModel)]="_partNo" [ngClass]="minwidth0" (onChangeValue)="changePartNo($event)" (onKeyPress)="changePartNo()">
+                        </production-combobox>
+					</div>
+					<div class='col-4 form-group'>
+						<label class=' form-control title PartListTitle' >Part Name</label>
+						<input type='text'  class='col-10 form-control input-text' name='partName'maxlength='40' style='text-transform:uppercase'
+							[(ngModel)]='_partName'>
+					</div>
+					<div class='col-4 form-group'>
+						<label class=' form-control title PartListTitle'>Supplier No</label>
+						<tmss-combobox [items]="cbbSupplierList" name="supplierNo"
+							[(ngModel)]="_supplierNo" [ngClass]="minwidth0" ></tmss-combobox>
+					</div>
+				</div>
+				<div class='col-12 row'>
+                    <div *ngIf="!rowdata.partNo" class='col-4 form-group padding-right'>
+						<label class=' form-control title PartListTitle'>Cfc</label>
+						<tmss-combobox (change)="changeCfc()" [items]="cbbCfcList" name="_selectCfc" [id]="'cfc'"
+							[(ngModel)]="_selectCfc" [disabled]="checkAddNew" [ngClass]="minwidth0">
+						</tmss-combobox>
+					</div>
+                    <div  *ngIf="rowdata.partNo" class='col-4 form-group'>
+						<label class=' form-control title PartListTitle' >Cfc</label>
+						<input id="orderPattern" type='text'  class='col-10 form-control input-text' name='_selectCfc'
+							[(ngModel)]='_selectCfc' readonly >
+					</div>
+                    <div class='col-4 form-group'>
+						<label class='form-control title PartListTitle'>Order Pattern</label>
+						<input type='text' class='col-10 form-control input-text' name='orderPattern' style='text-transform:uppercase'
+							[(ngModel)]='_orderPattern' readonly>
+					</div>
+					<div class="col-4"></div>
+				</div>
+
+				<div class='col-12'>
+					<div class="form-input">
+						<div class="ui-g-12 ui-md-12 PartListNew">
+							<grid-table
+								[rowSelection]="rowSelection"
+								[showPagination]="false"
+								(callBackEvent)="callBackDataGrid1($event)"
+								[paginationParams]="paginationGradeParams"
+								[columnDefs]="partListColDef"
+								[rowData]="gradeLists1"
+								[defaultColDef]="defaultColDef"
+                                (cellEditingStopped)="onCellValueChanged($event)"
+								(onChangeSelection)="onChangeRowSelection($event)"
+								[frameworkComponents]="frameworkComponents"
+								[isSuppressRowClickSelection]="true"
+								[height]="'25vh'"
+								[heightAuto]="false">
+							</grid-table>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light-primary font-weight-bold" (click)="save()">
+						<i class="fa tmss-fa fa-save mr-1"></i><span> {{ "Save" }} </span>
+					</button>
+					<button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+						<i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,139 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l('Plan Daily') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='vin' name='vin' class='form-control' [placeholder]="l('Vin')"
+                                        type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='lotNo' name='lotNo' class='form-control'
+                                        [placeholder]="l('Lot No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='noInLot' name='noInLot' class='form-control'
+                                        [placeholder]="l('No In Lot')" type='number' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='cfc' name='cfc' class='form-control' [placeholder]="l('Cfc')"
+                                        type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='bodyNo' name='bodyNo' class='form-control'
+                                        [placeholder]="l('Body No')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" placeholder="Date From" [(ngModel)]="dateFrom" name="date From"
+                                        (keydown)="searchDatas()" class="form-control" bsDatepicker #wf="bsDatepicker"
+                                        placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }" />
+                                    <i class="fa fa-calendar-alt" (click)="wf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" placeholder="Date To" [(ngModel)]="dateTo" name="date To"
+                                        (keydown)="searchDatas()" class="form-control" bsDatepicker #wt="bsDatepicker"
+                                        placement="bottom left" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }" />
+                                    <i class="fa fa-calendar-alt" (click)="wt.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <tmss-combobox [items]="listDate" [(ngModel)]="_selectDate"
+                                        [text]="l('Filter Date By')"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+
+                                <div class="btn-search minwidth">
+                                    <button (click)="searchPdiDate(1)" class="btn btn-success groupBtn actionButton_w1">
+                                        <i class="fa-regular fa-calendar-plus"></i> PDI Date
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)" (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)" [rowSelection]="rowSelection"
+                                [frameworkComponents]="frameworkComponents" [groupIncludeFooter]="false"
+                                [groupIncludeTotalFooter]="false" [sideBar]="sideBar" [pivotMode]="false">
+                            </simple-ag-grid>
+                            <!-- [height]="'620px'" -->
+                        </div>
+
+                        <hr>
+                        <div class="panelBtn text-right">
+
+                            <button
+                            *ngIf="isGranted('Pages.ProdPlan.ProdPlanDaily.History')"
+                            class="btn btn-warning font-weight-bold"
+                            (click)="viewHistoryProdPlanDailyModal.show(selectId)"  [disabled]="!changedRecordsProdPlanDaily.includes(selectedRow.id)">
+                            <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                            </button>
+                            <button class="btn font-weight-bold sumary-prod" (focus)="prodSumaryOption()"
+                                (blur)="lostForcus()">
+                                <!-- <i class="fas fa-file-excel mr-1"></i> -->
+                                <img src="/assets/common/images/Icon/vscode-icons_file-type-excel2.png" alt="">
+                                {{ l('Prod.Summary')}}
+                                <div class="exel-dropdown">
+                                    <ul>
+                                        <li (click)="exportReportByDay()"><a class><i
+                                                    class="fa fa-cloud-download"></i>By Grade (Daily)</a></li>
+                                        <li (click)="exportReportByMonth()"><a class><i
+                                                    class="fa fa-cloud-download"></i>By Grade (Monthly)</a></li>
+                                        <li (click)="exportReportColorByDay()"><a class><i
+                                                    class="fa fa-cloud-download"></i>By Color (Daily)</a></li>
+                                        <li (click)="exportReportColorByMonth()"><a class><i
+                                                    class="fa fa-cloud-download"></i>By Color (Monthly)</a></li>
+                                    </ul>
+                                </div>
+                                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                            </button>
+
+                            <button class="btn btn-success font-weight-bold position-relative"
+                                (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                            <!-- <button class="btn btn-success font-weight-bold"  (click)="exportReportColorByDay()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Color (Daily)') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold"  (click)="exportReportColorByMonth()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Color (Month) ') }}
+                            </button>
+
+                            <button class="btn btn-success font-weight-bold position-relative"  (click)="exportReportByDay()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Grade (Daily)') }}
+                                <div class="loader" [ngClass]="pendingReportByDay"></div>
+                            </button>
+                            <button class="btn btn-success font-weight-bold position-relative"  (click)="exportReportByMonth()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export By Grade (Month)') }}
+                                <div class="loader" [ngClass]="pendingReportByMonth"></div>
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<history-prodplandaily-modal #viewHistoryProdPlanDailyModal></history-prodplandaily-modal>

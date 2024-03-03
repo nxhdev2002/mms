@@ -1,0 +1,156 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CPS Linkage Invoice ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+									<input [(ngModel)]='invoiceNum' name='invoiceNo'
+									class='form-control' [placeholder]="l('Invoice No')"
+									type='text' (keyup.enter)='searchDatasHeaders()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='invoiceSymbol' name='invoiceSymbol'
+									class='form-control' [placeholder]="l('Invoice Symbol')"
+									type='text' (keyup.enter)='searchDatasHeaders()'>
+								</div>
+                                <div class="col-3">
+                                    <div class="input-search">
+                                        <tmss-combobox
+                                            [items]="inventoryGroupList"
+                                            [(ngModel)]="inventoryGroupId"
+                                            [text]="l('InventoryGroup')"
+                                            type='number'
+                                            ></tmss-combobox>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="input-search">
+                                        <tmss-combobox
+                                            [items]="supplierList"
+                                            [text]="l('Supplier')"
+                                            [type]="'text'"
+                                            [(ngModel)]="vendorId"></tmss-combobox>
+                                    </div>
+                                </div>
+                                <div class='input-search'>
+									<input [(ngModel)]='poNumber' name='poNumber'
+									class='form-control' [placeholder]="l('Po Number')"
+									type='text' (keyup.enter)='searchDatasHeaders()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='partNo' name='partNo'
+									class='form-control' [placeholder]="l('Part No')"
+									type='text' (keyup.enter)='searchDatasHeaders()'>
+								</div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Invoice Date From"
+                                        [(ngModel)]="creationTimeFrom"
+                                        name="creationTimeFrom"
+                                        (keydown)="searchDatasHeaders()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #f="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="f.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Invoice Date To"
+                                        [(ngModel)]="creationTimeTo"
+                                        name="creationTimeTo"
+                                        (keydown)="searchDatasHeaders()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #t="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="t.toggle()"></i>
+                                </div>
+                                
+                                <div class="btn-search">
+                                    <button (click)="searchDatasHeaders()" class="btn btn-primary" >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <div class="ui-g-12">
+                                    <h4 class="card-header card-grid-table">
+                                        {{ l(' Invoice Headers ') }}
+                                    </h4>
+                                </div>
+                                <grid-table
+                                    [columnDefs]="headersColDefs"
+                                    [paginationParams]="paginationParamsHeaders"
+                                    [showPagination]="true"
+                                    [rowData]="rowDataHeaders"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGridHeaders($event)"
+                                    (changePaginationParams)="changePageHeaders($event)"
+                                    (onChangeSelection)="onChangeRowSelectionHeaders($event)"
+                      z              [frameworkComponents]="frameworkComponents">
+                                </grid-table>
+                                <!-- [height]="'35vh'"
+                                    [heightAuto]="false" -->
+                            </div>
+                            <div class="panelBtn text-right"></div>
+                          
+                            <div class="ui-g-12 ph-0" style="margin-top: 15px;">
+                                <div class="ui-g-12">
+                                    <h4 class="card-header card-grid-table">
+                                        {{ l(' Invoice Lines ') }}
+                                    </h4>
+                                </div>
+                                <grid-table
+                                    [columnDefs]="linesColDefs"
+                                    [paginationParams]="paginationParamsLines"
+                                    [showPagination]="true"
+                                    [rowData]="rowDataLines"
+                                    [defaultColDef]="defaultColDef"
+                                    [frameworkComponents]="frameworkComponents"
+                                    (changePaginationParams)="changePageLines($event)"
+                                    (onChangeSelection)="onChangeRowSelectionLines($event)"
+                                   >
+                                </grid-table>
+                                <!--  [heightAuto]="false"
+                                    [height]="'35vh'" -->
+                            </div>
+                            <hr>
+                            <div class="panelBtn text-right">
+                                <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Invoice Headers') }}
+                                </button>
+                                <button class="btn btn-success font-weight-bold " (click)="exportToExcelLines($event)">
+                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Invoice Lines') }}
+                                </button>
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

@@ -1,0 +1,392 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         {{ l(' CKD Warehouse Part Management ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+					<div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+									<input [(ngModel)]='partNo' name='partNo'
+									class='form-control' [placeholder]="l('Part No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='cfc' name='cfc'
+									class='form-control' [placeholder]="l('Cfc')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='supplierNo' name='supplierNo'
+									class='form-control' [placeholder]="l('Supplier No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='lotNo' name='lotNo'
+									class='form-control' [placeholder]="l('Lot No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='orderNo' name='orderNo'
+									class='form-control' [placeholder]="l('Order No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='invoiceNo' name='invoiceNo'
+									class='form-control' [placeholder]="l('Invoice No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Invoice Date From"
+                                        [(ngModel)]="invoiceDateFrom"
+                                        name="invoiceDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #idf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="idf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Invoice Date To"
+                                        [(ngModel)]="invoiceDateTo"
+                                        name="invoiceDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #idt="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="idt.toggle()"></i>
+                                </div>
+								<div class='input-search'>
+									<input [(ngModel)]='billofladingNo' name='billofladingNo'
+									class='form-control' [placeholder]="l('Bill Of Lading No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='shipmentNo' name='shipmentNo'
+									class='form-control' [placeholder]="l('Shipment No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="billDateFrom"
+                                        name="billDateFrom"
+                                        class="form-control"
+                                        [placeholder]="l('Bill Date From')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #d_start="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d_start.toggle()"></i>
+                                </div>
+								<div class="input-search">
+                                    <input
+                                        type="text"
+                                        [(ngModel)]="billDateTo"
+                                        name="billDateTo"
+                                        class="form-control"
+                                        [placeholder]="l('Bill Date To')"
+                                        type="text"
+                                        (keyup.enter)="searchDatas()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #d_end="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d_end.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+									<input [(ngModel)]='containerNo' name='containerNo'
+									class='form-control' [placeholder]="l('Container No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='renban' name='renban'
+									class='form-control' [placeholder]="l('Renban')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Port Date From"
+                                        [(ngModel)]="portDateFrom"
+                                        name="portDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #pf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="pf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Port Date To"
+                                        [(ngModel)]="portDateTo"
+                                        name="portDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #pt="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="pt.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Receive Date From"
+                                        [(ngModel)]="receiveDateFrom"
+                                        name="receiveDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #rf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="rf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Receive Date To"
+                                        [(ngModel)]="receiveDateTo"
+                                        name="receiveDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #rt="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="rt.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+									<input [(ngModel)]='moduleCaseNo' name='moduleCaseNo'
+									class='form-control' [placeholder]="l('Module Case No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='storageLocationCode' name='storageLocationCode'
+									class='form-control' [placeholder]="l('Storage Location Code')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Unpacking Date From"
+                                        [(ngModel)]="unpackingDateFrom"
+                                        name="unpackingDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #uf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="uf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Unpacking Date To"
+                                        [(ngModel)]="unpackingDateTo"
+                                        name="unpackingDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #ut="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="ut.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Firm Packing Date From"
+                                        [(ngModel)]="firmPackingDateFrom"
+                                        name="firmPackingDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #fpf="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="fpf.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        placeholder="Firm Packing Date To"
+                                        [(ngModel)]="firmPackingDateTo"
+                                        name="firmPackingDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #fpt="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="fpt.toggle()"></i>
+                                </div>
+
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ordertypeCodeList"
+                                    name="OrdertypeCodeList"
+                                    [(ngModel)]="ordertypeCode"
+                                    [text]="l('Ordertype Code')"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="goodstypeCodeList"
+                                    name="goodstypeCodeList"
+                                    [(ngModel)]="goodstypeCode"
+                                    [text]="l('Goodstype Code')"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ckdPioList"
+                                    name="ckdPio"
+                                    [(ngModel)]="ckdPio"
+                                    [text]="l('Ckd Pio')"></tmss-combobox>
+                                </div>
+
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                                <!-- <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('1')" class="btn btn-success groupBtn actionButton_w1"  >
+                                        Intransit
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('2')"  class=" btn btn-success groupBtn actionButton_w2" >
+                                        In Transit Port
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('3')"  class="btn btn-success groupBtn actionButton_w3" >
+                                        In TMV
+                                    </button>
+                                </div>
+                                <div class="btn-search minwidth">
+                                    <button (click)="setvalradio('4')"  class="btn btn-success groupBtn actionButton_w4" >
+                                        In Rental WH
+                                    </button>
+                                </div> -->
+                                <div class="ui-g-12 input-group">
+                                    <div class="ui-g-12 ui-md-12 frame-1000006298">
+                                        <div class="segmented-picker-option groupBtn actionButton_w1" (click)="setvalradio('1')">
+                                            <div class="separator"></div>
+                                            <div class="label" >Intransit</div>
+                                        </div>
+                                        <div class="segmented-picker-option groupBtn actionButton_w2" (click)="setvalradio('2')">
+                                            <div class="separator"></div>
+                                            <div class="label" > In Transit Port</div>
+                                        </div>
+                                        <div class="segmented-picker-option groupBtn actionButton_w3" (click)="setvalradio('3')">
+                                            <div class="separator"></div>
+                                            <div class="label">In TMV</div>
+                                        </div>
+                                        <div class="segmented-picker-option groupBtn actionButton_w4" (click)="setvalradio('4')">
+                                            <div class="separator"></div>
+                                            <div class="label">In Rental WH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="ui-g-12 input-group">
+                        <div class="ui-g-12 ui-md-12 frame-1000006298">
+                            <div class="segmented-picker-option groupBtn actionButton_w1" (click)="setvalradio('1')">
+                                <div class="separator"></div>
+                                <div class="label" >Intransit</div>
+                            </div>
+                            <div class="segmented-picker-option groupBtn actionButton_w2" (click)="setvalradio('2')">
+                                <div class="separator"></div>
+                                <div class="label" > In Transit Port</div>
+                            </div>
+                            <div class="segmented-picker-option groupBtn actionButton_w3" (click)="setvalradio('3')">
+                                <div class="separator"></div>
+                                <div class="label">In TMV</div>
+                            </div>
+                            <div class="segmented-picker-option groupBtn actionButton_w4" (click)="setvalradio('4')">
+                                <div class="separator"></div>
+                                <div class="label">In Rental WH</div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="ui-g-12 ui-md-12">
+
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection"
+								[frameworkComponents]="frameworkComponents"
+                                [sideBar]="sideBar"
+                                [pivotMode]="false"
+                            >
+                            </simple-ag-grid>
+                        </div>
+
+                        <hr>
+                        <div class="text-right">
+                            <button
+                            class="btn btn-warning font-weight-bold"
+                            (click)="viewHistoryPartManagementModal.show(selectId)"  [disabled]="!changedRecordsPartManagement.includes(selectedRow.id)">
+                            <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold"  (click)="exportReportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Part Customs Decl.') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold"  (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<history-partmanagement-modal #viewHistoryPartManagementModal></history-partmanagement-modal>

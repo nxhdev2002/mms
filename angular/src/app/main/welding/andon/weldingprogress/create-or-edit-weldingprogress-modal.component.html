@@ -1,0 +1,292 @@
+<div
+    bsModal
+    #createOrEditModalWeldingProgress="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit WeldingProgress' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New WeldingProgress' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Body No</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="BodyNo"
+                            [(ngModel)]="rowdata.bodyNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Color</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Color"
+                            [(ngModel)]="rowdata.color"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">ColorOrg</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ColorOrg"
+                            [(ngModel)]="rowdata.colorOrg"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Scan Type Cd</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ScanTypeCd"
+                            [(ngModel)]="rowdata.scanTypeCd"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">ScanLocation</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ScanLocation"
+                            [(ngModel)]="rowdata.scanLocation"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Scan Time</label>
+                        <input
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="ScanTime"
+                            [(ngModel)]="rowdata.scanTime"
+                            #datepickerScanTime="bsDatepicker"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                        <i
+                            class="fa fa-calendar-alt col-md-1 form-control"
+                            id="cssCalender"
+                            (click)="datepickerScanTime.toggle()"
+                        ></i>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Mode</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Mode"
+                            [(ngModel)]="rowdata.mode"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Process Group</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ProcessGroup"
+                            [(ngModel)]="rowdata.processGroup"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Process Subgroup</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ProcessSubgroup"
+                            [(ngModel)]="rowdata.processSubgroup"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Process Seq</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ProcessSeq"
+                            [(ngModel)]="rowdata.processSeq"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Conveyer Status</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="conveyerStatus"
+                            [(ngModel)]="rowdata.conveyerStatus"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Last Conveyer Run</label>
+                        <input
+                            class="col-md-9 form-control input-text"
+                            name="lastConveyerRun"
+                            #datepicker="bsDatepicker"
+                            [(ngModel)]="rowdata.lastConveyerRun"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                        <i
+                            class="fa fa-calendar-alt col-md-1 form-control"
+                            id="cssCalender"
+                            (click)="datepicker.toggle()"
+                        ></i>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Tc Status</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="TcStatus"
+                            [(ngModel)]="rowdata.tcStatus"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Model</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Model"
+                            [(ngModel)]="rowdata.model"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Lot No</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="LotNo"
+                            [(ngModel)]="rowdata.lotNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">No In Lot</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="NoInLot"
+                            [(ngModel)]="rowdata.noInLot"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Sequence No</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="SequenceNo"
+                            [(ngModel)]="rowdata.sequenceNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Defect Desc</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="defectDesc"
+                            [(ngModel)]="rowdata.defectDesc"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Target Repair</label>
+                        <input
+                            class="col-md-10 form-control input-text"
+                            type="text"
+                            name="TargetRepair"
+                            [(ngModel)]="rowdata.targetRepair"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Location</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Location"
+                            [(ngModel)]="rowdata.location"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Duplicate Lot</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="DuplicateLot"
+                            [(ngModel)]="rowdata.duplicateLot"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Weld Transfer</label>
+                        <new-checkbox [(ngModel)]="_weldTransfer" name="weldTransfer"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Rescan Body No</label>
+                        <input
+                            type="text"
+                            maxlength="1"
+                            class="col-md-10 form-control input-text"
+                            name="RescanBodyNo"
+                            [(ngModel)]="rowdata.rescanBodyNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Rescan Lot No</label>
+                        <input
+                            type="text"
+                            maxlength="1"
+                            class="col-md-10 form-control input-text"
+                            name="RescanLotNo"
+                            [(ngModel)]="rowdata.rescanLotNo"
+                        />
+                    </div>
+
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Recan Mode</label>
+                        <input
+                            class="col-md-10 form-control input-text"
+                            type="text"
+                            name="Recan ode"
+                            [(ngModel)]="rowdata.rescanMode"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Rescan</label>
+                        <new-checkbox [(ngModel)]="_isRescan" name="isRescan"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Paint Out</label>
+                        <new-checkbox [(ngModel)]="_isPaintOut" name="isPaintOut"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

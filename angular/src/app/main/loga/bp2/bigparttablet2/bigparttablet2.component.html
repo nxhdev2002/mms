@@ -1,0 +1,205 @@
+<div class="BIGPART_TABLET color_title">
+    <div id="passwordForNextC">{{passwordForNextC}}</div>
+    <div id="screen-status"></div>
+    <div class="Header">
+        <div class="WARP">
+            <div class="bigCol left">
+                    <div class="headcoll first">
+                        <div class="headtitle">
+                            <div class="headsubtitle overhide color_title">{{Title}}</div>
+                            <div class="headsubvalue">
+                                    <div class="headsubvaluerow color_value">{{ActualVolCount}}</div>
+                                    <div class="headsubvaluerow color_value">{{PlanVolCount}}</div>
+                            </div>
+                        </div>
+                        <div class="headvalue">
+                            <div class="headsubtitle color_title">
+                                <div class="ECAR">
+                                    <div class="ECAR_TITLE">{{EcarName}} ({{PROD_LINE}})
+                                            <div class="cont_icon_menu">
+                                                <div class="cont_circle_1"></div>
+                                                <div class="cont_circle_2"></div>
+                                                <div class="cont_circle_3"></div>
+                                                <div class="cont_circle_4"></div>
+                                            </div>
+                                    </div>
+                                    <div class="ECAR_BODY">
+                                        <div class="ECAR_ITEM" (click)="ECAR_CHANGE(_row.id, _row.prodLine, _row.ecarName)"  *ngFor="let _row of rowEcar" title="{{_row.id}}">{{_row.prodLine}} - {{_row.ecarName}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="headsubvalue color_value">{{ecarCount}}</div>
+                        </div>
+                    </div>
+                    <div class="headcoll mid">
+                        <div class="headtitle color_title">
+                            C.T countdown
+                        </div>
+                        <div class="headvalue color_value">
+                            <div class="progress-bar"></div>
+                            {{countdown}}
+                        </div>
+                    </div>
+                    <div class="headcoll last">
+                        <div class="headtitle">
+                            Item
+                        </div>
+                        <div class="headvalue color_value">
+                            {{(CountDataActual*MaxPartPerPage > rowCount) ? rowCount : CountDataActual*MaxPartPerPage}}/{{rowCount}}
+                        </div>
+                    </div>
+            </div>
+            <div class="bigCol right">
+                <div class="col_btn">
+                    <div class="btn btn_1 STATUS1 START_PK" (click)="START_FINISH()">
+                        <img class="default" src="/assets/common/images/Icon/start-default.png" />
+                        <img class="active" src="/assets/common/images/Icon/start-active.png" />
+                        <img class="disable" src="/assets/common/images/Icon/start-disable.png" />
+                       {{ButtonName}}
+                    </div>
+                </div>
+                <div class="col_btn">
+                    <div class="btn btn_1 STATUS1 UNDO" (click)="UNDO()">
+                        <img class="default w30" src="/assets/common/images/Icon/undo-default.png" />
+                        <img class="active w30" src="/assets/common/images/Icon/undo-active.png" />
+                        UNDO
+                    </div>
+                </div>
+                <div class="col_btn">
+                    <div class="btn btn_1 STATUS1 NEXTC" (click)="NEXTC_CONFIRM_PASSWORD()">
+                        <img class="default w30" src="/assets/common/images/Icon/next-default.png" />
+                        <img class="active w30" src="/assets/common/images/Icon/next-default.png" />
+                        NEXTC
+                    </div>
+                </div>
+                <div class="col_btn">
+                    <div class="btn btn_1 STATUS1 CALL_LEADER " (click)="CALL_LEADER()">
+                        <img class="default w30" src="/assets/common/images/Icon/call-default.png" />
+                        <img class="active w30" src="/assets/common/images/Icon/call-active.png" />
+                        CALL LD
+                    </div>
+                </div>
+                <div class="col_btn">
+                    <div class="col_btnsub">
+                        <div class="btn btn_2 STATUS1 next" (click)="BTN_NEXT()">
+                            NEXT
+                            <img class="default w30" src="/assets/common/images/Icon/next-default.png" />
+                            <img class="active w30" src="/assets/common/images/Icon/next-active.png" />
+                            <img class="disable w30" src="/assets/common/images/Icon/next-disable.png" />
+                        </div>
+                    </div>
+                    <div class="col_btnsub">
+                        <div class="btn btn_2 STATUS1 DISABLE back" (click)="BTN_BACK()" >
+                            <img class="default w30" src="/assets/common/images/Icon/next-default.png" />
+                            <img class="active w30" src="/assets/common/images/Icon/next-active.png" />
+                            <img class="disable w30" src="/assets/common/images/Icon/next-disable.png" />
+                            BACK
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear space"></div>
+    <div class="Content PAGE PAGE{{ _page }} {{ ((_page == 1)? 'active':'') }}" *ngFor="let _page of dataPage()" title="{{_page}}">
+        <div class="WARP">
+            <div class="cont contleft">
+                <div class="contHeader">
+                    <div class="contheadercol PART_NAME">Part Name</div>
+                    <div class="contheadercol VAL_1ST">1st</div>
+                    <div class="contheadercol VAL_2ND">2nd</div>
+                </div>
+                <div class="contBody">
+
+
+                    <div class="item PARTID_{{ _row.partId }}" id="PARTID_{{ _row.partId }}" *ngFor="let _row of dataleft(_page)" >
+                        <div class="contbodycol PART_NAME">{{_row.partName}}</div>
+                        <div class="contbodycol VAL_1ST">
+                            <div class="contbodyval color_value PICK_ADDRESS">
+                                <div class="pka">{{_row.pikAddress}} </div>
+                                <div class="ref">{{_row.refNo}} </div>
+                            </div>
+                            <div class="contbodyval color_value ID_MARK">{{_row.remark}}</div>
+                        </div>
+                        <div class="contbodycol VAL_2ND">
+                            <div class="contbodyval color_value PICK_ADDRESS2">
+                                <div class="pka">{{_row.pikAddress2}} </div>
+                                <div class="ref">{{_row.refNo2}} </div>
+                            </div>
+                            <div class="contbodyval color_value ID_MARK2">{{_row.remark2}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cont contright">
+                <div class="contHeader">
+                    <div class="contheadercol PART_NAME">Part Name</div>
+                    <div class="contheadercol VAL_1ST">1st</div>
+                    <div class="contheadercol VAL_2ND">2nd</div>
+                </div>
+                <div class="contBody">
+
+
+                    <div class="item PARTID_{{ _row.partId }}" id="PARTID_{{ _row.partId }}"  *ngFor="let _row of dataright(_page)">
+                        <div class="contbodycol PART_NAME">{{_row.partName}}</div>
+                        <div class="contbodycol VAL_1ST">
+                            <div class="contbodyval color_value PICK_ADDRESS">
+                                <div class="pka">{{_row.pikAddress}} </div>
+                                <div class="ref">{{_row.refNo}} </div>
+                            </div>
+                            <div class="contbodyval color_value ID_MARK">{{_row.remark}}</div>
+                        </div>
+                        <div class="contbodycol VAL_2ND">
+                            <div class="contbodyval color_value PICK_ADDRESS2">
+                                <div class="pka">{{_row.pikAddress2}} </div>
+                                <div class="ref">{{_row.refNo2}} </div>
+                            </div>
+                            <div class="contbodyval color_value ID_MARK2">{{_row.remark2}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade col-md-12 in show" id="popupConfirmPassword">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content col-md-12">
+                <div class="modal-header col-md-12">
+                    <div class="title-form">
+                        <h3>{{ 'Confirm Password For Next C' }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content col-md-12">
+
+                    <!-- Form Basic-->
+                    <div class="form-input">
+                        <div class="col-md-12 form-group row">
+                            <label class="col-md-2 form-control title">Password</label>
+                            <input id="inputPasswordForNextC"
+                                type="password"
+                                class="col-md-10 form-control input-text"
+                                name="password"
+
+                            />
+                        </div>
+
+                        <div class="modal-footer">
+                            <button (click)="ConfirmPassword()" type="button" class="btn btn-primary font-weight-bold">
+                                <i class="fa tmss-fa fa-save mr-1"></i>
+                                <span>Confirm Password</span>
+                            </button>
+                            <button (click)="CloseConfirmPassword()" type="button" class="btn btn-light-primary font-weight-bold">
+                                <i class="fa tmss-fa fa-times mr-1"></i>
+                                {{ l('Cancel') }}
+                            </button>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

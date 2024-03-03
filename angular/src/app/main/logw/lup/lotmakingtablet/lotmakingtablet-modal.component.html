@@ -1,0 +1,43 @@
+<div
+    appBsModal
+    #createOrEditModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="createOrEditModal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+    [busyIf]="loading"
+>
+    <div class="modal-dialog tmss-modal-lg" >
+        <div
+            class="modal-content"
+            style="margin-top: 50%;height: 490px; border-radius: 10px;background-color: #feffff; margin-top: 200px; border: 1px solid #000;">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <div>
+                        <span (click)="FinishLotMk(lot_id)" style="margin-top: 20px;width: 120px;font-size: 18px;display: flex;justify-content: center;align-items: center; text-align: center;height: 50px;margin-left: 320px; background-color: #6bcb6be6;float: right;border: groove;font-family: inherit;font-weight: 600;position: absolute;">{{
+                            l('FINISH LOT MAKING')}}</span>
+                            <span style="float: left;margin-left: 45px;margin-top: 20px;font-size: 13px;">LOT making</span>
+                        <div class="lot-making">
+                            <div class="item1">{{prod_line}}</div>
+                            <div class="item2">{{lot_no}}</div>
+                        </div>
+                    </div>
+                </h4>
+            </div>
+          <div class="modal-body">
+                <p style="position: absolute;margin-top:25px; margin-left:45px;font-weight: 500;">List module LOT Making</p>
+                <div class="list-module">
+                    <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()" type="button" class="btn btn-light-primary font-weight-bold CLOSEMODAL">
+                    <i class="fa tmss-fa fa-times mr-1 "></i>
+                    {{ l('Close') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

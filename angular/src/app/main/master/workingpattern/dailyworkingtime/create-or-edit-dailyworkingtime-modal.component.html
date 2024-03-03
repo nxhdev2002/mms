@@ -1,0 +1,151 @@
+<div
+    bsModal
+    #createOrEditModalDailyWorkingTime="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit DailyWorkingTime' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New DailyWorkingTime' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Date</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="workingDate"
+                            #datepicker="bsDatepicker"
+                            [(ngModel)]="_workingDate"
+                            bsDatepicker
+                            disabled="true"
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Shift No</label>
+                        <tmss-multi-column-dropdown
+                           [height]="'250px'"
+                           [placeholder]="shiftNo_shiftName"
+                           [list]="pDList"
+                           name="id"
+                           [columnDefs]="shiftColdef"
+                           [defaultColDef]="defaultColDef"
+                           dataField="shiftNo"
+                           [(ngModel)]="rowdata.shiftNo"
+                           displayField="shiftName"
+                           disabled="true"
+                           [style]="{ 'border-radius': '5px','width':'auto', 'flex':'1'}"
+                       ></tmss-multi-column-dropdown>
+                       </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shop</label>
+                        <p-listbox
+                            [options]="sList"
+                            [(ngModel)]="ListSelectedshopName"
+                            [ngModelOptions]="{ standalone: true }"
+                            [checkbox]="true"
+                            [multiple]="true"
+                            [filter]="true"
+                            optionValue = "shopName"
+                            optionLabel="description"
+                            [listStyle]="{'max-height':'250px'}"
+                            disabled="true"
+                         >
+                            <!-- <ng-template let-country pTemplate="item">
+                                <div>{{country.shopName}}</div>
+                            </ng-template> -->
+                        </p-listbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Type</label>
+                        <tmss-multi-column-dropdown
+                            [placeholder]="wtype_des"
+                            [height]="'250px'"
+                            [list]="wTList"
+                            name="workingType"
+                            [columnDefs]="wtColdef"
+                            [defaultColDef]="defaultColDef"
+                            dataField="workingType"
+                            [(ngModel)]="rowdata.workingType"
+                            displayField="description"
+                            disabled="true"
+                            [style]="{ 'border-radius': '5px','width':'auto', 'flex':'1'}"
+                        ></tmss-multi-column-dropdown>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Start Time</label>
+                        <input
+                            type="time"
+                            class="col-md-10 form-control input-text"
+                            name="startTime"
+                            [(ngModel)]="rowdata.startTime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">End Time</label>
+                        <input
+                            type="time"
+                            class="col-md-10 form-control input-text"
+                            name="endTime"
+                            [(ngModel)]="rowdata.endTime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Description</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Description"
+                            [(ngModel)]="rowdata.description"
+                        />
+                    </div>
+                    <!-- <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Manual</label>
+                        <input
+                            class="col-md-10 form-control checkboxManual"
+                            type="checkbox"
+                            name="isManual"
+                            [checked]="_isManual"
+                            (change)="changeManual($event)"
+                        />
+                    </div> -->
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Manual</label>
+                        <new-checkbox [(ngModel)]="_isManual" name="isManual"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

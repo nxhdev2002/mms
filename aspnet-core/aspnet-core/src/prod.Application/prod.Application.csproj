@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props"></Import>
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>prod.Application</AssemblyName>
+    <PackageId>prod.Application</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>prod</RootNamespace>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Master\Common\LotCodeGrade\Dto\**" />
+    <EmbeddedResource Remove="Master\Common\LotCodeGrade\Dto\**" />
+    <None Remove="Master\Common\LotCodeGrade\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp.EntityFrameworkCore.EFPlus" Version="8.0.0" />
+    <PackageReference Include="Abp.RedisCache" Version="8.0.0" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="NPOI" Version="2.5.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\prod.Application.Shared\prod.Application.Shared.csproj" />
+    <ProjectReference Include="..\prod.Core\prod.Core.csproj" />
+    <ProjectReference Include="..\prod.EntityFrameworkCore\prod.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Frame\" />
+    <Folder Include="LogW\" />
+    <Folder Include="Inv\" />
+    <Folder Include="Master\LogW\" />
+    <Folder Include="Master\Spp\Customer\Exporting\" />
+    <Folder Include="Welding\" />
+    <Folder Include="Plan\" />
+    <Folder Include="Painting\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GemBox.Spreadsheet">
+      <HintPath>..\GemBox.Spreadsheet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

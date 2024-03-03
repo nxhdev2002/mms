@@ -1,0 +1,172 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         {{ l(' CKD SMQD Management ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="ui-g-12 input-group">
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        [placeholder]="l('Smqd Date From')"
+                                        [(ngModel)]="smqdDateFrom"
+                                        name="smqdDateFrom"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #f="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat:'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="f.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        type="text"
+                                        [placeholder]="l('Smqd Date To')"
+                                        [(ngModel)]="smqdDateTo"
+                                        name="smqdDateTo"
+                                        (keydown)="searchDatas()"
+                                        class="form-control"
+                                        bsDatepicker
+                                        #t="bsDatepicker"
+                                        placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat:'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="t.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+									<input [(ngModel)]='partNo' name='partNo'
+									class='form-control' [placeholder]="l('Part No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='cfc' name='cfc'
+									class='form-control' [placeholder]="l('Cfc')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class='input-search'>
+									<input [(ngModel)]='supplierNo' name='supplierNo'
+									class='form-control' [placeholder]="l('Supplier No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='lotNo' name='lotNo'
+									class='form-control' [placeholder]="l('Lot No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary" type="submit">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ui-g-12 input-group">
+                                <div class="ui-g-12 ui-md-12 frame-1000006298">
+                                    <div class="segmented-picker-option groupBtn actionButton_w1" (click)="setvalradio('2')">
+                                        <div class="separator"></div>
+                                        <div class="label">PxP In</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w2" (click)="setvalradio('3')">
+                                        <div class="separator"></div>
+                                        <div class="label">PxP Return</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w3" (click)="setvalradio('4')">
+                                        <div class="separator"></div>
+                                        <div class="label">In Other</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w4" (click)="setvalradio('5')">
+                                        <div class="separator"></div>
+                                        <div class="label">PxP Out</div>
+                                    </div>
+                                    <div class="segmented-picker-option groupBtn actionButton_w5" (click)="setvalradio('6')">
+                                        <div class="separator"></div>
+                                        <div class="label">Out Other</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)"
+                                [rowSelection]="rowSelection"
+								[frameworkComponents]="frameworkComponents"
+                            >
+                            </simple-ag-grid>
+                        </div>
+                        <hr>
+                        <div class="text-right">
+
+                            <!-- <button *ngIf="isGranted('Pages.Ckd.SMQD.Management.Import')"
+                            class="btn btn-primary font-weight-bold"
+                            [disabled]="!radioValue || radioValue == '0'"
+                            (click)="showImportExcel()">
+                                <i class="fas fa-file-import"></i>{{ l('Import Excel') }}
+                            </button> -->
+                            <!-- <button class="btn font-weight-bold sumary-prod" id="importExcel" (focus)="prodSumaryOption()"
+                                (blur)="lostForcus()" *ngIf="isGranted('Pages.Ckd.SMQD.Management.Import')">
+
+                             <button class="btn font-weight-bold sumary-prod" id="importExcel" (focus)="prodSumaryOption()"
+                                (blur)="lostForcus()" *ngIf="isGranted('Pages.Ckd.SMQD.Management.Import')">
+
+
+                                <img src="/assets/common/images/Icon/vscode-icons_file-type-excel2.png" alt="">
+                                {{ l('PxP IN - OUT')}}
+                                <div class="exel-dropdown">
+                                    <ul>
+                                        <li (click)="importPxPInOutExcelModal.show('PxP In')"><a class><i
+                                                    class="fas fa-file-import"></i>PxP IN</a></li>
+                                        <li (click)="importPxPInOutExcelModal.show('PxP Out')"><a class><i
+                                                    class="fas fa-file-import"></i>PxP OUT</a></li>
+                                        <li (click)="importPxPInOutExcelModal.show('PxP Return')"><a class><i
+                                                    class="fas fa-file-import"></i>PxP Return</a></li>
+                                        <li (click)="importPxPInOutExcelModal.show('In Other')"><a class><i
+                                                    class="fas fa-file-import"></i>Nhận hàng khác</a></li>
+                                        <li (click)="importPxPInOutExcelModal.show('Out Other')"><a class><i
+                                                    class="fas fa-file-import"></i>Xuất hàng khác</a></li>
+                                    </ul>
+                                </div>
+                                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                            </button> -->
+                            <button *ngIf="isGranted('Pages.Ckd.SMQD.Management.Import') " [disabled]="checkbutuon"
+                            class="btn btn-primary font-weight-bold" (click)="importPxPInOutExcelModal.show(radioValue)">
+                                <i class="fas fa-file-import"></i>{{ l('Import Excel') }}
+                            </button>
+                            <!-- <button *ngIf="isGranted('Pages.Ckd.SMQD.Management.Import')"
+                            class="btn btn-primary font-weight-bold" (click)="importExcelModal.show()">
+                                <i class="fas fa-file-import"></i>{{ l('Import Excel') }}
+                            </button> -->
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<import-smqd-pxpinout #importPxPInOutExcelModal></import-smqd-pxpinout>
+
+<!-- <import-smqdmanagement #importExcelModal></import-smqdmanagement> -->

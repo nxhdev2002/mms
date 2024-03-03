@@ -1,0 +1,43 @@
+<div bsModal #viewHrTitles="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View Master Inventory Hr Titles')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Code</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Code' readonly
+                            [(ngModel)]='rowdata.code'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Name</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Name' readonly
+                            [(ngModel)]='rowdata.name'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>Description</label>
+                        <input type='text' readonly class='col-md-2 form-control input-text' name='Description'
+                            [(ngModel)]='rowdata.description'>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i>
+                        {{ l('Quay Lại') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

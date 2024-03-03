@@ -1,0 +1,60 @@
+.ag-in-cell-button {
+    border-radius: 4px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    min-width: 2.3rem;
+    margin: 0;
+    border: transparent;
+    background-color: transparent;
+}
+
+.ag-in-cell-button.btnActive {
+    border: 1px solid #c5edee;
+    background-color: #c5edee;
+    color: #2ac7c4;
+    padding: 8px;
+}
+
+.ag-in-cell-button.btnActive i {
+    color: #1cc8796e;
+    font-size: 12px;
+}
+
+.ag-in-cell-button.btnInActive {
+    filter: grayscale(1);
+    border: 1px solid #c5edee;
+    background-color: #c5edee;
+    color: #2ac7c4;
+    padding: 8px;
+}
+
+.ag-in-cell-button.btnInActive i {
+    color: #1cc8796e;
+    font-size: 12px;
+}
+
+.ag-in-cell-button.btnUndefined {
+    display: none;
+}
+
+.ag-in-cell-button.btnUndefined i {
+    display: none;
+}
+
+.ag-in-cell-button[disabled] {
+    border-color: #7C8C9E;
+    cursor: not-allowed;
+}
+
+button {
+    height: 19px !important;
+}
+
+#button-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}

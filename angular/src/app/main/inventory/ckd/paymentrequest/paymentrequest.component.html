@@ -1,0 +1,90 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CKD Intransit Payment Request ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input [(ngModel)]="requestNo" name="requestNo" class="form-control"
+                                        [placeholder]="l('Request No')" type="text" (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="customsNo" name="customsNo" class="form-control"
+                                        [placeholder]="l('Customs Declare No')" type="text"
+                                        (keyup.enter)="searchDatas()" />
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox [items]="ordertypeCodeList" name="OrdertypeCodeList" [(ngModel)]="ordertypeCode"
+                                        [text]="l('Ordertype Code')" (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox [items]="ckdPioList" name="ckdPio" [(ngModel)]="ckdPio"
+                                        [text]="l('Ckd Pio')" (ngModelChange)="searchDatas()"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <div class="ui-g-12">
+                                <h4 class="card-header card-grid-table">
+                                    {{ l ( ' Payment Request ' )}}
+                                </h4>
+                            </div>
+                            <grid-table [columnDefs]="requestColDefs" [paginationParams]="paginationParamRequest"
+                                [showPagination]="true" [rowData]="rowDataRequest" [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGridRequest($event)"
+                                (changePaginationParams)="changePageRequest($event)"
+                                (onChangeSelection)="onChangeRowSelectionRequest($event)"
+                                [frameworkComponents]="frameworkComponents">
+                            </grid-table>
+
+                        </div>
+                        <hr>
+                        <div class="ui-g-12 ph-0">
+                            <div class="ui-g-12">
+                                <h4 class="card-header card-grid-table">
+                                    {{ l ( ' Customs Declare' )}}
+                                </h4>
+                            </div>
+                            <grid-table [columnDefs]="customsColDefs" [paginationParams]="paginationParamCustoms"
+                                [showPagination]="true" [rowData]="rowDataCustoms" [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGridCustoms($event)"
+                                [frameworkComponents]="frameworkComponents"
+                                (changePaginationParams)="changePageCustoms($event)">
+                            </grid-table>
+                        </div>
+                        <hr>
+                        <div class="panelBtn text-right">
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcelRequest($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{
+                                l('Export Payment Request') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcelCustoms($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{
+                                l('Export Customs Declare') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

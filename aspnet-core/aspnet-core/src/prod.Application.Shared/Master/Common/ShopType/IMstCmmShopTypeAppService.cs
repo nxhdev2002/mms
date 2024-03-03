@@ -1,0 +1,25 @@
+﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+using System.Collections.Generic;
+using prod.Dto;
+using System.Threading.Tasks;
+using prod.Master.Common.Dto;
+using prod.Master.Common.Dto;
+
+namespace prod.Master.Common
+{
+
+    public interface IMstCmmShopTypeAppService : IApplicationService
+    {
+
+        Task<PagedResultDto<MstCmmShopTypeDto>> GetAll(GetMstCmmShopTypeInput input);
+
+        Task CreateOrEdit(CreateOrEditMstCmmShopTypeDto input);
+
+        Task Delete(EntityDto input);
+
+    }
+
+}
+
+

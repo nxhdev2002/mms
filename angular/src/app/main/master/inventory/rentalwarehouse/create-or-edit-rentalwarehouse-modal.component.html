@@ -1,0 +1,59 @@
+<div bsModal #createOrEditMstInvCkdRentalWarehouse="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit MstInvCkdRentalWarehouse')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New MstInvCkdRentalWarehouse')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Code' [(ngModel)]='rowdata.code'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Name' [(ngModel)]='rowdata.name'>
+					</div>
+					<div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>From Date</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='fromDate'
+                            #datepicker_f='bsDatepicker' [(ngModel)]='_fromDate' bsDatepicker
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }">
+                        <i class="fa fa-calendar-alt col-md-1 form-control" id="fromDate"
+                            (click)="datepicker_f.toggle()"></i>
+                    </div>
+					<div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'>To Date</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='toDate'
+                            #datepicker_t='bsDatepicker' [(ngModel)]='_toDate' bsDatepicker
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }">
+                        <i class="fa fa-calendar-alt col-md-1 form-control" id="toDate"
+                            (click)="datepicker_t.toggle()"></i>
+                    </div>
+                    
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>              
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

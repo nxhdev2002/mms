@@ -1,0 +1,49 @@
+<div bsModal #createOrEditModalStockIssuing="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit GPS Issuing')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New Request Issuing')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->   
+                <div class="form-input">                   
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNo' [(ngModel)]='rowdata.partNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartName' [(ngModel)]='rowdata.partName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Uom</label>
+						<input type='text' class='col-md-10 form-control input-text' name='uom' [(ngModel)]='rowdata.uom'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Qty Request</label>
+						<input type='number' class='col-md-10 form-control input-text' name='qtyRequest' [(ngModel)]='rowdata.qtyRequest'>
+					</div>               
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Cost Center</label>
+						<input type='number' class='col-md-10 form-control input-text' name='costCenter' [(ngModel)]='rowdata.costCenter'>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>

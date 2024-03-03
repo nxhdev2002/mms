@@ -1,0 +1,145 @@
+<div bsModal #createOrEditModalInvCkdSmqdOrder="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Smqd Order')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New Smqd Order')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Shop</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Shop' [(ngModel)]='rowdata.shop'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">SMQD Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SMQDDate' [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                        #datepicker='bsDatepicker' [(ngModel)]="rowdata.smqdDate"  bsDatepicker #a="bsDatepicker">
+                    <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                        (click)="a.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Run No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='RunNo' [(ngModel)]='rowdata.runNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Cfc</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Cfc' [(ngModel)]='rowdata.cfc'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Part No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartNo' [(ngModel)]='rowdata.partNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Part Name</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PartName' [(ngModel)]='rowdata.partName'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Order No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='OrderNo' [(ngModel)]='rowdata.orderNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Order Qty</label>
+						<input type='number' class='col-md-10 form-control input-text' name='OrderQty' [(ngModel)]='rowdata.orderQty'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Oder Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='OderDate' [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                        #datepickerOrDatetime='bsDatepicker' [(ngModel)]="rowdata.orderDate"  bsDatepicker #b="bsDatepicker">
+                    <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                        (click)="b.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'style="min-width: 157px;">Transport</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='Transport' [(ngModel)]='rowdata.transport'>
+                    </div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Reason Code</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ReasonCode' [(ngModel)]='rowdata.reasonCode'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Eta Request</label>
+						<input type='text' class='col-md-10 form-control input-text' name='EtaRequest' [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                        #datepickerEtaRequest='bsDatepicker' [(ngModel)]="rowdata.etaRequest"  bsDatepicker #c="bsDatepicker">
+                    <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                        (click)="c.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Actual Eta Port</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ActualEtaport' [(ngModel)]='rowdata.actualEtaPort'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Eta Exp Reply</label>
+						<input type='text' class='col-md-10 form-control input-text' name='EtaExpReply' placement="top right"
+                        [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                        #datepickerEtaExpReply='bsDatepicker' [(ngModel)]="rowdata.etaExpReply"  bsDatepicker #d="bsDatepicker">
+                    <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                        (click)="d.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Invoice No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InvoiceNo' [(ngModel)]='rowdata.invoiceNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Receive Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ReceiveDate' placement="top right"
+
+                        [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                        #datepickerReceiveDate='bsDatepicker' [(ngModel)]="rowdata.receiveDate"  bsDatepicker #e="bsDatepicker">
+                    <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                        (click)="e.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Receive Qty</label>
+						<input type='number' class='col-md-10 form-control input-text' name='ReceiveQty' [(ngModel)]='rowdata.receiveQty'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Remark</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Remark' [(ngModel)]='rowdata.remark'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'style="min-width: 157px;">Order Type</label>
+						<input type='number' class='col-md-10 form-control input-text' name='OrderType' [(ngModel)]='rowdata.orderType'>
+					</div>
+
+                    <!-- <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'style="min-width: 157px;">Firt Day Product</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='Firt Day Product'
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                            #datepicker='bsDatepicker' [(ngModel)]="rowdata.firstDayProduct"  bsDatepicker #d="bsDatepicker">
+                        <i class="fa fa-calendar-alt col-md-1 form-control" id="Firt Day Product"
+                            (click)="d.toggle()"></i>
+                    </div>
+                    <div class='col-md-12 form-group row'>
+                        <label class='col-md-2 form-control title'style="min-width: 157px;">Last Day Product</label>
+                        <input type='text' class='col-md-10 form-control input-text' name='Last Day Product'
+
+                            [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right' }"
+                            #datepickerOrDatetime='bsDatepicker' [(ngModel)]="rowdata.lastDayProduct"  bsDatepicker #g="bsDatepicker">
+                        <i class="fa fa-calendar-alt col-md-1 form-control" id="Last Day Product"
+                            (click)="g.toggle()"></i>
+                    </div> -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

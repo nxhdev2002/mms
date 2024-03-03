@@ -1,0 +1,64 @@
+<div bsModal #createOrEditModalGpsWbsCCMapping="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit Gps Wbs CC Mapping')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create Gps Wbs CC Mapping')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm"  autocomplete="off"  (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Cost Center From</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenterFrom' [(ngModel)]='rowdata.costCenterFrom'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Wbs From</label>
+						<input type='text' class='col-md-10 form-control input-text' name='WbsFrom' [(ngModel)]='rowdata.wbsFrom'
+                            >
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Cost Center To</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenterTo' [(ngModel)]='rowdata.costCenterTo'
+                            >
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Wbs To</label>
+						<input type='text' class='col-md-10 form-control input-text' name='WbsTo' [(ngModel)]='rowdata.wbsTo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="min-width: 150px;" class='col-md-2 form-control title'>Effective From Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='EffectiveFromDate' placement="bottom right"
+						#datepicker='bsDatepicker' #d="bsDatepicker" [(ngModel)]='_effectiveFromDate'  bsDatepicker [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }">
+						<i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="min-width: 150px;" class='col-md-2 form-control title'>Effective From To</label>
+						<input type='text' class='col-md-10 form-control input-text' name='EffectiveFromTo' placement="bottom right"
+						#datepicker='bsDatepicker' #d1="bsDatepicker" [(ngModel)]='_effectiveFromTo'  bsDatepicker [bsConfig]="{dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }">
+						<i class="fa fa-calendar-alt" (click)="d1.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title min-width-150'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary font-weight-bold" (click)="submit($event)">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<confirm-dialog #confirmDialog [isConfirm]="false"  ></confirm-dialog>

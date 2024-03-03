@@ -1,0 +1,33 @@
+<div bsModal #viewHistoryPartListModal="bs-modal" class="modal fade col-md-12" [busyIf]="isLoading" role="dialog" [config]="{ backdrop: 'static' }">
+	<div class="modal-dialog tmss-modal-lg" style=" min-width: 92%; margin-left: 4%; margin-right: 4%;">
+		<div class="modal-content col-md-12">
+			<div class="modal-header col-md-12">
+				<div class="title-form">
+					<h3>{{('History PartList')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-md-12">
+			<div class="form-input">
+				<div class='col-md-12'>
+					<div class="form-input">
+						<div class="ui-g-12 ui-md-12">
+							<simple-ag-grid [rowSelection]="rowSelection" [showPagination]="true"
+								(callBackEvent)="callBackDataGrid($event)" [paginationParams]="paginationParams"
+								[columnDefs]="historyColDef" [rowData]="rowdata" [defaultColDef]="defaultColDef"
+								[frameworkComponents]="frameworkComponents" [height]="'50vh'" [heightAuto]="false">
+							</simple-ag-grid>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+						<i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

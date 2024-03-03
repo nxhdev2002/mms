@@ -1,0 +1,16 @@
+<div class="input-group p-0" [ngClass]="className ? className : ''">
+  <span class="input-group-text left-text" *ngIf="text && value < 0">{{ text }}<p *ngIf="isValidate" style="color: red; margin: 0.2rem 0 0.2rem 0.5rem;">*</p></span>
+  <select
+    #input
+    [id]="id"
+    [class.required]="isRequired"
+    class="form-control tmss-form-control"
+    [(ngModel)]="value"
+    [disabled]="isDisabled ? true : null"
+    (change)="changeValue($event)"
+  >
+    <option *ngFor="let item of items" [value]="item ? item[key] : undefined" [selected]="selectedItem !== null && item && item[key] === selectedItem ? true : false">{{ item ? item[label] : undefined }}</option>
+  </select>
+
+  <span class="ng-arrow-wrapper"><span class="ng-arrow"></span></span>
+</div>

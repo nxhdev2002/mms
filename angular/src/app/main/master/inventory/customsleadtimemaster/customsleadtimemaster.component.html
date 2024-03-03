@@ -1,0 +1,86 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' Customs Lead Time Master') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='exporter' name='Exporter' class='form-control' [placeholder]="l('Exporter')"
+                                        type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='carrier' name='Carrier' class='form-control' [placeholder]="l('Carrier')"
+                                        type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                    [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)" [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents">
+                                </simple-ag-grid>
+                            </div>
+                        <hr>
+                        <div class="text-right">
+                            <button
+                            class="btn btn-primary font-weight-bold"
+                            *ngIf="isGranted('Pages.Master.CKD.CustomsLeadTimeMaster.Edit')"
+                            (click)="createOrEditModal.show()">
+                            <i class="fa fa-plus mr-1"></i>{{ l('Add') }}
+                        </button>
+                        <button
+                            class="btn btn-primary font-weight-bold"
+                            *ngIf="isGranted('Pages.Master.CKD.CustomsLeadTimeMaster.Edit')"
+                            [disabled]="!selectedRow.id"
+                            (click)="createOrEditModal.show(selectedRow)">
+                            <i class="far fa-edit mr-1"></i>{{'Edit'}}
+                        </button>
+                        <button
+                            class="btn btn-primary font-weight-bold"
+                            *ngIf="isGranted('Pages.Master.CKD.CustomsLeadTimeMaster.Edit')"
+                            [disabled]="!selectedRow.id"
+                            (click)="deleteRow(selectedRow)">
+                            <i class="fas fa-trash-alt mr-1"></i>{{'Delete'}}
+                        </button>
+                            <button class="btn btn-primary font-weight-bold" (click)="importModal.show()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Import Excel') }}
+                            </button>
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<import-customsleadtimemaster #importModal (modalSave)="searchDatas()"></import-customsleadtimemaster>
+<create-or-edit-customsleadtimemaster-modal
+    #createOrEditModal
+    (modalSave)="callBackDataGrid(dataParams)"
+    (modalClose)="onChangeRowSelection(dataParams)">
+</create-or-edit-customsleadtimemaster-modal>

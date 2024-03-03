@@ -1,0 +1,224 @@
+<div bsModal #createOrEditVehicleDetails="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg1">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <h3 *ngIf="rowdata.id">{{('Edit Inventory CKD Vehicle')}}</h3>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-input">
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Cfc</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='cfc' [(ngModel)]='rowdata.cfc'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Grade</label>
+                                <input type='text' class='col-md-10 form-control input-text' maxlength="2"
+                                    name='grade' [(ngModel)]='rowdata.grade'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Body No</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='bodyNo' [(ngModel)]='rowdata.bodyNo'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Lot No</label>
+                                <input type='text' class='col-md-10 form-control input-text' maxlength="20"
+                                    name='lotNo' [(ngModel)]='rowdata.lotNo'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>No In Lot</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='noInLot' [(ngModel)]='rowdata.noInLot'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Sequence No</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='sequenceNo' [(ngModel)]='rowdata.sequenceNo'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Vin</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='vin' [(ngModel)]='rowdata.vin'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Engine Id</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='engineId' [(ngModel)]='rowdata.engineId'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Trans Id</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='transId' [(ngModel)]='rowdata.transId'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Sales Sfx</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='salesSfx' [(ngModel)]='rowdata.salesSfx'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Color Type</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='colorType' [(ngModel)]='rowdata.colorType'>
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Description</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='name' [(ngModel)]='rowdata.name'>
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Indent Line</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='indentLine' [(ngModel)]='rowdata.indentLine'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Color</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='color' [(ngModel)]='rowdata.color'>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-input" style="padding: 9.75px;">
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Ss No</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='ssNo' [(ngModel)]='rowdata.ssNo'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Ed Number</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='edNumber' [(ngModel)]='rowdata.edNumber'>
+                            </div>
+
+                            <div class='col-md-12 form-group row'>
+                                <label class='col-md-2 form-control title'>Goshi Car</label>
+                                <input type='text' readonly class='col-md-10 form-control input-text'
+                                    name='goshiCar' [(ngModel)]='rowdata.goshiCar'>
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">W In Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="_WInActual"
+                                    [(ngModel)]="rowdata.wInActualDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">W Out Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="_WInActual2"
+                                    [(ngModel)]="rowdata.wOutActualDateTime_YYYYDDMM"
+                                />
+                            </div>
+
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">T In Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="_TInActual"
+                                    [(ngModel)]="rowdata.tInActualDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">T Out Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="_TOutActual"
+                                    [(ngModel)]="rowdata.tOutActualDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">A In Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="_AInActual"
+                                    [(ngModel)]="rowdata.aInActualDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">A Out Actual</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="lastCalDatetime"
+                                    [(ngModel)]="rowdata.aOutActualDateTime_YYYYDDMM "
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">LineoffDateTime</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="lastCalDatetime2"
+                                    [(ngModel)]="rowdata.lineoffDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class="col-md-12 form-group row">
+                                <label class="col-md-2 form-control title">PdiDateTime</label>
+                                <input
+                                    type="datetime-local"
+                                    class="col-md-9 form-control input-text"
+                                    name="lastCalDatetime1"
+                                    [(ngModel)]="rowdata.pdiDateTime_YYYYDDMM"
+                                />
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label style="width: 120px" class='col-md-2 form-control title'>PIO Date</label>
+                                <input type='text' class='col-md-9 form-control input-text ' name='pioDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                #datepickerPIODate='bsDatepicker' [(ngModel)]='_PIODate'  bsDatepicker #d="bsDatepicker">
+                                <i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+                            </div>
+                            <div class='col-md-12 form-group row'>
+                                <label style="width: 120px" class='col-md-2 form-control title'>Sales Date</label>
+                                <input  type='text' class='col-md-5 form-control input-text ' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                #datepickerSalesDate='bsDatepicker' [(ngModel)]='_SalesDate'  bsDatepicker #t="bsDatepicker">
+                                <i class="fa fa-calendar-alt col-md-1" (click)="t.toggle()"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-save mr-1"></i>
+                    <span>{{ l('Save') }}</span>
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>
+                    {{ l('Cancel') }}
+                </button>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>

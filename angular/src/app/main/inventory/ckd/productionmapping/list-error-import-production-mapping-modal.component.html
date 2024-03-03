@@ -1,0 +1,64 @@
+<div
+    appBsModal
+    #errorListModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal"
+    aria-hidden="true"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog tmss-modal-lg">
+        <div class="modal-content error">
+            <div class="modal-header redline-header">
+                <h4 class="modal-title">
+                    <span>List Error Import</span><br>
+                    <h6>please check and import again</h6>
+                </h4>
+                <button type="button" class="btn btn-danger" (click)="close()" >
+                    <span class="close">x</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="outer">
+                    <table class="table table-hover bg-light">
+                        <tr>
+                            <th>No</th>
+                            <th>Model</th>
+                            <th>Shop</th>
+                            <th>LotNo</th>
+                            <th>NoInLot</th>
+                            <th>Grade</th>
+                            <th>BodyNo</th>
+                            <th>DateIn</th>
+                            <th>TimeIn</th>
+                            <th>SupplierNo</th>
+                            <th>UseLotNo</th>
+                            <th>Messages Error</th>
+                        </tr>
+                        <tr *ngFor="let _i of data">
+                            <td>{{ _i.roW_NO }}</td>
+                            <td>{{ _i.model }}</td>
+                            <td>{{ _i.shop }}</td>
+                            <td>{{ _i.lotNo }}</td>
+                            <td>{{ _i.noInLot }}</td>
+                            <td>{{ _i.grade }}</td>
+                            <td>{{ _i.bodyNo }}</td>
+                            <td>{{ _i.dateIn | date:'dd/MM/yyyy' }}</td>
+                            <td>{{ _i.timeIn.c.hour + ":" + _i.timeIn.c.minute + ":" + _i.timeIn.c.second }}</td>
+                            <td>{{ _i.supplierNo }}</td>
+                            <td>{{ _i.useLotNo }}</td>
+                            <td>{{ _i.errorDescription }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-export">
+                    <button type="submit" style="margin-right: 10px" class="btn btn-danger" (click)="exportToExcel()" [disabled]="disable">
+                        <i class="fa fa-file-download mr-1"></i> <span>Export List Error</span>
+                        <div class="loader" [ngClass]="pending"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

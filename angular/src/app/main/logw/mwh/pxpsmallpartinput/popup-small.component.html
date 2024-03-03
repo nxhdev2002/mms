@@ -1,0 +1,138 @@
+<div bsModal #popupSmall="bs-modal" class="modal fade PustCaseOnRack_SMALL {{ GET_POPUP_NAME() }}" role="dialog" [config]="{ backdrop: 'static' }" >
+    <div class="modal-dialog ">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <div class="title-form">
+                    <h3 >Input Module/Free Location: <span class="header_location"></span><span class="header_row"></span></h3>
+                </div>
+                <div class="dxpc-closeBtn" >
+                    <img class="" (click)="close()" src="/assets/common/images/none.png" alt="Close">
+                </div>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="dxpc-content">
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 63%" class="td-txt td-label" colspan="2">
+
+                                <span class="loc_input" style="display:none;">
+                                    <label id="lblLocation_SMALL" class="location" style="display:none;"></label>
+                                    <label id="lblLocation_id_SMALL" style="display:none;"></label>
+                                    <label id="lblLocation_col_SMALL" style="display:none;"></label>
+                                    <label id="lblLocation_sup_SMALL" style="display:none;"></label>
+                                    <input type="hidden" id="_txtOldFrom_SMALL" />
+                                    <input type="hidden" id="_txtOldTo_SMALL" />
+                                    <span class="loc txt _casenofull " style="display: none"></span>
+                                    <span class="loc txt _supplier_no_pop"></span>
+                                    <span class="loc txt locaion_id_value"></span>
+                                </span>
+
+
+                                <span class="loc_input CASENO_TXT">
+                                    <span class="loc txt _caseno "></span>
+                                    <span class="sub _supplier_no"></span>
+                                    <span class="sub _renban"></span>
+                                    <span class="sub _title">Case</span>
+                                </span>
+
+
+                                <span class="loc_input LOTCODE_TXT">
+                                    <span class="loc txt _lotcode "></span>
+                                    <span class="sub _title">Lot</span>
+                                </span>
+
+
+
+                                <span class="loc_input CASE_FROM">
+                                    <span class="loc txt locaion_txt">From</span>
+                                    <input type="text" id="_input_fromCase" class="loc val locaion_value" (focus)="textFocus_SMALL('1')" />
+                                </span>
+
+                                <span class="loc_input CASE_TO">
+                                    <span class="loc txt locaion_txt">To</span>
+                                    <input type="text" id="_input_toCase" class="loc val locaion_value" (focus)="textFocus_SMALL('2')" />
+                                </span>
+
+
+                        </td>
+
+                        <td style="width: 30%">
+                            <div class="largeButton btnDeleteSMALL" (click)="BackspaceSMALL()" >
+                                <img class="dx-vam" src="/assets/common/images/arrow-left.png" alt=""  >
+                            </div>
+                            <div class="largeButtonEnter btnEnter" (click)="MOVE_IN(GET_POPUP_NAME())" >
+                                Move In
+                            </div>
+
+                            <div class="pnl-mode">
+                                <span class="btn-mode GOI_Y" mode="CASE_GOI_Y" (click)="TAB_CASE_LIST('GOI_Y')" >Module gợi ý</span>
+                                <span class="btn-mode MANUAL active" mode="CASE_DEFAULT" (click)="TAB_CASE_LIST('MANUAL')" >Manual</span>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="td-btn">
+                            <div class="popupSMALL">
+                                <div class='PANEL_CASE'> </div>
+                            </div>
+                            <div class="LIST_CASE gridCaseSMALL" >
+                                <div class="CASE_DEFAULT MANUAL active">
+
+                                    <div class="box caseSMALL BoxID_{{_row.caseNo}}_{{_row.supplierNo}}_{{_row.renban}}"
+                                         (click)="CaseSelectMANUAL(_row.id, _row.caseNo, _row.supplierNo, _row.renban)"
+                                            *ngFor="let _row of  CaseList"  >
+                                            <div class="sub CASE_NO" >{{_row.caseNo}}</div>
+                                            <div class="sub SUPPLIER_NO"> {{_row.supplierNo}} </div>
+                                            <div class="sub RENBAN"> {{_row.renban}} </div>
+                                    </div>
+
+                                </div>
+                                <div class="CASE_GOI_Y GOI_Y">
+
+                                    <div class="box caseSMALL BoxID_{{_row.id}}"
+                                            (click)="CaseSelectGOI_Y(_row.id, _row.caseNo, _row.supplierNo, _row.renban2, _row.casePrefix)"
+                                            *ngFor="let _row of  SuggestionList"  >
+                                            <div class="sub CASE_NO" >{{_row.caseNo}}</div>
+                                            <div class="sub SUPPLIER_NO"> {{_row.supplierNo}} </div>
+                                            <div class="sub RENBAN"> {{_row.renban2}} </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
+                        <td colspan="2" class="td-btn numberbox">
+                            <div class="number">
+
+                                <div class="box" (click)="NumberSelectSMALL('7')">7</div>
+                                <div class="box" (click)="NumberSelectSMALL('8')">8</div>
+                                <div class="box" (click)="NumberSelectSMALL('9')">9</div>
+                                <div style="clear: both"></div>
+                                <div class="box" (click)="NumberSelectSMALL('4')">4</div>
+                                <div class="box" (click)="NumberSelectSMALL('5')">5</div>
+                                <div class="box" (click)="NumberSelectSMALL('6')">6</div>
+                                <div style="clear: both"></div>
+                                <div class="box" (click)="NumberSelectSMALL('1')">1</div>
+                                <div class="box" (click)="NumberSelectSMALL('2')">2</div>
+                                <div class="box" (click)="NumberSelectSMALL('3')">3</div>
+                                <div style="clear: both"></div>
+                                <div class="box wx2" (click)="NumberSelectSMALL('0')">0</div>
+                                <div class="box ONFLR_ADD_CASE" (click)="ADD_CASE()">ADD CASE</div>
+
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div class="lotcode">
+                                <div class="lotcodeitem {{_row.lotCode}}"  *ngFor="let _row of  LotCode" (click)="SELECTED_LOTCODE(_row.lotCode)">{{_row.lotCode}}</div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

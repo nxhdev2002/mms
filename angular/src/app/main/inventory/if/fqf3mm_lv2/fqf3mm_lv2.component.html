@@ -1,0 +1,73 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' FQF3MM_Lv2 ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='fileDescription' name='fileDescription' class='form-control'
+                                        [placeholder]="l('File Description')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="input-search">
+                                    <input [(ngModel)]="interfaceDate" name="interfaceDate" class="form-control"
+                                        [placeholder]="l('Interface Date')" type="text" (keyup.enter)="searchDatas()"
+                                        bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #d_start="bsDatepicker" placement="bottom left" />
+                                    <i class="fa fa-calendar-alt" (click)="d_start.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='status' name='status' class='form-control'
+                                        [placeholder]="l('Status')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary" type="submit">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  KHONG CHO FORM VAO DAY, co tac dung gi -->
+                        <div class="panel panel-default pt-1">
+                            <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)" (changePaginationParams)="changePage($event)"
+                                (onChangeSelection)="onChangeRowSelection($event)" [rowSelection]="rowSelection"
+                                [frameworkComponents]="frameworkComponents">
+                            </simple-ag-grid>
+                        </div>
+                        <hr>
+                        <div class="panelBtn text-right">
+                            <div>
+                                <button class="btn btn-primary font-weight-bold" [disabled]="!selectedRow.id"
+                                    (click)="getViewDetail()">
+                                    <i class="fa-regular fa-eye"></i>{{'View Content'}}
+                                </button>
+                                <button class="btn btn-success font-weight-bold " (click)="getExportContent($event)">
+                                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Content') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<view-fqf3mm_lv2-modal #viewModalFQF3MM_LV2 (modalSave)="callBackDataGrid(dataParams)"
+    (modalClose)="onChangeRowSelection(dataParams)">
+</view-fqf3mm_lv2-modal>

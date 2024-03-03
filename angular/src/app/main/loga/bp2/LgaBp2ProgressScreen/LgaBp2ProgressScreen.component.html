@@ -1,0 +1,51 @@
+<div class="PTA">
+    <div class="PTA_Content">
+        <div class="WARP"  >
+
+            <div class="HEADER"><div class="val">{{HearderTitle}}</div> </div>
+            <div class="clear"></div>
+            <div class="PROGRESS_BAR">
+                <div class="process_panel_box">
+                    <div class="process_panel process_name"><div class="val">{{prodLine}}</div></div>
+                    <div class="process_panel process_number">
+                        <div class="sub_number ACT"></div>
+                        <div class="sub_number PLAN"></div>
+                    </div>
+                </div>
+                <div class="process_panel process_content">
+                    <div class="process_warp" > </div>
+                    <div class="process_run"></div>
+                    <div class="process_val"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="ECAR_CONTENT">
+                    <div class="ecar_for {{item.ecarName.replace(' ','')}}" *ngFor="let item of ecars; let i =index">
+                        <div class="ecar_item ECAR_{{item.ecarId}}">
+
+                                <div class="ecar_panel_box">
+                                    <div class="ecar_panel ECAR_NAME"><div class="val">{{item.ecarName}}</div></div>
+                                    <div class="ecar_panel ECAR_NUMBER"><div class="val"></div></div>
+                                </div>
+                                <div class="ecar_panel ECAR_DELIVERY">
+                                    <div class="ecar_process {{_process.processName}}" *ngFor="let _process  of ecarProcess(item.ecarId)">
+                                        <div class="ecar_process_bg"> </div>
+                                        <div class="ecar_process_name">{{_process.processName}}</div>
+
+                                        <img class="ecar_img_warning YELLOW_N" src= "/assets/common/images/warningdelay.png" />
+                                        <img class="ecar_img_warning RED_Y" src= "/assets/common/images/warningdelay_red.png" />
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="controlMessage">
+        <span class="time_now_log"></span>
+    </div>
+    <div class="POPUP_PAUSE">
+            <div class="PAUSE">PAUSE</div>
+    </div>
+</div>
+<div class="clear"></div>

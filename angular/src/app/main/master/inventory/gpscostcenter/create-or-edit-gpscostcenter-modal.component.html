@@ -1,0 +1,79 @@
+
+
+<div bsModal #createOrEditModalCostCenter="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit GPS Cost Center ')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New GPS Cost Center ')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Group' [(ngModel)]='rowdata.group'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>SubGroup</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SubGroup' [(ngModel)]='rowdata.subGroup'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Division</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Division' [(ngModel)]='rowdata.division'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Dept</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Dept' [(ngModel)]='rowdata.dept'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Shop</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Shop' [(ngModel)]='rowdata.shop'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Team</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Team' [(ngModel)]='rowdata.team'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Cost Center Category</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenterCategory' [(ngModel)]='rowdata.costCenterCategory'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Budget Owner</label>
+						<input type='text' class='col-md-10 form-control input-text' name='BudgetOwner' [(ngModel)]='rowdata.budgetOwner'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Cost Center Group</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenterGroup' [(ngModel)]='rowdata.costCenterGroup'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>Cost Center Current</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenterCurrent' [(ngModel)]='rowdata.costCenterCurrent'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 150px;" class='form-control title'>CostCenter</label>
+						<input type='text' class='col-md-10 form-control input-text' name='CostCenter' [(ngModel)]='rowdata.costCenter'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label class='col-md-3 form-control title'>Is Direct Cost Center</label>
+						<new-checkbox [(ngModel)]='isDirectCostCenter' name='isDirectCostCenter' className='col-md-9' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

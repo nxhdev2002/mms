@@ -1,0 +1,181 @@
+<div
+    bsModal
+    #createOrEditModalCalendar="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit Calendar' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New Calendar' }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Date</label>
+                        <input
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="workingDate"
+                            #datepicker="bsDatepicker"  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                            [(ngModel)]="_workingDate"
+                            bsDatepicker
+                        />
+                        <i
+                            class="fa fa-calendar-alt col-md-1 form-control"
+                            id="cssCalender"
+                            (click)="datepicker.toggle()"
+                        ></i>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Type</label>
+                        <div class="workingType row">
+                            <div class="leftWorkingtype">
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='123'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>All Day</span><br />
+                                <input
+                                    type="radio"
+                                    value='1'
+                                    name="workingtype"
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 1 WORK ONLY</span><br />
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='2'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 2 WORK ONLY</span><br />
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='3'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 3 WORK ONLY</span><br />
+                            </div>
+                            <div class="rightWorkingtype">
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='0'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>Holiday</span><br />
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='12'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 1,2 WORK ONLY</span><br />
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='13'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 1,3 WORK ONLY</span><br />
+                                <input
+                                    type="radio"
+                                    name="workingtype"
+                                    value='23'
+                                    [ngModelOptions]="{debounce:0}"
+                                    (ngModelChange)="choose($event)"
+                                    [(ngModel)]="rowdata.workingType"
+                                /><span>SHIFT 2,3 WORK ONLY</span><br />
+                            </div>
+                        </div>
+                        <!-- <input type="text" class="col-md-10 form-control input-text"
+                            name="WorkingType" [(ngModel)]="rowdata.workingType"/> -->
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Status</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="WorkingStatus"
+                            [(ngModel)]="rowdata.workingStatus"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Season Type</label>
+                        <select name="seasonType" class="col-md-10 form-control" [(ngModel)]="rowdata.seasonType" >
+                            <option value="High">{{"High" | localize}}</option>
+                            <option value="Normal">{{"Normal" | localize}}</option>
+                            <option value="Low">{{"Low" | localize}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Day Of Week</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="dayOfWeek"
+                            [(ngModel)]="rowdata.dayOfWeek"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Week Number</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="weekNumber"
+                            [(ngModel)]="rowdata.weekNumber"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Week Working Days</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="weekWorkingDays"
+                            [(ngModel)]="rowdata.weekWorkingDays"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

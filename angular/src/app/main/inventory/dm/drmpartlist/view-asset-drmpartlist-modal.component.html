@@ -1,0 +1,85 @@
+<div bsModal #viewModalAsAsset="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View as Asset')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+			<div class="form-input row">
+				<div class="col-md-12">
+					<div class="form-input ">
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Material Code</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='MaterialCode' [(ngModel)]='rowdata.materialCode'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Material Spec</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='MaterialSpec' [(ngModel)]='rowdata.materialSpec'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;"> Main Asset Number</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name=' MainAssetNumber' [(ngModel)]='rowdata.fixedAssetNumber'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;"> Asset Sub Number</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name=' AssetSubNumber' [(ngModel)]='rowdata.assetSubNumber'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Asset Description</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='AssetDescription' [(ngModel)]='rowdata.assetDescription'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Additional Asset Description</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='AdditionalAssetDescription' [(ngModel)]='rowdata.additionalAssetDescription'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Serial Number</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='SerialNumber' [(ngModel)]='rowdata.serialNumber'>
+						</div>
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Cost of Asset</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='CostofAsset' [(ngModel)]='rowdata.costOfAsset'>
+						</div>
+
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">WBS</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='WBS' [(ngModel)]='rowdata.wbs'>
+						</div>
+
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Cost Center</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='CostCenter' [(ngModel)]='rowdata.costCenter'>
+						</div>
+
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Responsible Cost Center</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='ResponsibleCostCenter' [(ngModel)]='rowdata.responsibleCostCenter'>
+						</div>
+
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;"> Asset Class</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name=' AssetClass' [(ngModel)]='rowdata.assetClass'>
+						</div>
+
+						<div class='col-md-12 form-group row'>
+							<label class='col-md-2 form-control title'style="min-width: 173px;">Asset Class Description</label>
+							<input readonly type='text' class='col-md-10 form-control input-text' name='AssetClassDescription' [(ngModel)]='rowdata.assetClassDescription'>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+					<i class="fa tmss-fa fa-times mr-1"></i>
+					{{ l('Cancel') }}
+				</button>
+			</div>
+            </form>
+        </div>
+    </div>
+</div>

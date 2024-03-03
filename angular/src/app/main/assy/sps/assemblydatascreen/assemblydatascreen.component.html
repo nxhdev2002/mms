@@ -1,0 +1,69 @@
+<div class="ASSEMBLY_DATA_SCREEN">
+    <div class="HEADER">
+        <div class="showTime">{{ timenow }}, {{ datenow }}</div>
+        <div class="PROD_LINE">{{prodLine}}</div>
+    </div>
+    <div class="BODY_MAIN">
+        <div class="EMTY"></div>
+        <div class="BODY_CONTENT" >
+           <div class="col_process loc_col_{{item}}" *ngFor="let item of fornumbersRange(1,c_DataTop,1)">
+                <div class="subitem PROCESS"></div>
+                <div class="subitem GRADE"></div>
+                <div class="subitem SEQ2"></div>
+                <div class="subitem BODY"></div>
+                <div class="subitem SEQ"></div>
+                <div class="subitem PROCESS2"></div>
+           </div>
+        </div>
+        <div class="EMTY"></div>
+        <div class="EMTY"></div>
+        <div class="BODY_CONTENT2" style="border-bottom: none;">
+            <div class="col_process loc_col_{{item + c_DataTop}}" *ngFor="let item of fornumbersRange(1,c_DataTop,1)">
+                 <div class="subitem PROCESS"></div>
+                 <div class="subitem GRADE"></div>
+                 <div class="subitem SEQ2"></div>
+                 <div class="subitem BODY"></div>
+                 <div class="subitem SEQ"></div>
+                 <div class="subitem PROCESS2"></div>
+            </div>
+         </div>
+    </div>
+    <div class="FOTTER">
+        <div class="REMARK">
+            Remark
+            <div class="CONTENT_FOOTER">
+                <div class="box1"></div>
+                &nbsp;
+                <div class="MODEL_NAME">VIOS </div>
+                &nbsp;
+                <div class="box7"></div>
+                &nbsp;
+                <div class="MODEL_NAME">AVANZA </div>
+                &nbsp;
+                <div class="box1"></div>
+                &nbsp;
+                <div class="MODEL_NAME">PROJECT </div>
+                &nbsp;
+            </div>
+        </div>
+        <div class="REMARK1">
+            Remark
+            <div class="CONTENT_FOOTER">
+                <div class="box3"></div>
+                &nbsp;
+                <div class="MODEL_NAME">INNOVA </div>
+                <div class="box4"></div>
+                &nbsp;
+                <div class="MODEL_NAME">PROJECT </div>
+            </div>
+            <div class="CONTENT_FOOTER">
+                <div class="box5"></div>
+                &nbsp;
+                <div class="MODEL_NAME">FORTUNER </div>
+                <div class="box6"></div>
+                &nbsp;
+                <div class="MODEL_NAME">BLANK </div>
+            </div>
+        </div>
+    </div>
+</div>

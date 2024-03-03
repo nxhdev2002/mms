@@ -1,0 +1,278 @@
+<div bsModal #viewModalContainerList="bs-modal" class="modal fade col-md-12" role="dialog"
+	[config]="{ backdrop: 'static' }">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content col-md-12">
+			<div class="modal-header col-md-12">
+				<div class="title-form">
+					<h3 *ngIf="rowdata.id">{{('View Detail Container No')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-md-12">
+			<form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+				<!-- Form Basic-->
+				<div class="row">
+					<div class="col col-md-6">
+						<div class="form-input">
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Container No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ContainerNo'
+									 [(ngModel)]='rowdata.containerNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Renban</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Renban'
+									[(ngModel)]='rowdata.renban'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Supplier No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='SupplierNo'
+									[(ngModel)]='rowdata.supplierNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Status</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Status'
+									[(ngModel)]='rowdata.description'>
+							</div>
+
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Haisen No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='HaisenNo'
+									[(ngModel)]='rowdata.haisenNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Bill Of Lading No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='BillOfLadingNo'
+									[(ngModel)]='rowdata.billOfLadingNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Seal No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='SealNo'
+									[(ngModel)]='rowdata.sealNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Cd Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='CdDate'
+									[(ngModel)]='_cdDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Cd Status</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='CdStatus'
+									[(ngModel)]='rowdata.cdStatus'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Container Size</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ContainerSize'
+									[(ngModel)]='rowdata.containerSize'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Shipment Id</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ShipmentId'
+									[(ngModel)]='rowdata.shipmentId'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Shipping Date (ETD)</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ShippingDate'
+									[(ngModel)]='_shippingDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Port Date (ETA)</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='PortDate'
+									[(ngModel)]='_portDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Port Date Actual (ATA)</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='PortDateActual'
+									[(ngModel)]='rowdata.formatPortDateActual'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Port Transit Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='PortTransitDate'
+									[(ngModel)]='_portTransitDate'>
+							</div>
+
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Receive Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ReceiveDate'
+									[(ngModel)]='_receiveDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Request Id</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='RequestId'
+									[(ngModel)]='rowdata.requestId'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Request Lot No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='RequestLotNo'
+									[(ngModel)]='rowdata.requestLotNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Invoice No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='InvoiceNo'
+									[(ngModel)]='rowdata.invoiceNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>List Lot No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ListLotNo'
+									[(ngModel)]='rowdata.listLotNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>List Case No</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ListCaseNo'
+									[(ngModel)]='rowdata.listCaseNo'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Transport</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Transport'
+									[(ngModel)]='rowdata.transport'>
+							</div>
+                            <div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Ordertype Code</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Ordertype Code'
+									[(ngModel)]='rowdata.ordertypeCode'>
+							</div>
+						</div>
+					</div>
+
+					<div class="col col-md-6">
+						<div class="form-input">
+
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Shop</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Shop'
+									[(ngModel)]='rowdata.shop'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Dock</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Dock'
+									[(ngModel)]='rowdata.dock'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Devanning Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='DevanningDate'
+									[(ngModel)]='_devanningDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Devanning Time</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='DevanningTime'
+									[(ngModel)]='rowdata.devanningTime'>
+							</div>
+                            <div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Devanning DateTime</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='DevanningDateTime'
+									[(ngModel)]='rowdata.devaningDateTime'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Remark</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Remark'
+									[(ngModel)]='rowdata.remark'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Wh Location</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='WhLocation'
+									[(ngModel)]='rowdata.whLocation'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Gate in Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='GateinDate'
+									[(ngModel)]='_gateinDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Gate in Time</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='GateinTime'
+									[(ngModel)]='rowdata.gateinTime'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Transit Port Req Id</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='TransitPortReqId'
+									[(ngModel)]='rowdata.transitPortReqId'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Transit Port Req Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='TransitPortReqDate'
+									[(ngModel)]='_transitPortReqDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Transit Port Req Time</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='TransitPortReqTime'
+									[(ngModel)]='rowdata.formatTransitPortReqTime'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Transit Port Remark</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='TransitPortRemark'
+									[(ngModel)]='rowdata.transitPortRemark'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Fob</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Fob'
+									[(ngModel)]='rowdata.fob'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Freight</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Freight'
+									[(ngModel)]='rowdata.freight'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Insurance</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Insurance'
+									[(ngModel)]='rowdata.insurance'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Cif</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Cif'
+									[(ngModel)]='rowdata.cif'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Tax</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Tax'
+									[(ngModel)]='rowdata.tax'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Amount</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Amount'
+									[(ngModel)]='rowdata.amount'>
+							</div>
+							<!-- <div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Status</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Status'
+									[(ngModel)]='rowdata.status'>
+							</div> -->
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Location Code</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='LocationCode'
+									[(ngModel)]='rowdata.locationCode'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Location Date</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='LocationDate'
+									[(ngModel)]='_locationDate'>
+							</div>
+							<div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Receiving Period Id</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='ReceivingPeriodId'
+									[(ngModel)]='rowdata.receivingPeriodId'>
+							</div>
+                            <div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Goodstype Code</label>
+								<input readonly type='text' class='col-md-10 form-control input-text' name='Goodstype Code'
+									[(ngModel)]='rowdata.goodstypeCode'>
+							</div>
+                            <div class='col-md-12 form-group row'>
+								<label class='col-md-2 form-control title'>Is AcTive</label>
+								<new-checkbox [(ngModel)]='rowdata.isActive' readonly name='IsActive'
+                                class='col-md-10 form-control input-text'></new-checkbox>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+						<i class="fa tmss-fa fa-times mr-1"></i>
+						{{ l('Cancel') }}
+					</button>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,224 @@
+<div
+    bsModal
+    #viewModalWeldingPlan="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 >{{ 'View WeldingPlan' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Model</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Model"
+                            [(ngModel)]="rowdata.model"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Lot No</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="LotNo"
+                            [(ngModel)]="rowdata.lotNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">No In Lot</label>
+                        <input
+                            readonly
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="NoInLot"
+                            [(ngModel)]="rowdata.noInLot"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Grade</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="grade"
+                            [(ngModel)]="rowdata.grade"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">ProdLine</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="prodLine"
+                            [(ngModel)]="rowdata.prodLine"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Body No</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="bodyNo"
+                            [(ngModel)]="rowdata.bodyNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vin No</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="vinNo"
+                            [(ngModel)]="rowdata.vinNo"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Color</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Color"
+                            [(ngModel)]="rowdata.color"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Plan Time</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="PlanTime"
+                            [(ngModel)]="rowdata.planTime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Request Date</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="RequestDate"
+                            [(ngModel)]="_requestDate"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shift</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Shift"
+                            [(ngModel)]="rowdata.shift"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">W In Date</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="WInDate"
+                            [(ngModel)]="rowdata.formatWInDate"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">W Out Date</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="WOutDate"
+                            [(ngModel)]="rowdata.formatWOutDate"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Ed In</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="EdIn"
+                            [(ngModel)]="rowdata.formatEdIn"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">T In Plan Datetime</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="TInPlanDatetime"
+                            [(ngModel)]="_tInPlanDatetime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vehicle Id</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="VehicleId"
+                            [(ngModel)]="rowdata.vehicleId"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Cfc</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Cfc"
+                            [(ngModel)]="rowdata.cfc"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Welding Id</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="WeldingId"
+                            [(ngModel)]="rowdata.weldingId"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Assembly Id</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="AssemblyId"
+                            [(ngModel)]="rowdata.assemblyId"
+                        />
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

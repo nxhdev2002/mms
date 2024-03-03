@@ -1,0 +1,37 @@
+<div bsModal #ViewFqf3mm04ValidateResult="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }" [busyIf]="isLoading">
+    <div class="modal-dialog modal-lg" style=" min-width: 92%; margin-left: 4%; margin-right: 4%;">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('Validate FQF3MM04 ')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <div class="form-input">
+                <grid-table
+                    [columnDefs]="viewColDefs"
+                    [paginationParams]="paginationParams"
+                    [showPagination]="true"
+                    [rowData]="rowData"
+                    [defaultColDef]="defaultColDef"
+                    (callBackEvent)="callBackDataGrid($event)"
+                    (changePaginationParams)="changePage($event)"
+                    [height]="'60vh'"
+                    [heightAuto]="false"
+                    [frameworkComponents]="frameworkComponents">
+                </grid-table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success font-weight-bold position-relative"(click)="exportToExcel($event)">
+                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                    <div class="loader" ></div>
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-danger">
+                    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

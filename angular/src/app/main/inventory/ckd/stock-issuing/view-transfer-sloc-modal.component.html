@@ -1,0 +1,42 @@
+<div bsModal #viewTransferLoc="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }" [busyIf]="isLoading1">
+    <div class="modal-dialog modal-lg modal-large">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View Transfers Loc')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <!-- <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()"> -->
+                <div class="form-input">
+                    <grid-table
+                    [columnDefs]="viewColDefs"
+                    [paginationParams]="paginationParams1"
+                    [showPagination]="true"
+                    [rowData]="rowData"
+                    [defaultColDef]="defaultColDef"
+                    (changePaginationParams)="changePage($event)"
+                    [height]="'40vh'"
+                    [heightAuto]="false"
+                    [frameworkComponents]="frameworkComponents"
+                >
+                    </grid-table>
+                </div>
+                <!-- CSS chưa ổn lắm :(((((( -->
+                <!-- <div class="modal-header col-md-12">
+                    Tổng số bản ghi: {{_totalcount}}
+                </div> -->
+                <div class="modal-footer">
+                    <button class="btn btn-success font-weight-bold position-relative" [disabled]="disable" (click)="exportToExcel()">
+                        <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                        <div class="loader" [ngClass]="pending"></div>
+                    </button>
+				    <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+					    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+				    </button>
+				</div>
+            <!-- </form> -->
+        </div>
+    </div>
+</div>

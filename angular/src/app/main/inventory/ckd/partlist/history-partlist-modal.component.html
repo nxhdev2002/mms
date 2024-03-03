@@ -1,0 +1,95 @@
+<div bsModal #viewHistoryPartListModal="bs-modal" class="modal fade col-md-12" [busyIf]="isLoading" role="dialog" [config]="{ backdrop: 'static' }">
+	<div class="modal-dialog tmss-modal-lg" style=" min-width: 92%; margin-left: 4%; margin-right: 4%;">
+		<div class="modal-content col-md-12">
+			<div class="modal-header col-md-12">
+				<div class="title-form">
+					<h3>{{('History PartList')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-md-12">
+			<div class="form-input">
+                <div class="ui-g-12" style="padding: 0 10px" *ngIf="isFilterMode">
+                    <div class="form-group m-form__group align-items-center">
+                        <div class="input-group">
+                            <div class='input-search'>
+                                <input name='caseNo'
+                                class='form-control' [placeholder]="l('Part No')" [(ngModel)]="partNo"
+                                type='text'>
+                            </div>
+                            <div class='input-search'>
+                                <input
+                                    type="text"
+                                    placeholder='From Date'
+                                    name="packingMonth"
+                                    (key.enter)="searchDatas()"
+                                    class="form-control"
+                                    bsDatepicker
+                                    [(ngModel)]="fromDate"
+                                    #a="bsDatepicker"
+                                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',  }"
+                                    placement="bottom left"
+                                />
+                                <i class="fa fa-calendar-alt" (click)="a.toggle()"></i>
+                            </div>
+                            <div class='input-search'>
+                                <input
+                                    type="text"
+                                    placeholder='To Date'
+                                    name="packingMonth"
+                                    (key.enter)="searchDatas()"
+                                    class="form-control"
+                                    bsDatepicker
+                                    [(ngModel)]="toDate"
+                                    #b="bsDatepicker"
+                                    [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',  }"
+                                    placement="bottom left"
+                                />
+                                <i class="fa fa-calendar-alt" (click)="b.toggle()"></i>
+                            </div>
+                            <div class='input-search' style="width: 100%;">
+                                <p-multiSelect [style]="{'width': '100%','height': '25px','align-items': 'center'}"
+                                    [ngClass]="'multi-select-control w-100'" [options]="actionTypeList"
+                                    [(ngModel)]="action">
+                                </p-multiSelect>
+                            </div>
+                            <div class="btn-search">
+                                <button
+                                    class="btn btn-primary" (click)="searchDatas()" >
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="btn-search">
+                                <button
+                                    class="btn btn-primary" (click)="clearTextSearch()" >
+                                    <i class="fas fa-backspace"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class='col-md-12'>
+					<div class="form-input">
+						<div class="ui-g-12 ui-md-12">
+							<grid-table [rowSelection]="rowSelection" [showPagination]="true"
+								(callBackEvent)="callBackDataGrid($event)" [paginationParams]="paginationParams"
+								[columnDefs]="historyColDef" [rowData]="rowdata" [defaultColDef]="defaultColDef"
+								[frameworkComponents]="frameworkComponents" [height]="'50vh'" [heightAuto]="false">
+							</grid-table>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+                    <button (click)="exportHistoricalData()" type="button" class="btn btn-success font-weight-bold">
+						<i class="fa fa-cloud-download mr-1"></i><span> {{ l('Export Excel') }}</span>
+					</button>
+					<button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+						<i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

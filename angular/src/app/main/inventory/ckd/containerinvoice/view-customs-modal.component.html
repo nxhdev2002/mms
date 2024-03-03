@@ -1,0 +1,36 @@
+<div bsModal #viewCustoms="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }" [busyIf]="isLoading">
+    <div class="modal-dialog modal-lg" style=" min-width: 90%; margin-left: 5%; margin-right: 5%;">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>View Customs</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <div class="form-input">
+                <grid-table
+                    [columnDefs]="validateColDefs"
+                    [paginationParams]="paginationParams"
+                    [rowData]="rowData"
+                    [defaultColDef]="defaultColDef"
+                    (callBackEvent)="callBackGrid($event)"
+                    (changePaginationParams)="changePage($event)"
+                    (onChangeSelection)="onChangeRowSelection($event)"
+                    [height]="'40vh'"
+                    [heightAuto]="false"
+                    [frameworkComponents]="frameworkComponents">
+                </grid-table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success font-weight-bold position-relative"(click)="exportExcel($event)">
+                    <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                </button>
+                <button (click)="close()"  class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>{{ l('Cancel') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

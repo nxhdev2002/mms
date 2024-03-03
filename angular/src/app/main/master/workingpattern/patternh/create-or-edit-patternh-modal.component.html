@@ -1,0 +1,96 @@
+<div
+    bsModal
+    #createOrEditModalPatternH="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit PatternH' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New PatternH' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Type</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="Type"
+                            [(ngModel)]="rowdata.type"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Start Date</label>
+                        <input
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="startDate"
+                            #datepickerStart="bsDatepicker"
+                            [(ngModel)]="_startDate"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                        <i
+                            class="fa fa-calendar-alt col-md-1 form-control"
+                            id="cssCalender"
+                            (click)="datepickerStart.toggle()"
+                        ></i>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">End Date</label>
+                        <input
+                            type="text"
+                            class="col-md-9 form-control input-text"
+                            name="endDate"
+                            #datepickerEnd="bsDatepicker"
+                            [(ngModel)]="_endDate"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                        <i
+                            class="fa fa-calendar-alt col-md-1 form-control"
+                            id="cssCalender"
+                            (click)="datepickerEnd.toggle()"
+                        ></i>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Description</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Description"
+                            [(ngModel)]="rowdata.description"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive" className="col-md-10"> </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

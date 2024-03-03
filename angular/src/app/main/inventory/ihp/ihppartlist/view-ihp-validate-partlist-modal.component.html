@@ -1,0 +1,40 @@
+<div bsModal #viewIhpValidatePartListModal="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+	<div class="modal-dialog tmss-modal-lg" style=" min-width: 92%; margin-left: 4%; margin-right: 4%;">
+		<div class="modal-content col-md-12">
+			<div class="modal-header col-md-12">
+				<div class="title-form">
+					<h3>{{('View Validate IHP PartList')}}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="modal-content col-md-12">
+			<div class="form-input">
+				<div class='col-md-12'>
+					<div class="form-input">
+						<div class="ui-g-12 ui-md-12">
+							<grid-table [rowSelection]="rowSelection" [showPagination]="true"  (changePaginationParams)="changePage($event)"
+								(callBackEvent)="callBackDataGrid($event)" [paginationParams]="paginationParams"
+								[columnDefs]="validateColDef" [rowData]="rowdata" [defaultColDef]="defaultColDef"
+								[frameworkComponents]="frameworkComponents" [height]="'25vh'" [heightAuto]="false">
+							</grid-table>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-light-primary font-weight-bold" (click)="save()">
+						<i class="fa tmss-fa fa-save mr-1"></i><span> {{ "Save" }} </span>
+					</button> -->
+                    <button class="btn btn-success font-weight-bold position-relative"(click)="exportToExcel($event)">
+                            <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            <div class="loader" ></div>
+                    </button>
+					<button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+						<i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

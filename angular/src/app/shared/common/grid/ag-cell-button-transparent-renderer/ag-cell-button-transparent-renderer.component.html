@@ -1,0 +1,11 @@
+<div class="ui-g-12 ph-0" id="button-container">
+    <button
+        *ngIf="buttonDefTwo"
+        type="button"
+        class="ui-g-6 ph-0 ui-md-6 ag-in-cell-button {{ _ClassNameTwo }}"
+        (click)="customFunctionTwo()"
+    >
+        <i *ngIf="buttonDefTwo.iconName" style="margin-right: 5px;" class="{{ buttonDefTwo.iconName }} tmss-fa"></i>
+        <span style="position: relative; top: -3px; margin-top: 5px;">{{ TextTwo }}</span>
+    </button>
+</div>

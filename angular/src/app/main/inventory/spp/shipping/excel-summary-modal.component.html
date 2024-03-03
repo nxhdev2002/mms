@@ -1,0 +1,80 @@
+<div bsModal #excelSummaryModal="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>Cost of Sale Summary Download</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <div class="row">
+				<div class="col col-md-12">
+					<div class="form-input">
+			            <div class="col-md-6 form-group">
+                            <label class='col-md-2 form-control title'>From</label>
+                                <input
+                                    type="text"
+                                    [(ngModel)]="fromMonthYear"
+                                    name="fromMonthYear"
+                                    class="form-control"
+                                    [placeholder]="l('From')"
+                                    type="text"
+                                    bsDatepicker
+                                    [bsConfig]="{ dateInputFormat: 'MM/YYYY', minMode: 'month'}"
+                                    #a_end="bsDatepicker"
+                                    placement="bottom left"
+                                />
+                                <i class="fa fa-calendar-alt" (click)="a_end.toggle()"></i>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class='col-md-2 form-control title'>To</label>
+                                <input
+                                    type="text"
+                                    [(ngModel)]="toMonthYear"
+                                    name="toMonthYear"
+                                    class="form-control"
+                                    [placeholder]="l('From')"
+                                    type="text"
+                                    bsDatepicker
+                                    [bsConfig]="{ dateInputFormat: 'MM/YYYY', minMode: 'month'}"
+                                    #b_end="bsDatepicker"
+                                    placement="bottom left"
+                                />
+                                <i class="fa fa-calendar-alt" (click)="b_end.toggle()"></i>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control title'>Report Type</label>
+                            <tmss-combobox
+                                [items]="reportTypeList"
+                                name="reportType"
+                                [(ngModel)]="reportType"
+                                [text]="l('Report Type')"
+                            ></tmss-combobox>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class='col-md-2 form-control title'>Stock</label>
+                            <tmss-combobox
+                                [items]="stockList"
+                                name="stock"
+                                [(ngModel)]="stock"
+                                [text]="l('Stock')"
+                            ></tmss-combobox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button (click)="export($event)" type="button" class="btn btn-success font-weight-bold">
+                    <i class="fa tmss-fa fa-download mr-1"></i>
+                    {{ l('Download') }}
+                </button>
+                <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                    <i class="fa tmss-fa fa-times mr-1"></i>
+                    {{ l('Cancel') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div
+    bsModal
+    #createOrEditModalLookup="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit Lookup' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New Lookup' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Domain Code</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="DomainCode"
+                            [(ngModel)]="rowdata.domainCode"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Item Code</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ItemCode"
+                            [(ngModel)]="rowdata.itemCode"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Item Value</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="ItemValue"
+                            [(ngModel)]="rowdata.itemValue"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Item Order</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ItemOrder"
+                            [(ngModel)]="rowdata.itemOrder"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Description</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Description"
+                            [(ngModel)]="rowdata.description"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Use</label>
+                        <new-checkbox [(ngModel)]="_isUse" name="isUse"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Restrict</label>
+                        <new-checkbox [(ngModel)]="_isRestrict" name="isRestrict"
+                         className="col-md-10" > </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

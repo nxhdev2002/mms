@@ -1,0 +1,93 @@
+<div
+    bsModal
+    #createOrEditModalLineEfficiencyDetails="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit LineEfficiencyDetails' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New LineEfficiencyDetails' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Line</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Line"
+                            [(ngModel)]="rowdata.line"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vol Actual</label>
+                        <input
+                            readonly
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="VolActual"
+                            [(ngModel)]="rowdata.volActual"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Line Stop Time</label>
+                        <input
+                            readonly
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="LineStopTime"
+                            [(ngModel)]="rowdata.lineStopTime"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Date</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="workingDate"
+                            #datepicker="bsDatepicker"
+                            [(ngModel)]="_workingDate"
+                            bsDatepicker  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shift</label>
+                        <input
+                            readonly
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Shift"
+                            [(ngModel)]="rowdata.shift"
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Status</label>
+                        <new-checkbox readonly [(ngModel)]="_status" name="status" className="col-md-10">
+                        </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

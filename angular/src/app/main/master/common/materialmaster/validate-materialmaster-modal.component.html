@@ -1,0 +1,47 @@
+<div bsModal #validateMaterial="bs-modal" class="modal fade col-md-12"
+    role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('View Masterial Validation Result')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12" [busyIf]="isLoading">
+            <form
+                #applyBpForm="ngForm"
+                autocomplete="off"
+                (keyup.ESC)="close()">
+                <div class="form-input">
+                    <div class="ui-g-12 ui-md-12">
+                        <grid-table
+                            [showPagination]="false"
+                            [paginationParams]="paginationParam"
+                            [columnDefs]="validateColDefs"
+                            [rowData]="rowData"
+                            [showPagination]="true"
+                            [defaultColDef]="defaultColDef"
+                            [frameworkComponents]="frameworkComponents"
+                            (callBackEvent)="callBackGrid($event)"
+                            [height]="'40vh'"
+                            (changePaginationParams)="changePage($event)"
+                            [heightAuto]="false">
+                        </grid-table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success font-weight-bold position-relative" [disabled]="disable" (click)="exportToExcelValidate($event)">
+                            <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel Validate') }}
+                            <div class="loader" [ngClass]="pending"></div>
+                        </button>
+                        <button (click)="close()" type="button"
+                            class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

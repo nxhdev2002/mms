@@ -1,0 +1,101 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' Material Master ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+                                    <input [(ngModel)]='materialType' name='materialType' class='form-control'
+                                        [placeholder]="l('Material Code')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='materialGroup' name='materialGroup' class='form-control'
+                                        [placeholder]="l('Material Group')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class='input-search'>
+                                    <input [(ngModel)]='valuationType' name='valuationType' class='form-control'
+                                        [placeholder]="l('Valuation Type')" type='text' (keyup.enter)='searchDatas()'>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()" class="btn btn-primary" >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                            <div class="panel panel-default pt-1">
+                                <simple-ag-grid [columnDefs]="defaultColDefs" [paginationParams]="paginationParams"
+                                    [rowData]="rowData" [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGrid($event)"
+                                    (changePaginationParams)="changePage($event)"
+                                    (onChangeSelection)="onChangeRowSelection($event)"
+                                    [rowSelection]="rowSelection"
+                                    [frameworkComponents]="frameworkComponents"
+                                    [sideBar]="sideBar"
+                                    [pivotMode]="false">
+                                </simple-ag-grid>
+                            </div>
+                        <!-- <form autocomplete="on">  NGHIÊM CẤM THÊM FROM VÀO GRID-->
+                        <hr>
+                        <div class="text-right">
+
+                            <button
+                            *ngIf= "isGranted('Pages.MaterialMaster.MaterialMaster.History')"
+                            class="btn btn-warning font-weight-bold"
+                            (click)="viewHistoryMaterialMasterModal.show(selectId)"  [disabled]="!changedRecordsMaterialMaster.includes(selectedRow.id)">
+                            <i class="fas fa-check-circle mr-1"></i>{{ l('History') }}
+                            </button>
+                            <!-- <button class="btn btn-success font-weight-bold position-relative" [disabled]="disable" (click)="exportToExcel()">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                                <div class="loader" [ngClass]="pending"></div>
+                            </button> -->
+
+                            <button class="btn btn-success font-weight-bold " (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold" (click)="viewModalMaterialMaster.show(selectedRow)">
+                                <i class="fa-regular fa-eye"></i>{{'View'}}
+                            </button>
+
+                            <button class="btn btn-primary font-weight-bold" (click)="validateMaterial.show()">
+                                <i class="fa-regular fa-eye"></i>{{'View Checking Results'}}
+                            </button>
+
+                            <button
+                                class="btn btn-primary font-weight-bold"
+                                *ngIf="isGranted('Pages.MaterialMaster.MaterialMaster.Validate')"
+                                (click)="validate($event)">
+                                <i class="fa fa-check-circle"></i>{{'Validate Checking Rule'}}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<view-materialmaster-modal
+#viewModalMaterialMaster
+(modalClose)="onChangeRowSelection(dataParams)">
+</view-materialmaster-modal>
+
+<validate-materialmaster-modal #validateMaterial></validate-materialmaster-modal>
+<history-materialmaster-modal #viewHistoryMaterialMasterModal> </history-materialmaster-modal>

@@ -1,0 +1,187 @@
+<div
+    bsModal
+    #createOrEditModalLineEfficiency="bs-modal"
+    class="modal fade col-md-12"
+    role="dialog"
+    [config]="{ backdrop: 'static' }"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{ 'Edit LineEfficiency' }}</h3>
+                    <h3 *ngIf="!rowdata.id">{{ 'Create New LineEfficiency' }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form
+                #applyBpForm="ngForm"
+                (ngSubmit)="save()"
+                autocomplete="off"
+                (keyup.ESC)="close()"
+            >
+                <!-- Form Basic-->
+                <div class="form-input">
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Line</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Line"
+                            [(ngModel)]="rowdata.line"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shift</label>
+                        <new-checkbox [(ngModel)]="_shift" name="shift" className="col-md-10"> </new-checkbox>
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Working Date</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="workingDate"
+                            #datepicker="bsDatepicker"
+                            [(ngModel)]="_workingDate"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vol Target</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="VolTarget"
+                            [(ngModel)]="rowdata.volTarget"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vol Actual</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="VolActual"
+                            [(ngModel)]="rowdata.volActual"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Vol Balance</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="VolBalance"
+                            [(ngModel)]="rowdata.volBalance"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Stop Time</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="StopTime"
+                            [(ngModel)]="rowdata.stopTime"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Efficiency</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Efficiency"
+                            [(ngModel)]="rowdata.efficiency"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Takt Time</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="TaktTime"
+                            [(ngModel)]="rowdata.taktTime"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Overtime</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="Overtime"
+                            [(ngModel)]="rowdata.overtime"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Non Prod Act</label>
+                        <input
+                            type="text"
+                            class="col-md-10 form-control input-text"
+                            name="NonProdAct"
+                            [(ngModel)]="rowdata.nonProdAct"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Off Line 1</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="OffLine1"
+                            [(ngModel)]="rowdata.offLine1"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Off Line 2</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="OffLine2"
+                            [(ngModel)]="rowdata.offLine2"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Off Line 3</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="OffLine3"
+                            [(ngModel)]="rowdata.offLine3"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Shift Vol Plan</label>
+                        <input
+                            type="number"
+                            class="col-md-10 form-control input-text"
+                            name="ShiftVolPlan"
+                            [(ngModel)]="rowdata.shiftVolPlan"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Is Active</label>
+                        <new-checkbox [(ngModel)]="_isActive" name="isActive" className="col-md-10"> </new-checkbox>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div bsModal #viewSupplierList="bs-modal"class="modal fade col-md-12"role="dialog"[config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View SupplierList')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('View SupplierList')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" autocomplete="off" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier Name</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SupplierName' [(ngModel)]='rowdata.supplierName'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Remarks</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Remarks' [(ngModel)]='rowdata.remarks'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier Type</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SupplierType' [(ngModel)]='rowdata.supplierType'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier Name Vn</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='SupplierNameVn' [(ngModel)]='rowdata.supplierNameVn'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Exporter</label>
+						<input type='text' readonly class='col-md-10 form-control input-text' name='Exporter' [(ngModel)]='rowdata.exporter'>
+					</div>
+                    <div class="modal-footer">
+                        <button (click)="close()"type="button"class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

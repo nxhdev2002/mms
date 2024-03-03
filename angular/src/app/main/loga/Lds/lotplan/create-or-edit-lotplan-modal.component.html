@@ -1,0 +1,109 @@
+
+<div bsModal #createOrEditModalLotPlan="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit LotPlan')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New LotPlan')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Prod Line</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ProdLine' [(ngModel)]='rowdata.prodLine'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Working Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='workingDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepicker='bsDatepicker' [(ngModel)]='_workingDate'  bsDatepicker >
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Shift</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Shift' [(ngModel)]='rowdata.shift'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Seq Line In</label>
+						<input type='number' class='col-md-10 form-control input-text' name='SeqLineIn' [(ngModel)]='rowdata.seqLineIn'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Plan Start Datetime</label>
+						<input type='text' class='col-md-9 form-control input-text' name='planStartDatetime'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerplanStartDatetime='bsDatepicker' [(ngModel)]='_planStartDatetime'  bsDatepicker >
+						<i
+						class="fa fa-calendar-alt col-md-1 form-control"
+						id="cssCalender"
+						(click)="datepickerplanStartDatetime.toggle()"
+					></i>
+					</div>
+                    <div class="col-md-12 form-group row">
+                        <label class="col-md-2 form-control title">Model</label>
+                        <input type="text" class="col-md-10 form-control input-text" name="model" [(ngModel)]="rowdata.model"/>
+                    </div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lot No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotNo' [(ngModel)]='rowdata.lotNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Lot No 2</label>
+						<input type='text' class='col-md-10 form-control input-text' name='LotNo2' [(ngModel)]='rowdata.lotNo2'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Trip</label>
+						<input type='number' class='col-md-10 form-control input-text' name='Trip' [(ngModel)]='rowdata.trip'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Dolly</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Dolly' [(ngModel)]='rowdata.dolly'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Start Datetime</label>
+						<input type='text' class='col-md-9 form-control input-text' name='startDatetime'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#startDatetime='bsDatepicker' [(ngModel)]='_startDatetime'  bsDatepicker >
+						<i
+						class="fa fa-calendar-alt col-md-1 form-control"
+						id="cssCalender"
+						(click)="startDatetime.toggle()"
+					></i>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Finish Datetime</label>
+						<input type='text' class='col-md-9 form-control input-text' name='finishDatetime'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#finishDatetime='bsDatepicker' [(ngModel)]='_finishDatetime'  bsDatepicker >
+						<i
+						class="fa fa-calendar-alt col-md-1 form-control"
+						id="cssCalender"
+						(click)="finishDatetime.toggle()"
+					></i>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Delay Second</label>
+						<input type='number' class='col-md-10 form-control input-text' name='DelaySecond' [(ngModel)]='rowdata.delaySecond'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Status</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Status' [(ngModel)]='rowdata.status'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

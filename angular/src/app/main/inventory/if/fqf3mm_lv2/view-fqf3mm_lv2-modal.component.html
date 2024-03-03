@@ -1,0 +1,31 @@
+<div bsModal #viewModalFQF3MM_LV2="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog tmss-modal-lg" style=" min-width: 92%;margin-left: 4%;margin-right: 4%;">
+        <div class="modal-content col-lg-12">
+            <div class="modal-header col-lg-12">
+                <h3 *ngIf="rowdata.id">{{('View Content')}}</h3>
+            </div>
+        </div>
+        <div class="modal-content col-lg-12">
+            <form #applyBpForm="ngForm" (keyup.ESC)="close()">
+                <!-- Form Basic-->
+                <div class="row">
+                        <div class="form-input">
+                            <div class='col-lg-12 form-group row'>
+                                <textarea disabled="true"  rows="30" cols="250" name='content' [(ngModel)]='rowdata.content'>                             
+                                    </textarea>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i>
+                        {{ l('Cancel') }}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+
+<div bsModal #viewModalSmqdOrderLeadTime="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('View SMQD Order LeadTime')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New SmqdOrderLeadTime')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Supplier No</label>
+						<input readonly type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Cfc</label>
+						<input readonly type='text' class='col-md-10 form-control input-text' name='cfc' [(ngModel)]='rowdata.cfc'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Exp Code</label>
+						<input readonly type='text' class='col-md-10 form-control input-text' name='ExpCode' [(ngModel)]='rowdata.expCode'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Sea</label>
+						<input readonly type='text' class='col-md-10 form-control input-text' name='sea' [(ngModel)]='rowdata.sea'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label class='col-md-2 form-control title'>Air</label>
+						<input readonly type='text' class='col-md-10 form-control input-text' name='air' [(ngModel)]='rowdata.air'>
+					</div>
+                    <div class="modal-footer">
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div bsModal #editPartGradeModal="bs-modal" class="modal fade col-md-12" role="dialog"
+    [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3>{{('Edit Inhouse Part Grade')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <div class="form-input">
+                <div class='col-md-12 row'>
+                    <div class='col-md-6 form-group'>
+						<label class='col-md-2 form-control title'>Grade</label>
+						<tmss-combobox [items]="listGradeByCfc" name="grade" [(ngModel)]="_grade"></tmss-combobox>
+					</div>
+                    <div class='col-md-6 form-group'>
+                        <label class='col-md-2 form-control title'>Usage Qty</label>
+                        <input type='number' class='col-md-10 form-control input-text' name='usageQty'
+                            [(ngModel)]='_usageQty'>
+                    </div>
+                </div>
+                <div class='col-md-12 row'>
+                    <div class='col-md-6 form-group position-relative'>
+                        <label class='col-md-2 form-control title'>First Day Product</label>
+                        <input type="text" [(ngModel)]="_firstDayProduct" name="firstDayProduct"
+                            class="form-control position-relative" bsDatepicker #datepicker='bsDatepicker'
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right'}"
+                            placement="bottom left" />
+                        <i class='fa fa-calendar-alt position-absolute end-0' (click)='datepicker.toggle()'></i>
+                    </div>
+                    <div class='col-md-6 form-group position-relative'>
+                        <label class='col-md-2 form-control title'>Last Day Product</label>
+                        <input type="text" [(ngModel)]="_lastDayProduct" name="lastDayProduct"
+                            class="form-control position-relative" bsDatepicker #datepicker1='bsDatepicker'
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right'}"
+                            placement="bottom left" />
+                        <i class='fa fa-calendar-alt position-absolute end-0' (click)='datepicker1.toggle()'></i>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-primary font-weight-bold" (click)="save()">
+                        <i class="fa tmss-fa fa-save mr-1"></i><span> {{ "Save" }} </span>
+                    </button>
+                    <button (click)="close()" type="button" class="btn btn-light-danger font-weight-bold">
+                        <i class="fa tmss-fa fa-times mr-1"></i><span> {{ l('Cancel') }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

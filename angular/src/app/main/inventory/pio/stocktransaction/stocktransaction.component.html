@@ -1,0 +1,86 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                         {{ l(' Inventory PIO Stock Transaction ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class='input-search'>
+									<input [(ngModel)]='partNo' name='partNo'
+									class='form-control' [placeholder]="l('Part No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='mktCode' name='mktCode'
+									class='form-control' [placeholder]="l('Mkt Code')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+								<div class='input-search'>
+									<input [(ngModel)]='vinNo' name='vinNo'
+									class='form-control' [placeholder]="l('Vin No')"
+									type='text' (keyup.enter)='searchDatas()'>
+								</div>
+
+                                <div class="input-search">
+                                    <input type="text" [placeholder]="l('Working Date From')"
+                                        [(ngModel)]="workingDateFrom" name="workingDateFrom"
+                                        (keydown)="searchDatas()" class="form-control" bsDatepicker
+                                        #df="bsDatepicker" (navigate)="workingDateFrom = $event.next" placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat:'DD/MM/YYYY'}" />
+                                    <i class="fa fa-calendar-alt" (click)="df.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input type="text" [placeholder]="l('Working Date To')"
+                                        [(ngModel)]="workingDateTo" name="workingDateTo"
+                                        (keydown)="searchDatas()" class="form-control" bsDatepicker
+                                        #dt="bsDatepicker" (navigate)="workingDateTo = $event.next" placement="bottom left"
+                                        [bsConfig]="{ dateInputFormat:'DD/MM/YYYY'}" />
+                                    <i class="fa fa-calendar-alt" (click)="dt.toggle()"></i>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatas()"
+                                        class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()"
+                                        class="btn btn-primary" type="submit">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="panel panel-default pt-1">
+                            <grid-table
+                                [columnDefs]="defaultColDefs"
+                                [paginationParams]="paginationParams"
+                                [rowData]="rowData"
+                                [defaultColDef]="defaultColDef"
+                                (callBackEvent)="callBackDataGrid($event)"
+                                (changePaginationParams)="changePage($event)"
+                                [rowSelection]="rowSelection"
+								[frameworkComponents]="frameworkComponents"
+                            >
+                            </grid-table>
+                        </div>
+                        <hr>
+                        <div class="text-right">
+                            <button class="btn btn-success font-weight-bold" (click)="exportToExcel($event)">
+                                <i class="fas fa-file-excel mr-1"></i>{{ l('Export Excel') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

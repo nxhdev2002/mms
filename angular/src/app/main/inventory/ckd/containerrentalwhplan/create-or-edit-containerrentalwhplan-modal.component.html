@@ -1,0 +1,149 @@
+<div bsModal #createOrEditModalContainerRentalWHPlan="bs-modal" class="modal fade col-md-12" role="dialog" [config]="{ backdrop: 'static' }">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content col-md-12">
+            <div class="modal-header col-md-12">
+                <div class="title-form">
+                    <h3 *ngIf="rowdata.id">{{('Edit ContainerRentalWHPlan')}}</h3>
+                    <h3 *ngIf="!rowdata.id">{{('Create New ContainerRentalWHPlan')}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content col-md-12">
+            <form #applyBpForm="ngForm" (ngSubmit)="save()" autocomplete="off" (keyup.enter)="save()" (keyup.ESC)="close()">
+            <!-- Form Basic-->
+                <div class="form-input">
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Container No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ContainerNo' [(ngModel)]='rowdata.containerNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Renban</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Renban' [(ngModel)]='rowdata.renban'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Request Date</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerRequestDate='bsDatepicker' [(ngModel)]='_requestDate'  bsDatepicker #r="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="r.toggle()"></i>
+
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Request Time</label>
+						<input
+                            type="time"
+                            class="col-md-10 form-control input-text"
+                            name="requestTime"
+                            [(ngModel)]="rowdata.requestTime"
+                        />
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Invoice No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='InvoiceNo' [(ngModel)]='rowdata.invoiceNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Billoflading No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='BillofladingNo' [(ngModel)]='rowdata.billofladingNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Supplier No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SupplierNo' [(ngModel)]='rowdata.supplierNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Seal No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='SealNo' [(ngModel)]='rowdata.sealNo'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Listcase No</label>
+						<textarea class='col-md-10 form-control input-text' name='ListcaseNo' [(ngModel)]='rowdata.listcaseNo' style="width: calc(100% - 160px)"></textarea>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>List Lot No</label>
+						<input type='text' class='col-md-10 form-control input-text' name='ListLotNo' [(ngModel)]='rowdata.listLotNo'>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>CdDate</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerCdDate='bsDatepicker' [(ngModel)]='_cdDate'  bsDatepicker #c="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="c.toggle()"></i>
+
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Devanning Date</label>
+						<input type='text' class='col-md-10 form-control input-text ' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerDevanningDate='bsDatepicker' [(ngModel)]='_devanningDate'  bsDatepicker #d="bsDatepicker">
+
+						<i class="fa fa-calendar-alt" (click)="d.toggle()"></i>
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Devanning Time</label>
+						<input
+                            type="time"
+                            class="col-md-10 form-control input-text"
+                            name="devanningTime"
+                            [(ngModel)]="rowdata.devanningTime"
+                        />
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Actual DevanningDate</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerActualDevanningDate='bsDatepicker' [(ngModel)]='_actualDevanningDate'  bsDatepicker #a="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="a.toggle()"></i>
+
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Gate In Plan Time</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerGateInPlanTime='bsDatepicker' [(ngModel)]='_gateInPlanTime'  bsDatepicker #g="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="g.toggle()"></i>
+
+					</div>
+                    <div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Gate In Actual Date Time</label>
+						<input type='text' class='col-md-10 form-control input-text' name='requestDate'  [bsConfig]="{  isAnimated: true, dateInputFormat: 'DD/MM/YYYY', selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+						#datepickerGateInActualDateTime='bsDatepicker' [(ngModel)]='_gateInActualDateTime'  bsDatepicker #e="bsDatepicker">
+						<i class="fa fa-calendar-alt" (click)="e.toggle()"></i>
+
+					</div>
+
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Transport</label>
+						<input type='text' class='col-md-10 form-control input-text' name='Transport' [(ngModel)]='rowdata.transport'>
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Plate Id</label>
+						<input type='text' class='col-md-10 form-control input-text' name='PlateId' [(ngModel)]='rowdata.plateId'>
+					</div>
+					<div  class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Status</label>
+						<!-- <form action="" class=''>
+							<select name="cars" id="cars">
+							  <option value="">1.REQUESTED</option>
+							  <option value="">2.PENDING</option>
+							  <option value="">3.CONFIRM</option>
+							  <option value="">4.CANCEL</option>
+							</select>
+							<br><br>
+						</form> -->
+
+						<tmss-combobox [items]="RestrictList"  name="RestrictList" [(ngModel)]="rowdata.status"></tmss-combobox>
+						<!-- <input type="text"  class='col-md-10 form-control input-text' name='Status' [(ngModel)]='rowdata.status'> -->
+					</div>
+					<div class='col-md-12 form-group row'>
+						<label style="width: 160px" class='col-md-2 form-control title'>Is Active</label>
+						<new-checkbox [(ngModel)]='_isActive' name='isActive' className='col-md-10' > </new-checkbox>
+					</div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-save mr-1"></i>
+                            <span>{{ l('Save') }}</span>
+                        </button>
+                        <button (click)="close()" type="button" class="btn btn-light-primary font-weight-bold">
+                            <i class="fa tmss-fa fa-times mr-1"></i>
+                            {{ l('Cancel') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

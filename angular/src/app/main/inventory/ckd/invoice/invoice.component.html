@@ -1,0 +1,239 @@
+<div id="container" class="mt-2" [busyIf]="isLoading">
+    <div class="ui-g-12">
+        <fieldset class="fieldset-border grid-parent">
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <h6 class="card-header">
+                        {{ l(' CKD Import Invoice ') }}
+                    </h6>
+                </div>
+                <div class="prod-cont">
+                    <div class="ui-g-12">
+                        <div class="form-group m-form__group align-items-center">
+                            <div class="input-group">
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="invoiceNo"
+                                        name="inviceNo"
+                                        class="form-control"
+                                        [placeholder]="l('Invoice No')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                    />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="invocieDateFrom"
+                                        name="invoiceDateFrom"
+                                        class="form-control"
+                                        [placeholder]="l('Invoice Date From')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',    }"
+                                        #d_start="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d_start.toggle()"></i>
+                                </div>
+								<div class="input-search">
+                                    <input
+                                        type="text"
+                                        [(ngModel)]="invocieDateTo"
+                                        name="invoiceDateTo"
+                                        class="form-control"
+                                        [placeholder]="l('Invoice Date To')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #d_end="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="d_end.toggle()"></i>
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="billNo"
+                                        name="billNo"
+                                        class="form-control"
+                                        [placeholder]="l('Bill No')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                    />
+                                </div>
+                                <div class="input-search">
+                                    <input
+                                        [(ngModel)]="billDateFrom"
+                                        name="billDateFrom"
+                                        class="form-control"
+                                        [placeholder]="l('Bill Date From')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' ,isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #b_start="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="b_start.toggle()"></i>
+                                </div>
+								<div class="input-search">
+                                    <input
+                                        type="text"
+                                        [(ngModel)]="billDateTo"
+                                        name="billDateTo"
+                                        class="form-control"
+                                        [placeholder]="l('Bill Date To')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                        bsDatepicker
+                                        [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY',isAnimated: true, selectFromOtherMonth:true, showClearButton: true, showTodayButton: true, todayPosition:'right',     }"
+                                        #b_end="bsDatepicker"
+                                        placement="bottom left"
+                                    />
+                                    <i class="fa fa-calendar-alt" (click)="b_end.toggle()"></i>
+                                </div>
+                                <div class='input-search'>
+                                    <input
+                                    [(ngModel)]='supplierNo'
+                                    name='supplierNo' class='form-control'
+                                    [placeholder]="l('Supplier No')"
+                                    type='text'
+                                    (keyup.enter)='searchDatasInvoice()'>
+                                </div>
+								<div class="input-search">
+                                    <input
+                                        [(ngModel)]="shipmentNo"
+                                        name="shipmentNo"
+                                        class="form-control"
+                                        [placeholder]="l('Shipment No')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                    />
+                                </div>
+								<div class="input-search">
+                                    <input
+                                        [(ngModel)]="containerNo"
+                                        name="containerNo"
+                                        class="form-control"
+                                        [placeholder]="l('Container No')"
+                                        type="text"
+                                        (keyup.enter)="searchDatasInvoice()"
+                                    />
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ordertypeCodeList"
+                                    name="OrdertypeCodeList"
+                                    [(ngModel)]="ordertypeCode"
+                                    [text]="l('Ordertype Code')"
+                                    (ngModelChange)="searchDatasInvoice()"></tmss-combobox>
+                                </div>
+                                <div class='input-search'>
+                                    <tmss-combobox
+                                    [items]="ckdPioList"
+                                    name="ckdPio"
+                                    [(ngModel)]="ckdPio"
+                                    [text]="l('Ckd Pio')"
+                                    (ngModelChange)="searchDatasInvoice()"></tmss-combobox>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="searchDatasInvoice()" class="btn btn-primary"  >
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-search">
+                                    <button (click)="clearTextSearch()" class="btn btn-primary"  >
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-12">
+                            <div class="panel panel-default pt-1">
+                                <div class="ui-g-12">
+                                    <h4 class="card-header card-grid-table">
+                                        {{ l(' Invoice ') }}
+                                    </h4>
+                                </div>
+                                <grid-table
+                                    [columnDefs]="invoiceColDefs"
+                                    [paginationParams]="paginationParamInvoice"
+                                    [showPagination]="true"
+                                    [rowData]="rowDataInvoice"
+                                    [defaultColDef]="defaultColDef"
+                                    (callBackEvent)="callBackDataGridInvoice($event)"
+                                    (changePaginationParams)="changePageInvoice($event)"
+                                    (onChangeSelection)="onChangeRowSelectionInvoice($event)"
+                                    [frameworkComponents]="frameworkComponents"
+
+                                    [groupIncludeFooter]="false"
+                                    [groupIncludeTotalFooter]="false"
+                                    >
+                                </grid-table>
+
+                            </div>
+                            <div class="panelBtn text-right" style="margin-bottom: 10px;">
+                                <button *ngIf="isGranted('Pages.Ckd.Intransit.Invoice.History')"
+                                class="btn btn-warning font-weight-bold"
+                                (click)="viewHistoryInvoiceModal.show(invoiceId, 'Inv')"
+                                [disabled]="!changedRecordsInvoice.includes(selectedRowInvoice.id)"
+                                >
+                                <i class="fa-regular fa-eye"></i>{{ l('History') }}
+                                </button>
+                            </div>
+                            <div class="ui-g-12 ph-0">
+                                <div class="ui-g-12">
+                                    <h4 class="card-header card-grid-table">
+                                        {{ l(' Invoice Detail ') }}
+                                    </h4>
+                                </div>
+                                <grid-table
+                                    [columnDefs]="invoiceDetailsColDefs"
+                                    [paginationParams]="paginationParamInvoiceDetails"
+                                    [showPagination]="true"
+                                    [rowData]="rowDataInvoiceDetails"
+                                    [defaultColDef]="defaultColDef"
+                                    [frameworkComponents]="frameworkComponents"
+                                    (callBackEvent)="callBackDataGridInvoiceDetails($event)"
+                                    (changePaginationParams)="changePageInvoiceDetails($event)"
+                                    (onChangeSelection)="onChangeRowSelectionInvoiceDetails($event)"
+
+                                    [groupIncludeFooter]="true"
+                                    [groupIncludeTotalFooter]="false"
+                                    >
+                                </grid-table>
+
+                            </div>
+                            <hr>
+                            <div class="panelBtn text-right">
+                                <button
+                                *ngIf="isGranted('Pages.Ckd.Intransit.InvoiceDetails.History')"
+                                class="btn btn-warning font-weight-bold"
+                                (click)="viewHistoryInvoiceModal.show(invoiceDetailId, 'InvDe')"
+                                [disabled]="!changedRecordsInvoiceDetails.includes(selectedRowInvoiceDetail.id)"
+                                >
+                                <i class="fa-regular fa-eye"></i>{{ l('History') }}
+                                </button>
+                                <button class="btn btn-success font-weight-bold position-relative" (click)="exportToExcelInvoice($event)" >
+                                    <i class="fas fa-file-excel mr-1"></i>{{
+                                    l('Invoice Export') }}
+                                </button>
+                                <button class="btn btn-success font-weight-bold position-relative" (click)="exportToExcelInvoiceDetails($event)" >
+                                    <i class="fas fa-file-excel mr-1"></i>{{
+                                    l('Invoice Details Export') }}
+                                </button>
+                                <button class="btn btn-success font-weight-bold position-relative" (click)="exportToExcelInvoiceCustoms($event)" >
+                                    <i class="fas fa-file-excel mr-1"></i>{{
+                                    l('Invoice - Customs Export') }}
+                                </button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+<history-invoice-modal #viewHistoryInvoiceModal></history-invoice-modal>
+
