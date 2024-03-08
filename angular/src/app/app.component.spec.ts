@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LOCALE_ID } from '@angular/core';
 
 export function getRemoteServiceBaseUrl(): string {
-    return 'http://localhost:5500';
+    return 'http://localhost:5001';
 }
 
 describe('App: prod', () => {

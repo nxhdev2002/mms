@@ -20,7 +20,7 @@ namespace prod.ConsoleApiClient
 
     class Program
     {
-        private const string ServerUrlBase = "https://localhost:5000/";
+        private const string ServerUrlBase = "https://localhost:5001/";
         
         // If you have changed "Configuration.MultiTenancy.TenantIdResolveKey" in your web app, use the same value here. 
         private const string TenantIdResolveKey = "Abp.TenantId";

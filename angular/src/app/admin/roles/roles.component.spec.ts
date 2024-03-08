@@ -15,7 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppBsModalModule } from '@shared/common/appBsModal/app-bs-modal.module';
 
 export function getRemoteServiceBaseUrl(): string {
-    return 'http://localhost:5500';
+    return 'http://localhost:5001';
 }
 
 describe('RolesComponent', () => {
