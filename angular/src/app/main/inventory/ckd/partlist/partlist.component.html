@@ -128,24 +128,24 @@
                                     </grid-table>
                                     <hr>
                                     <div class="text-right">
-                                        <button *ngIf="isGranted('Pages.Ckd.Master.PartList.History')"
+                                        <!-- <button *ngIf="isGranted('Pages.Ckd.Master.PartList.History')"
                                             class="btn btn-primary font-weight-bold"
                                             (click)="viewHistoryPartListModal.show(partGradeId,'PG')"
                                             [disabled]="!isRowGrade || !changedRecordsPartGrade.includes(selectedRowGrade.id)">
                                             <i class="fa-regular fa-eye"></i>{{ l('History') }}
-                                        </button>
+                                        </button> -->
                                         <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Add')"
                                             class="btn btn-warning font-weight-bold"
                                             (click)="editPartGradeModal.show(selectedRowGrade)"
                                             [disabled]="!isRowGrade">
                                             <i class="fa fa-edit mr-1"></i>{{ l('Edit') }}
                                         </button>
-                                        <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Add')"
+                                        <!-- <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Add')"
                                             class="btn btn-info font-weight-bold"
                                             (click)="eciPartGradeModal.show(selectedRowGrade)"
                                             [disabled]="isEci">
                                             <i class="fa fa-clone mr-1"></i>{{ l('ECI Part') }}
-                                        </button>
+                                        </button> -->
                                         <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Add')"
                                             class="btn btn-danger font-weight-bold"
                                             (click)="deletePartGrade(selectedRowGrade)"

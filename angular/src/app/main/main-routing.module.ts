@@ -627,11 +627,11 @@ import { HomeComponent } from './home/home.component';
                     loadChildren: () => import('./inventory/ckd/invoice/invoice.module').then(m => m.InvoiceModule),
                     data: { permission: 'Pages.Ckd.Intransit.Invoice.View' }
                 },
-                 {
-                    path: 'inventory/ckd/frameengine',
-                    loadChildren: () => import('./inventory/ckd/frameengine/frameengine.module').then(m => m.FrameEngineModule),
-                    data: { permission: 'Pages.Ckd.Intransit.FrameEngine.View' }
-                },
+                //  {
+                //     path: 'inventory/ckd/frameengine',
+                //     loadChildren: () => import('./inventory/ckd/frameengine/frameengine.module').then(m => m.FrameEngineModule),
+                //     data: { permission: 'Pages.Ckd.Intransit.FrameEngine.View' }
+                // },
                  {
                     path: 'inventory/ckd/containerintransit',
                     loadChildren: () => import('./inventory/ckd/containerIntransit/containerintransit.module').then(m => m.ContainerIntransitModule),
@@ -697,11 +697,11 @@ import { HomeComponent } from './home/home.component';
                     loadChildren: () => import('./inventory/ckd/partmanagement/partmanagement.module').then(m => m.PartManagementModule),
                     data: { permission: 'Pages.Ckd.Warehouse.PartManagement.View' }
                 },
-                {
-                    path: 'inventory/ckd/partrobbing',
-                    loadChildren: () => import('./inventory/ckd/partrobbing/partrobbing.module').then(m => m.PartRobbingModule),
-                    data: { permission: 'Pages.Ckd.Warehouse.PartManagement.View' }
-                },
+                // {
+                //     path: 'inventory/ckd/partrobbing',
+                //     loadChildren: () => import('./inventory/ckd/partrobbing/partrobbing.module').then(m => m.PartRobbingModule),
+                //     data: { permission: 'Pages.Ckd.Warehouse.PartManagement.View' }
+                // },
                 {
                     path: 'inventory/ckd/smqdorder',
                     loadChildren: () => import('./inventory/ckd/smqdorder/smqdorder.module').then(m => m.SmqdOrderModule),

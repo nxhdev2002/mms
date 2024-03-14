@@ -1723,12 +1723,12 @@ namespace prod.Inventory.CKD
 
                     string strGUID = Guid.NewGuid().ToString("N");
 
-                    string _sql = @"EXEC CMM_IMPORT_USER_GUID_INSERT @Guid, @p_UserId";
-                    await _dapperRepo.ExecuteAsync(_sql, new
-                    {
-                        Guid = strGUID,
-                        p_UserId = AbpSession.UserId
-                    });
+                    //string _sql = @"EXEC CMM_IMPORT_USER_GUID_INSERT @Guid, @p_UserId";
+                    //await _dapperRepo.ExecuteAsync(_sql, new
+                    //{
+                    //    Guid = strGUID,
+                    //    p_UserId = AbpSession.UserId
+                    //});
 
 
 

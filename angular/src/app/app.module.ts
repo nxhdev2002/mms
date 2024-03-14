@@ -216,7 +216,7 @@ import { VersionUpdateHandlerService } from '@shared/utils/version-update-handle
         AppBsModalModule,
         SubheaderModule,
         ChangeProfilePictureModalModule,
-        CoreModule
+        CoreModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

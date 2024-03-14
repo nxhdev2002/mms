@@ -212,10 +212,10 @@ export class AppNavigationService {
                         new AppMenuItem("Module List", "Pages.Ckd.Warehouse.ModuleCase.View", "", "/app/main/inventory/ckd/modulecase"),
                         new AppMenuItem("Part Management", "Pages.Ckd.Warehouse.PartManagement.View", "", "/app/main/inventory/ckd/partmanagement"),
 
-                        new AppMenuItem("Stock Part", "Pages.Ckd.Warehouse.StockPart.View", '', '/app/main/inventory/ckd/stock-part'),//TAB
+                        // new AppMenuItem("Stock Part", "Pages.Ckd.Warehouse.StockPart.View", '', '/app/main/inventory/ckd/stock-part'),//TAB
                         // new AppMenuItem("Stock Receiving", "Pages.Ckd.Warehouse.StockReceiving.View", "", '/app/main/inventory/ckd/stock-receiving'),//TAB
                         // new AppMenuItem("Stock Issuing", "Pages.Ckd.Warehouse.StockIssuing.View", "", '/app/main/inventory/ckd/stock-issuing'),//TAB
-                        new AppMenuItem("Stock Balance", "Pages.Ckd.Warehouse.StockBalance.View", "", '/app/main/inventory/ckd/stock-balance'),//TAB
+                        // new AppMenuItem("Stock Balance", "Pages.Ckd.Warehouse.StockBalance.View", "", '/app/main/inventory/ckd/stock-balance'),//TAB
                     ]),
                     // //Prod. Area
                     // new AppMenuItem('Prod. Area', 'Pages.Ckd.Area', '', '', '', [], [
