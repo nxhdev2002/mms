@@ -34,7 +34,6 @@ namespace prod.Inventory.CKD
         [StringLength(MaxPartNoLength)]
         public virtual string PartNo { get; set; }
         public virtual int? Qty { get; set; }
-        public virtual int? RemainQty { get; set; }
         public virtual DateTime? PackingDate { get; set; }
 
         [StringLength(MaxRepackModuleNoLength)]

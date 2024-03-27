@@ -518,11 +518,11 @@ namespace prod.Inventory.CKD
                 item.RemainQty -= input.Where(x => x.Id == item.Id).First().Qty;
             }
 
-            foreach (var item in partDb2)
-            {
-                item.RemainQty ??= item.Qty;
-                item.RemainQty -= input.Where(x => x.Id == item.Id).First().Qty;
-            }
+            //foreach (var item in partDb2)
+            //{
+            //    item.RemainQty ??= item.Qty;
+            //    item.RemainQty -= input.Where(x => x.Id == item.Id).First().Qty;
+            //}
 
             await _dbContextProvider.GetDbContext().SaveChangesAsync();
             

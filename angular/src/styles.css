@@ -237,7 +237,7 @@ user-menu #kt_quick_user_toggle.px-md-3 .px-md-3, user-menu #kt_quick_user_toggl
     /* .aside-enabled #kt_content { padding-left: 4px } */
 
     /* MENU LEFT */
-    #kt_aside.aside { margin-left: -254.9px; transition: all .6s ease,box-shadow .1s ease; position: relative; display: flex; height: 100vh; width: 255px; background: #fff; box-shadow: 0 1px 9px -3px rgba(0,0,0,.65); z-index: 2; box-shadow: 2px 5px 9px 0px}
+    #kt_aside.aside { margin-left: -254.9px; transition: all .6s ease,box-shadow .1s ease; position: relative; display: flex; width: 255px; background: #fff; box-shadow: 0 1px 9px -3px rgba(0,0,0,.65); z-index: 2}
     #kt_aside.aside.active,
     #kt_aside.aside:hover { margin-left: -0px; }
 }

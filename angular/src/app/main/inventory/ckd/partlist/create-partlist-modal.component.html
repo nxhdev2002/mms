@@ -17,9 +17,11 @@
 				<div class='col-12 row'>
 					<div class='col-4 form-group'>
 						<label class=' form-control title PartListTitle'>Part No</label>
-                        <production-combobox [list]="partNoList" name="_partNo" [id]="'partNo'"
+                        <input id="partNo" type='text'  class='col-10 form-control input-text' name='partNo'maxlength='40' style='text-transform:uppercase'
+							[(ngModel)]='_partNo'>
+                        <!-- <production-combobox [list]="partNoList" name="_partNo" [id]="'partNo'"
                         [(ngModel)]="_partNo" [ngClass]="minwidth0" (onChangeValue)="changePartNo($event)" (onKeyPress)="changePartNo()">
-                        </production-combobox>
+                        </production-combobox> -->
 					</div>
 					<div class='col-4 form-group'>
 						<label class=' form-control title PartListTitle' >Part Name</label>
