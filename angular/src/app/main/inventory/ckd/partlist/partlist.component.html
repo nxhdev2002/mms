@@ -74,7 +74,7 @@
 
                         </div>
                         <div class=" panelBtn text-right">
-                            <!-- <button class="btn font-weight-bold history-prod btn-primary" (focus)="historyOption()"
+                            <button class="btn font-weight-bold history-prod btn-primary" (focus)="historyOption()"
                             (blur)="lostForcusHist()" *ngIf="isGranted('Pages.Ckd.Master.PartList.History')" style="width: 120px">
                                 <i class="fa fa-eye mr-1"></i>
                                 {{ l('History')}}  {{ changedRecordsPartList.includes(selectedRow.id) ? '(2)' : '(1)' }}
@@ -87,7 +87,7 @@
                                     </ul>
                                 </div>
                                 <i class="fa fa-caret-up" aria-hidden="true"></i>
-                            </button> -->
+                            </button>
                             <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Validate')"
                                 class="btn btn-warning font-weight-bold"
                                 (click)="viewValidatePartListModal.show()">
@@ -128,12 +128,12 @@
                                     </grid-table>
                                     <hr>
                                     <div class="text-right">
-                                        <!-- <button *ngIf="isGranted('Pages.Ckd.Master.PartList.History')"
+                                        <button *ngIf="isGranted('Pages.Ckd.Master.PartList.History')"
                                             class="btn btn-primary font-weight-bold"
                                             (click)="viewHistoryPartListModal.show(partGradeId,'PG')"
                                             [disabled]="!isRowGrade || !changedRecordsPartGrade.includes(selectedRowGrade.id)">
                                             <i class="fa-regular fa-eye"></i>{{ l('History') }}
-                                        </button> -->
+                                        </button>
                                         <button *ngIf="isGranted('Pages.Ckd.Master.PartList.Add')"
                                             class="btn btn-warning font-weight-bold"
                                             (click)="editPartGradeModal.show(selectedRowGrade)"

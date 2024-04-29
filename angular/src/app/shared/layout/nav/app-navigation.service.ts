@@ -179,7 +179,7 @@ export class AppNavigationService {
                         new AppMenuItem("PartList", "Pages.Ckd.Master.PartList.View", "", "/app/main/inventory/ckd/partlist", 'fa fa-cubes'),
                         // new AppMenuItem("Part List Inl", "Pages.PIO.Master.PartListInl.View", "", "/app/main/inventory/ckd/partlistinl"),
                         // new AppMenuItem("Inv Lot", "Pages.Ckd.Master.LotPart.View", "", "/app/main/master/inventory/lotpart"),
-                        new AppMenuItem("Devanning Case Type", "Pages.Master.Inv.DevanningCaseType.View", "", "/app/main/master/inventory/devanningcasetype"),
+                        // new AppMenuItem("Devanning Case Type", "Pages.Master.Inv.DevanningCaseType.View", "", "/app/main/master/inventory/devanningcasetype"),
                         // new AppMenuItem("SMQD Order Lead Time", "Pages.Ckd.SMQD.OrderLeadTime.View", "", "/app/main/inventory/ckd/smqdorderleadtime"),
                         // new AppMenuItem("Module Master(chưa làm).View", "", "",   ""),
                         // new AppMenuItem("Irregular Part List(chưa làm).View", "", "",   ""),
@@ -415,7 +415,7 @@ export class AppNavigationService {
             //     // new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             //     // new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
 
-            ])
+            ]);
     }
 
     checkChildMenuItemPermission(menuItem): boolean {

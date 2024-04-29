@@ -136,8 +136,7 @@ namespace prod.Inventory.CKD
             IEnumerable<InvCkdPartGradeDto> result = await _partGrade.QueryAsync<InvCkdPartGradeDto>(_sqlSearch,
                   new
                   {
-                      p_part_id = input.PartId
-
+                      p_part_id = input.PartId,
                   });
             var listResult = result.ToList();
 
@@ -1533,7 +1532,7 @@ namespace prod.Inventory.CKD
             listExport.Add("UserName");
 
             string[] properties = listExport.ToArray();
-            string _sql = "Exec INV_CKD_PART_GRADE_BY_PARTNO_EXPORT @part_no,@cfc, @p_model, @p_grade, @p_shop,@supplierNo,@p_order_pattern, @p_active";
+            string _sql = "Exec INV_CKD_PART_GRADE_BY_PARTNO @part_no,@p_shop";
             var listData = (await _dapperRepo.QueryAsync<InvCkdPartDetailsDto>(_sql, new
             {
                 part_no = input.PartNo,
